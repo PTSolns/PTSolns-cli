@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -26,9 +26,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/arduino-cli/commands/cmderrors"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	"github.com/arduino/arduino-cli/internal/version"
+	"github.com/arduino/ptsolns-cli/commands/cmderrors"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/version"
 	"go.bug.st/downloader/v2"
 	"google.golang.org/grpc/metadata"
 )
@@ -86,7 +86,7 @@ func (settings *Settings) NetworkProxy() (*url.URL, error) {
 	}
 }
 
-// NewHttpClient returns a new http client for use in the arduino-cli
+// NewHttpClient returns a new http client for use in the ptsolns-cli
 func (settings *Settings) NewHttpClient(ctx context.Context) (*http.Client, error) {
 	proxy, err := settings.NetworkProxy()
 	if err != nil {

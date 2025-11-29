@@ -52,8 +52,8 @@ generated for the path to each library dependency and appended to the
 If multiple libraries contain a file that matches the `#include` directive, the priority is determined by applying the
 following rules, one by one in this order, until a rule determines a winner:
 
-1. A library that has been specified using the [`--library` option](commands/arduino-cli_compile.md#options) of
-   `arduino-cli compile` wins against a library in other locations
+1. A library that has been specified using the [`--library` option](commands/ptsolns-cli_compile.md#options) of
+   `ptsolns-cli compile` wins against a library in other locations
 1. A library that is architecture compatible wins against a library that is not architecture compatible (see
    [**Architecture Matching**](#architecture-matching))
 1. A library with both [library name](#library-name-priority) and [folder name](#folder-name-priority) matching the
@@ -125,7 +125,7 @@ The "folder name priority" is determined as follows (in order of highest to lowe
 The "location priority" is determined as follows (in order of highest to lowest priority):
 
 1. The library is under a custom libraries path specified via the
-   [`--libraries` option](commands/arduino-cli_compile.md#options) of `arduino-cli compile` (in decreasing order of
+   [`--libraries` option](commands/ptsolns-cli_compile.md#options) of `ptsolns-cli compile` (in decreasing order of
    priority when multiple custom paths are defined)
 1. The library is under the `libraries` subfolder of the IDE's sketchbook or Arduino CLI's user directory
 1. The library is bundled with the board platform/core
@@ -148,7 +148,7 @@ cloud-based nature may make the locations of libraries less obvious.
    - Note: clicking the "Include" button does not result in the library being pinned to the sketch.
 1. **[Platform bundled](platform-specification.md#platform-bundled-libraries)**: these are listed under the
    **Libraries > Default** tab, but with "for \<architecture name\>" appended to the library name (e.g., "SPI for AVR").
-   - These libraries are under `/home/builder/.arduino15/packages`
+   - These libraries are under `/home/builder/.ptsolns15/packages`
    1. [Board platform](platform-specification.md#platform-terminology) bundled
    1. [Core platform](platform-specification.md#platform-terminology) bundled
 1. **Built-in**:

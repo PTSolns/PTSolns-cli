@@ -46,7 +46,7 @@
         <!-- Features define which parts of the application can be installed in a custom installation -->
         <Feature Id="DefaultFeature" ConfigurableDirectory="INSTALLDIR">
             <Component Directory="INSTALLDIR" Guid="0c407434-5d0f-428a-a855-d823f6acce8d">
-                <File Name="arduino-cli.exe" KeyPath="yes"/>
+                <File Name="ptsolns-cli.exe" KeyPath="yes"/>
                 <Environment Id="Path" Action="set" Name="PATH" Part="last" System="yes" Value="[INSTALLDIR]"/>
             </Component>
 

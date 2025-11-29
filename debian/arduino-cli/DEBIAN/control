@@ -1,4 +1,4 @@
-Package: arduino-cli
+Package: ptsolns-cli
 Version: $VERSION
 Architecture: $ARCH
 Maintainer: arduino <support@arduino.cc>

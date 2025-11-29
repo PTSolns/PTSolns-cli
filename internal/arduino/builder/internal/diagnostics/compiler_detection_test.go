@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2023 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -59,19 +59,19 @@ func mockedRunProcessToGetCompilerVersion(args ...string) []string {
 }
 
 func TestCompilerDetection(t *testing.T) {
-	comp := DetectCompilerFromCommandLine([]string{"~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++"}, true)
+	comp := DetectCompilerFromCommandLine([]string{"~/.ptsolns15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++"}, true)
 	require.NotNil(t, comp)
 	require.Equal(t, "gcc", comp.Family)
 	require.Equal(t, "avr-g++", comp.Name)
 	require.Equal(t, "7.3.0", comp.Version.String())
 
-	comp = DetectCompilerFromCommandLine([]string{"~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-gcc"}, true)
+	comp = DetectCompilerFromCommandLine([]string{"~/.ptsolns15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-gcc"}, true)
 	require.NotNil(t, comp)
 	require.Equal(t, "gcc", comp.Family)
 	require.Equal(t, "avr-gcc", comp.Name)
 	require.Equal(t, "7.3.0", comp.Version.String())
 
-	comp = DetectCompilerFromCommandLine([]string{"/home/megabug/.arduino15/packages/esp32/tools/xtensa-esp32-elf-gcc/gcc8_4_0-esp-2021r2-patch3/bin/xtensa-esp32-elf-g++"}, true)
+	comp = DetectCompilerFromCommandLine([]string{"/home/megabug/.ptsolns15/packages/esp32/tools/xtensa-esp32-elf-gcc/gcc8_4_0-esp-2021r2-patch3/bin/xtensa-esp32-elf-g++"}, true)
 	require.NotNil(t, comp)
 	require.Equal(t, "gcc", comp.Family)
 	require.Equal(t, "xtensa-esp32-elf-g++", comp.Name)

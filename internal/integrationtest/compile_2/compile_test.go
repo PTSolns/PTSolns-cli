@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -21,7 +21,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
@@ -243,7 +243,7 @@ func TestCompileWithEsp32BundledLibraries(t *testing.T) {
 	// This happens because for "historical" reasons these platform have their "name" key
 	// in the "library.properties" flag suffixed with "(esp32)" or similar even though that
 	// doesn't respect the libraries specification.
-	// https://arduino.github.io/arduino-cli/latest/library-specification/#libraryproperties-file-format
+	// https://arduino.github.io/ptsolns-cli/latest/library-specification/#libraryproperties-file-format
 	//
 	// The reason those libraries have these suffixes is to avoid an annoying bug in the Java IDE
 	// that would have caused the libraries that are both bundled with the core and the Java IDE to be
@@ -289,7 +289,7 @@ func TestCompileWithEsp8266BundledLibraries(t *testing.T) {
 	// This happens because for "historical" reasons these platform have their "name" key
 	// in the "library.properties" flag suffixed with "(esp32)" or similar even though that
 	// doesn't respect the libraries specification.
-	// https://arduino.github.io/arduino-cli/latest/library-specification/#libraryproperties-file-format
+	// https://arduino.github.io/ptsolns-cli/latest/library-specification/#libraryproperties-file-format
 	//
 	// The reason those libraries have these suffixes is to avoid an annoying bug in the Java IDE
 	// that would have caused the libraries that are both bundled with the core and the Java IDE to be
@@ -336,7 +336,7 @@ func TestGenerateCompileCommandsJsonResilience(t *testing.T) {
 	require.NoError(t, err)
 
 	// check it didn't fail with esp32@2.0.1 that has a prebuild hook that must run:
-	// https://github.com/arduino/arduino-cli/issues/1547
+	// https://github.com/arduino/ptsolns-cli/issues/1547
 	url := "https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json"
 	_, _, err = cli.Run("core", "update-index", "--additional-urls="+url)
 	require.NoError(t, err)
@@ -447,5 +447,5 @@ func TestCompileWithKnownPlatformNotInstalled(t *testing.T) {
 	require.Error(t, err)
 	require.Contains(t, string(stderr), "Error during build: Platform 'arduino:avr' not found: platform not installed")
 	// Verifies command to fix error is shown to user
-	require.Contains(t, string(stderr), "Try running `arduino-cli core install arduino:avr`")
+	require.Contains(t, string(stderr), "Try running `ptsolns-cli core install arduino:avr`")
 }

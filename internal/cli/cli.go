@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -22,30 +22,30 @@ import (
 	"os"
 	"strings"
 
-	"github.com/arduino/arduino-cli/internal/cli/board"
-	"github.com/arduino/arduino-cli/internal/cli/burnbootloader"
-	"github.com/arduino/arduino-cli/internal/cli/cache"
-	"github.com/arduino/arduino-cli/internal/cli/compile"
-	"github.com/arduino/arduino-cli/internal/cli/completion"
-	"github.com/arduino/arduino-cli/internal/cli/config"
-	"github.com/arduino/arduino-cli/internal/cli/core"
-	"github.com/arduino/arduino-cli/internal/cli/daemon"
-	"github.com/arduino/arduino-cli/internal/cli/debug"
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/cli/generatedocs"
-	"github.com/arduino/arduino-cli/internal/cli/lib"
-	"github.com/arduino/arduino-cli/internal/cli/monitor"
-	"github.com/arduino/arduino-cli/internal/cli/outdated"
-	"github.com/arduino/arduino-cli/internal/cli/sketch"
-	"github.com/arduino/arduino-cli/internal/cli/update"
-	"github.com/arduino/arduino-cli/internal/cli/updater"
-	"github.com/arduino/arduino-cli/internal/cli/upgrade"
-	"github.com/arduino/arduino-cli/internal/cli/upload"
-	"github.com/arduino/arduino-cli/internal/cli/version"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	"github.com/arduino/arduino-cli/internal/inventory"
-	versioninfo "github.com/arduino/arduino-cli/internal/version"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/internal/cli/board"
+	"github.com/arduino/ptsolns-cli/internal/cli/burnbootloader"
+	"github.com/arduino/ptsolns-cli/internal/cli/cache"
+	"github.com/arduino/ptsolns-cli/internal/cli/compile"
+	"github.com/arduino/ptsolns-cli/internal/cli/completion"
+	"github.com/arduino/ptsolns-cli/internal/cli/config"
+	"github.com/arduino/ptsolns-cli/internal/cli/core"
+	"github.com/arduino/ptsolns-cli/internal/cli/daemon"
+	"github.com/arduino/ptsolns-cli/internal/cli/debug"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/cli/generatedocs"
+	"github.com/arduino/ptsolns-cli/internal/cli/lib"
+	"github.com/arduino/ptsolns-cli/internal/cli/monitor"
+	"github.com/arduino/ptsolns-cli/internal/cli/outdated"
+	"github.com/arduino/ptsolns-cli/internal/cli/sketch"
+	"github.com/arduino/ptsolns-cli/internal/cli/update"
+	"github.com/arduino/ptsolns-cli/internal/cli/updater"
+	"github.com/arduino/ptsolns-cli/internal/cli/upgrade"
+	"github.com/arduino/ptsolns-cli/internal/cli/upload"
+	"github.com/arduino/ptsolns-cli/internal/cli/version"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/inventory"
+	versioninfo "github.com/arduino/ptsolns-cli/internal/version"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/fatih/color"
 	"github.com/mattn/go-colorable"
 	"github.com/rifflock/lfshook"
@@ -84,9 +84,9 @@ func NewCommand(srv rpc.ArduinoCoreServiceServer) *cobra.Command {
 	defaultOutputNoColor := settings.GetOutput().GetNoColor()
 
 	cmd := &cobra.Command{
-		Use:     "arduino-cli",
+		Use:     "ptsolns-cli",
 		Short:   i18n.Tr("Arduino CLI."),
-		Long:    i18n.Tr("Arduino Command Line Interface (arduino-cli)."),
+		Long:    i18n.Tr("Arduino Command Line Interface (ptsolns-cli)."),
 		Example: fmt.Sprintf("  %s <%s> [%s...]", os.Args[0], i18n.Tr("command"), i18n.Tr("flags")),
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			ctx := cmd.Context()

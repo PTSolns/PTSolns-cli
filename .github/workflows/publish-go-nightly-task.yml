@@ -3,11 +3,11 @@ name: Publish Nightly Build
 
 env:
   # As defined by the Taskfile's PROJECT_NAME variable
-  PROJECT_NAME: arduino-cli
+  PROJECT_NAME: ptsolns-cli
   # As defined by the Taskfile's DIST_DIR variable
   DIST_DIR: dist
   # The project's folder on Arduino's download server for uploading builds
-  AWS_PLUGIN_TARGET: /arduino-cli/
+  AWS_PLUGIN_TARGET: /ptsolns-cli/
   AWS_REGION: "us-east-1"
   ARTIFACT_NAME: dist
 
@@ -148,8 +148,8 @@ jobs:
         run: |
           cat > "${{ env.GON_CONFIG_PATH }}" <<EOF
           # See: https://github.com/Bearer/gon#configuration-file
-          source = ["dist/arduino-cli_osx_${{ matrix.artifact.name }}/arduino-cli"]
-          bundle_id = "cc.arduino.arduino-cli"
+          source = ["dist/ptsolns-cli_osx_${{ matrix.artifact.name }}/ptsolns-cli"]
+          bundle_id = "cc.arduino.ptsolns-cli"
 
           sign {
             application_identity = "Developer ID Application: ARDUINO SA (7KT7ZWMCJT)"

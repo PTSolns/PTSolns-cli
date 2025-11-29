@@ -96,10 +96,10 @@ The previous gRPC Setting rpc call may be replaced as follows:
 - The old `SettingsWrite` rpc call has been removed. It is partially replaced by `ConfigurationSave` but the actual file
   save must be performed by the caller.
 
-### golang: importing `arduino-cli` as a library now requires the creation of a gRPC service.
+### golang: importing `ptsolns-cli` as a library now requires the creation of a gRPC service.
 
 Previously the methods implementing the Arduino business logic were available in the global namespace
-`github.com/arduino/arduino-cli/commands/*` and could be called directly.
+`github.com/arduino/ptsolns-cli/commands/*` and could be called directly.
 
 The above is no more true. All the global `commands.*` functions have been converted to methods of the
 `arduinoCoreServerImpl` struct that implements the gRPC `ArduinoCoreServer` interface. The configuration is now part of
@@ -152,8 +152,8 @@ import (
 	"io"
 	"log"
 
-	"github.com/arduino/arduino-cli/commands"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/commands"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/sirupsen/logrus"
 )
 
@@ -219,7 +219,7 @@ Since the `type` field may contain multiple values has been renamed to `types` t
 Previously:
 
 ```
-$ arduino-cli core list --json | jq '.platforms[4].releases."1.8.13"'
+$ ptsolns-cli core list --json | jq '.platforms[4].releases."1.8.13"'
 {
   "name": "Arduino SAMD (32-bits ARM Cortex-M0+) Boards",
   "version": "1.8.13",
@@ -232,7 +232,7 @@ $ arduino-cli core list --json | jq '.platforms[4].releases."1.8.13"'
 Now:
 
 ```
-$ arduino-cli core list --json | jq '.platforms[4].releases."1.8.13"'
+$ ptsolns-cli core list --json | jq '.platforms[4].releases."1.8.13"'
 {
   "name": "Arduino SAMD (32-bits ARM Cortex-M0+) Boards",
   "version": "1.8.13",
@@ -487,18 +487,18 @@ streaming gRPC call.
 
 The identification number of the fields has been changed, this change is not binary compatible with old clients.
 
-### Some golang modules from `github.com/arduino/arduino-cli/*` have been made private.
+### Some golang modules from `github.com/arduino/ptsolns-cli/*` have been made private.
 
 The following golang modules are no longer available as public API:
 
-- `github.com/arduino/arduino-cli/arduino`
-- `github.com/arduino/arduino-cli/buildcache`
-- `github.com/arduino/arduino-cli/client_example`
-- `github.com/arduino/arduino-cli/configuration`
-- `github.com/arduino/arduino-cli/docsgen`
-- `github.com/arduino/arduino-cli/executils`
-- `github.com/arduino/arduino-cli/i18n`
-- `github.com/arduino/arduino-cli/table`
+- `github.com/arduino/ptsolns-cli/arduino`
+- `github.com/arduino/ptsolns-cli/buildcache`
+- `github.com/arduino/ptsolns-cli/client_example`
+- `github.com/arduino/ptsolns-cli/configuration`
+- `github.com/arduino/ptsolns-cli/docsgen`
+- `github.com/arduino/ptsolns-cli/executils`
+- `github.com/arduino/ptsolns-cli/i18n`
+- `github.com/arduino/ptsolns-cli/table`
 
 Most of the `executils` library has been integrated inside the `go-paths` library `github.com/arduino/go-paths-helper`.
 The other packages are not intended for usage outside the Arduino CLI, we will keep them internal to allow future
@@ -506,50 +506,50 @@ breaking changes as needed.
 
 ### CLI changed JSON output for some `lib`, `core`, `config`, `board`, and `sketch` commands.
 
-- `arduino-cli lib list --format json` results are now wrapped under `installed_libraries` key
+- `ptsolns-cli lib list --format json` results are now wrapped under `installed_libraries` key
 
   ```
   { "installed_libraries": [ {...}, {...} ] }
   ```
 
-- `arduino-cli lib examples --format json` results are now wrapped under `examples` key
+- `ptsolns-cli lib examples --format json` results are now wrapped under `examples` key
 
   ```
   { "examples": [ {...}, {...} ] }
   ```
 
-- `arduino-cli core search --format json` and `arduino-cli core list --format json` results are now wrapped under
+- `ptsolns-cli core search --format json` and `ptsolns-cli core list --format json` results are now wrapped under
   `platforms` key
 
   ```
   { "platforms": [ {...}, {...} ] }
   ```
 
-- `arduino-cli config init --format json` now correctly returns a json object containg the config path
+- `ptsolns-cli config init --format json` now correctly returns a json object containg the config path
 
   ```
-  { "config_path": "/home/user/.arduino15/arduino-cli.yaml" }
+  { "config_path": "/home/user/.ptsolns15/ptsolns-cli.yaml" }
   ```
 
-- `arduino-cli config dump --format json` results are now wrapped under `config` key
+- `ptsolns-cli config dump --format json` results are now wrapped under `config` key
 
   ```
   { "config": { ... } }
   ```
 
-- `arduino-cli board search --format json` results are now wrapped under `boards` key
+- `ptsolns-cli board search --format json` results are now wrapped under `boards` key
 
   ```
   { "boards": [ {...}, {...} ] }
   ```
 
-- `arduino-cli board list --format json` results are now wrapped under `detected_ports` key
+- `ptsolns-cli board list --format json` results are now wrapped under `detected_ports` key
 
   ```
   { "detected_ports": [ {...}, {...} ] }
   ```
 
-- `arduino-cli sketch new` now correctly returns a json object containing the sketch path
+- `ptsolns-cli sketch new` now correctly returns a json object containing the sketch path
 
   ```
   { "sketch_path": "/tmp/my_sketch" }
@@ -694,7 +694,7 @@ Now, the latest version will always point to an installable one even if a newer 
 
 We now show in the `version` column the latest installable version. If none are available then we show a `n/a` label.
 The corresponding command with `--format json` now returns the same output of
-`arduino-cli core search --all --format json`.
+`ptsolns-cli core search --all --format json`.
 
 ### `core upgrade` and `core install` will install the latest compatible version.
 
@@ -912,15 +912,15 @@ The string field `server_configuration.script` is now an array and has been rena
 {
   "executable": "/tmp/arduino/sketches/002050EAA7EFB9A4FC451CDFBC0FA2D3/Blink.ino.elf",
   "toolchain": "gcc",
-  "toolchain_path": "/home/user/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/",
+  "toolchain_path": "/home/user/.ptsolns15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/",
   "toolchain_prefix": "arm-none-eabi",
   "server": "openocd",
-  "server_path": "/home/user/.arduino15/packages/arduino/tools/openocd/0.10.0-arduino7/bin/openocd",
+  "server_path": "/home/user/.ptsolns15/packages/arduino/tools/openocd/0.10.0-arduino7/bin/openocd",
   "server_configuration": {
-    "path": "/home/user/.arduino15/packages/arduino/tools/openocd/0.10.0-arduino7/bin/openocd",
-    "scripts_dir": "/home/user/.arduino15/packages/arduino/tools/openocd/0.10.0-arduino7/share/openocd/scripts/",
+    "path": "/home/user/.ptsolns15/packages/arduino/tools/openocd/0.10.0-arduino7/bin/openocd",
+    "scripts_dir": "/home/user/.ptsolns15/packages/arduino/tools/openocd/0.10.0-arduino7/share/openocd/scripts/",
     "scripts": [
-      "/home/user/Workspace/arduino-cli/internal/integrationtest/debug/testdata/hardware/my/samd/variants/arduino:mkr1000/openocd_scripts/arduino_zero.cfg"
+      "/home/user/Workspace/ptsolns-cli/internal/integrationtest/debug/testdata/hardware/my/samd/variants/arduino:mkr1000/openocd_scripts/arduino_zero.cfg"
     ]
   }
 }
@@ -1016,7 +1016,7 @@ message UploadResult {
 }
 ```
 
-### golang API: method `github.com/arduino/arduino-cli/commands/upload.Upload` changed signature
+### golang API: method `github.com/arduino/ptsolns-cli/commands/upload.Upload` changed signature
 
 The `Upload` method signature has been changed from:
 
@@ -1033,7 +1033,7 @@ func Upload(ctx context.Context, req *rpc.UploadRequest, outStream io.Writer, er
 Now an `UploadResult` structure is returned together with the error. If you are not interested in the information
 contained in the structure you can safely ignore it.
 
-### golang package `github.com/arduino/arduino-cli/inventory` removed from public API
+### golang package `github.com/arduino/ptsolns-cli/inventory` removed from public API
 
 The package `inventory` is no more a public golang API.
 
@@ -1091,15 +1091,15 @@ to:
 
 ### Updated sketch name specifications
 
-[Sketch name specifications](https://arduino.github.io/arduino-cli/dev/sketch-specification) have been updated to
+[Sketch name specifications](https://arduino.github.io/ptsolns-cli/dev/sketch-specification) have been updated to
 achieve cross-platform compatibility.
 
 Existing sketch names violating the new constraint need to be updated.
 
 ### golang API: `LoadSketch` function has been moved
 
-The function `github.com/arduino/arduino-cli/commands.LoadSketch` has been moved to package
-`github.com/arduino/arduino-cli/commands/sketch.LoadSketch`. You must change the import accordingly.
+The function `github.com/arduino/ptsolns-cli/commands.LoadSketch` has been moved to package
+`github.com/arduino/ptsolns-cli/commands/sketch.LoadSketch`. You must change the import accordingly.
 
 ## 0.33.0
 
@@ -1118,22 +1118,22 @@ replaced with their current value. If you need the **un**expanded build properti
 Before:
 
 ```
-$ arduino-cli board details -b arduino:avr:uno --show-properties | grep ^tools.avrdude.path
+$ ptsolns-cli board details -b arduino:avr:uno --show-properties | grep ^tools.avrdude.path
 tools.avrdude.path={runtime.tools.avrdude.path}
 ```
 
 Now:
 
 ```
-$ arduino-cli board details -b arduino:avr:uno --show-properties | grep ^tools.avrdude.path
-tools.avrdude.path=/home/megabug/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17
-$ arduino-cli board details -b arduino:avr:uno --show-properties=unexpanded | grep ^tools.avrdude.path
+$ ptsolns-cli board details -b arduino:avr:uno --show-properties | grep ^tools.avrdude.path
+tools.avrdude.path=/home/megabug/.ptsolns15/packages/arduino/tools/avrdude/6.3.0-arduino17
+$ ptsolns-cli board details -b arduino:avr:uno --show-properties=unexpanded | grep ^tools.avrdude.path
 tools.avrdude.path={runtime.tools.avrdude.path}
 ```
 
 ## 0.32.2
 
-### golang API: method `github.com/arduino/arduino-cli/arduino/cores/Board.GetBuildProperties` changed signature
+### golang API: method `github.com/arduino/ptsolns-cli/arduino/cores/Board.GetBuildProperties` changed signature
 
 The method:
 
@@ -1161,7 +1161,7 @@ b.GetBuildProperties(fqbn)
 
 ## 0.32.0
 
-### `arduino-cli` doesn't lookup anymore in the current directory for configuration file.
+### `ptsolns-cli` doesn't lookup anymore in the current directory for configuration file.
 
 Configuration file lookup in current working directory and its parents is dropped. The command line flag `--config-file`
 must be specified to use an alternative configuration file from the one in the data directory.
@@ -1175,7 +1175,7 @@ Similarly, for JSON and YAML formats, the command prints now a single valid obje
 top-level keys. For example, for JSON output:
 
 ```
-$ arduino-cli outdated --format json
+$ ptsolns-cli outdated --format json
 {
   "platforms": [
     {
@@ -1213,13 +1213,13 @@ $ arduino-cli outdated --format json
 It was a legacy and undocumented feature that is now useless. The corresponding field in gRPC `CompileRequest.vid_pid`
 has been removed as well.
 
-### golang API: method `github.com/arduino/arduino-cli/arduino/libraries/Library.LocationPriorityFor` removed
+### golang API: method `github.com/arduino/ptsolns-cli/arduino/libraries/Library.LocationPriorityFor` removed
 
 That method was outdated and must not be used.
 
-### golang API: method `github.com/arduino/arduino-cli/commands/core/GetPlatforms` renamed
+### golang API: method `github.com/arduino/ptsolns-cli/commands/core/GetPlatforms` renamed
 
-The following method in `github.com/arduino/arduino-cli/commands/core`:
+The following method in `github.com/arduino/ptsolns-cli/commands/core`:
 
 ```go
 func GetPlatforms(req *rpc.PlatformListRequest) ([]*rpc.Platform, error) { ... }
@@ -1256,11 +1256,11 @@ for _, i := range platforms.InstalledPlatforms {
 ### Added `post_install` script support for tools
 
 The `post_install` script now runs when a tool is correctly installed and the CLI is in "interactive" mode. This
-behavior can be [configured](https://arduino.github.io/arduino-cli/0.30/commands/arduino-cli_core_install/#options).
+behavior can be [configured](https://arduino.github.io/ptsolns-cli/0.30/commands/ptsolns-cli_core_install/#options).
 
-### golang API: methods in `github.com/arduino/arduino-cli/arduino/cores/packagemanager` changed signature
+### golang API: methods in `github.com/arduino/ptsolns-cli/arduino/cores/packagemanager` changed signature
 
-The following methods in `github.com/arduino/arduino-cli/arduino/cores/packagemanager`:
+The following methods in `github.com/arduino/ptsolns-cli/arduino/cores/packagemanager`:
 
 ```go
 func (pme *Explorer) InstallTool(toolRelease *cores.ToolRelease, taskCB rpc.TaskProgressCB) error { ... }
@@ -1282,7 +1282,7 @@ func (pme *Explorer) RunPostInstallScript(installDir *paths.Path) error { ... }
 
 The sketch name submitted via the `sketch new` command of the CLI or the gRPC command
 `cc.arduino.cli.commands.v1.NewSketch` are now validated. The applied rules follow the
-[sketch specifications](https://arduino.github.io/arduino-cli/dev/sketch-specification).
+[sketch specifications](https://arduino.github.io/ptsolns-cli/dev/sketch-specification).
 
 Existing sketch names violating the new constraint need to be updated.
 
@@ -1303,9 +1303,9 @@ The `sketch.json` file is now completely ignored.
 The `cc.arduino.cli.commands.v1.BoardAttach` gRPC command has been removed. This feature is no longer available through
 gRPC.
 
-### golang API: methods in `github.com/arduino/arduino-cli/commands/upload` changed return type
+### golang API: methods in `github.com/arduino/ptsolns-cli/commands/upload` changed return type
 
-The following methods in `github.com/arduino/arduino-cli/commands/upload`:
+The following methods in `github.com/arduino/ptsolns-cli/commands/upload`:
 
 ```go
 func Upload(ctx context.Context, req *rpc.UploadRequest, outStream io.Writer, errStream io.Writer) (*rpc.UploadResponse, error) { ... }
@@ -1319,9 +1319,9 @@ func Upload(ctx context.Context, req *rpc.UploadRequest, outStream io.Writer, er
 func UsingProgrammer(ctx context.Context, req *rpc.UploadUsingProgrammerRequest, outStream io.Writer, errStream io.Writer) error { ... }
 ```
 
-### golang API: methods in `github.com/arduino/arduino-cli/commands/compile` changed signature
+### golang API: methods in `github.com/arduino/ptsolns-cli/commands/compile` changed signature
 
-The following method in `github.com/arduino/arduino-cli/commands/compile`:
+The following method in `github.com/arduino/ptsolns-cli/commands/compile`:
 
 ```go
 func Compile(ctx context.Context, req *rpc.CompileRequest, outStream, errStream io.Writer, progressCB rpc.TaskProgressCB, debug bool) (r *rpc.CompileResponse, e error) { ... }
@@ -1333,12 +1333,12 @@ do not require the `debug` parameter anymore:
 func Compile(ctx context.Context, req *rpc.CompileRequest, outStream, errStream io.Writer, progressCB rpc.TaskProgressCB) (r *rpc.CompileResponse, e error) { ... }
 ```
 
-### golang API: package `github.com/arduino/arduino-cli/cli` is no more public
+### golang API: package `github.com/arduino/ptsolns-cli/cli` is no more public
 
 The package `cli` has been made internal. The code in this package is no more public API and can not be directly
 imported in other projects.
 
-### golang API change in `github.com/arduino/arduino-cli/arduino/libraries/librariesmanager.LibrariesManager`
+### golang API change in `github.com/arduino/ptsolns-cli/arduino/libraries/librariesmanager.LibrariesManager`
 
 The following `LibrariesManager.InstallPrerequisiteCheck` methods have changed prototype, from:
 
@@ -1361,7 +1361,7 @@ plus `Name`, `Version`, and an `UpToDate` boolean flag.
 
 `InstallZipLib` method `archivePath` is now a `paths.Path` instead of a `string`.
 
-### golang API change in `github.com/arduino/arduino-cli/rduino/cores/packagemanager.Explorer`
+### golang API change in `github.com/arduino/ptsolns-cli/rduino/cores/packagemanager.Explorer`
 
 The `packagemanager.Explorer` method `FindToolsRequiredForBoard`:
 
@@ -1395,24 +1395,24 @@ The golang API implementation of the same functions has been removed as well, so
 available:
 
 ```
-github.com/arduino/arduino-cli/commands.UpdateCoreLibrariesIndex(...)
-github.com/arduino/arduino-cli/commands/outdated.Outdated(...)
-github.com/arduino/arduino-cli/commands/upgrade.Upgrade(...)
+github.com/arduino/ptsolns-cli/commands.UpdateCoreLibrariesIndex(...)
+github.com/arduino/ptsolns-cli/commands/outdated.Outdated(...)
+github.com/arduino/ptsolns-cli/commands/upgrade.Upgrade(...)
 ```
 
 you can use the following functions as a replacement to do the same tasks:
 
 ```
-github.com/arduino/arduino-cli/commands.UpdateLibrariesIndex(...)
-github.com/arduino/arduino-cli/commands.UpdateIndex(...)
-github.com/arduino/arduino-cli/commands/core.GetPlatforms(...)
-github.com/arduino/arduino-cli/commands/lib.LibraryList(...)
-github.com/arduino/arduino-cli/commands/lib.LibraryUpgrade(...)
-github.com/arduino/arduino-cli/commands/lib.LibraryUpgradeAll(...)
-github.com/arduino/arduino-cli/commands/core.PlatformUpgrade(...)
+github.com/arduino/ptsolns-cli/commands.UpdateLibrariesIndex(...)
+github.com/arduino/ptsolns-cli/commands.UpdateIndex(...)
+github.com/arduino/ptsolns-cli/commands/core.GetPlatforms(...)
+github.com/arduino/ptsolns-cli/commands/lib.LibraryList(...)
+github.com/arduino/ptsolns-cli/commands/lib.LibraryUpgrade(...)
+github.com/arduino/ptsolns-cli/commands/lib.LibraryUpgradeAll(...)
+github.com/arduino/ptsolns-cli/commands/core.PlatformUpgrade(...)
 ```
 
-### Changes in golang functions `github.com/arduino/arduino-cli/cli/instance.Init` and `InitWithProfile`
+### Changes in golang functions `github.com/arduino/ptsolns-cli/cli/instance.Init` and `InitWithProfile`
 
 The following functions:
 
@@ -1434,7 +1434,7 @@ The errors are automatically sent to output via `feedback` package, as for the o
 
 ### Breaking changes in libraries name handling
 
-In the structure `github.com/arduino/arduino-cli/arduino/libraries.Library` the field:
+In the structure `github.com/arduino/ptsolns-cli/arduino/libraries.Library` the field:
 
 - `RealName` has been renamed to `Name`
 - `Name` has been renamed to `DirName`
@@ -1465,7 +1465,7 @@ The `[*].library.realname` field has been removed.
 
 You must use the `[*].library.name` field instead.
 
-### `github.com/arduino/arduino-cli/arduino/libraries/librariesmanager.LibrariesManager.Install` removed parameter `installLocation`
+### `github.com/arduino/ptsolns-cli/arduino/libraries/librariesmanager.LibrariesManager.Install` removed parameter `installLocation`
 
 The method:
 
@@ -1481,7 +1481,7 @@ func (lm *LibrariesManager) Install(indexLibrary *librariesindex.Release, libPat
 
 The install location is determined from the libPath.
 
-### `github.com/arduino/arduino-cli/arduino/libraries/librariesmanager.LibrariesManager.FindByReference` now returns a list of libraries.
+### `github.com/arduino/ptsolns-cli/arduino/libraries/librariesmanager.LibrariesManager.FindByReference` now returns a list of libraries.
 
 The method:
 
@@ -1497,7 +1497,7 @@ func (lm *LibrariesManager) FindByReference(libRef *librariesindex.Reference, in
 
 the method now returns all the libraries matching the criteria and not just the first one.
 
-### `github.com/arduino/arduino-cli/arduino/libraries/librariesmanager.LibraryAlternatives` removed
+### `github.com/arduino/ptsolns-cli/arduino/libraries/librariesmanager.LibraryAlternatives` removed
 
 The structure `librariesmanager.LibraryAlternatives` has been removed. The `libraries.List` object can be used as a
 replacement.
@@ -1581,7 +1581,7 @@ DownloadProgressStart{url="https://...", label="Downloading package index..."}
 DownloadProgressEnd{success=true, message="Index already downloaded"}
 ```
 
-About the go-lang API the following functions in `github.com/arduino/arduino-cli/commands`:
+About the go-lang API the following functions in `github.com/arduino/ptsolns-cli/commands`:
 
 ```go
 func UpdateIndex(ctx context.Context, req *rpc.UpdateIndexRequest, downloadCB rpc.DownloadProgressCB) (*rpc.UpdateIndexResponse, error) { ... }
@@ -1597,7 +1597,7 @@ func UpdateIndex(ctx context.Context, req *rpc.UpdateIndexRequest, downloadCB rp
 
 ## 0.27.0
 
-### Breaking changes in golang API `github.com/arduino/arduino-cli/arduino/cores/packagemanager.PackageManager`
+### Breaking changes in golang API `github.com/arduino/ptsolns-cli/arduino/cores/packagemanager.PackageManager`
 
 The `PackageManager` API has been heavily refactored to correctly handle multitasking and concurrency. Many fields in
 the PackageManager object are now private. All the `PackageManager` methods have been moved into other objects. In
@@ -1814,7 +1814,7 @@ previous `PackageManager` instance.
 
 ### Some gRPC-mapped methods now accepts the gRPC request instead of the instance ID as parameter
 
-The following methods in subpackages of `github.com/arduino/arduino-cli/commands/*`:
+The following methods in subpackages of `github.com/arduino/ptsolns-cli/commands/*`:
 
 ```go
 func Watch(instanceID int32) (<-chan *rpc.BoardListWatchResponse, func(), error) { ... }
@@ -1830,7 +1830,7 @@ func LibraryUpgradeAll(req *rpc.LibraryUpgradeAllRequest, downloadCB rpc.Downloa
 func LibraryUpgrade(ctx context.Context, req *rpc.LibraryUpgradeRequest, downloadCB rpc.DownloadProgressCB, taskCB rpc.TaskProgressCB) error { ... }
 ```
 
-The following methods in package `github.com/arduino/arduino-cli/commands`
+The following methods in package `github.com/arduino/ptsolns-cli/commands`
 
 ```go
 func GetInstance(id int32) *CoreInstance { ... }
@@ -1892,32 +1892,32 @@ func (alts *LibraryAlternatives) FindVersion(version *semver.Version, installLoc
 If you're not interested in specifying the `LibraryLocation` you can use `libraries.User` to refer to the user
 directory.
 
-### go-lang functions changes in `github.com/arduino/arduino-cli/configuration`
+### go-lang functions changes in `github.com/arduino/ptsolns-cli/configuration`
 
-- `github.com/arduino/arduino-cli/configuration.IsBundledInDesktopIDE` function has been removed.
-- `github.com/arduino/arduino-cli/configuration.BundleToolsDirectories` has been renamed to `BuiltinToolsDirectories`
-- `github.com/arduino/arduino-cli/configuration.IDEBundledLibrariesDir` has been renamed to `IDEBuiltinLibrariesDir`
+- `github.com/arduino/ptsolns-cli/configuration.IsBundledInDesktopIDE` function has been removed.
+- `github.com/arduino/ptsolns-cli/configuration.BundleToolsDirectories` has been renamed to `BuiltinToolsDirectories`
+- `github.com/arduino/ptsolns-cli/configuration.IDEBundledLibrariesDir` has been renamed to `IDEBuiltinLibrariesDir`
 
 ### Removed `utils.FeedStreamTo` and `utils.ConsumeStreamFrom`
 
-`github.com/arduino/arduino-cli/arduino/utils.FeedStreamTo` and
-`github.com/arduino/arduino-cli/arduino/utils.ConsumeStreamFrom` are now private. They are mainly used internally for
+`github.com/arduino/ptsolns-cli/arduino/utils.FeedStreamTo` and
+`github.com/arduino/ptsolns-cli/arduino/utils.ConsumeStreamFrom` are now private. They are mainly used internally for
 gRPC stream handling and are not suitable to be public API.
 
 ## 0.26.0
 
-### `github.com/arduino/arduino-cli/commands.DownloadToolRelease`, and `InstallToolRelease` functions have been removed
+### `github.com/arduino/ptsolns-cli/commands.DownloadToolRelease`, and `InstallToolRelease` functions have been removed
 
 This functionality was duplicated and already available via `PackageManager` methods.
 
-### `github.com/arduino/arduino-cli/commands.Outdated` and `Upgrade` functions have been moved
+### `github.com/arduino/ptsolns-cli/commands.Outdated` and `Upgrade` functions have been moved
 
-- `github.com/arduino/arduino-cli/commands.Outdated` is now `github.com/arduino/arduino-cli/commands/outdated.Outdated`
-- `github.com/arduino/arduino-cli/commands.Upgrade` is now `github.com/arduino/arduino-cli/commands/upgrade.Upgrade`
+- `github.com/arduino/ptsolns-cli/commands.Outdated` is now `github.com/arduino/ptsolns-cli/commands/outdated.Outdated`
+- `github.com/arduino/ptsolns-cli/commands.Upgrade` is now `github.com/arduino/ptsolns-cli/commands/upgrade.Upgrade`
 
 Old code must change the imports accordingly.
 
-### `github.com/arduino-cli/arduino/cores/packagemanager.PackageManager` methods and fields change
+### `github.com/ptsolns-cli/arduino/cores/packagemanager.PackageManager` methods and fields change
 
 - The `PackageManager.Log` and `TempDir` fields are now private.
 
@@ -1936,7 +1936,7 @@ Old code must change the imports accordingly.
   Old code should remove the `label` parameter.
 
 - The `PackageManager.UninstallPlatform`, `PackageManager.InstallTool`, and `PackageManager.UninstallTool` methods now
-  requires a `github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1.TaskProgressCB`
+  requires a `github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1.TaskProgressCB`
 
   ```go
   func (pm *PackageManager) UninstallPlatform(platformRelease *cores.PlatformRelease) error {
@@ -1956,7 +1956,7 @@ Old code must change the imports accordingly.
 
 ## 0.25.0
 
-### go-lang function `github.com/arduino/arduino-cli/arduino/utils.FeedStreamTo` has been changed
+### go-lang function `github.com/arduino/ptsolns-cli/arduino/utils.FeedStreamTo` has been changed
 
 The function `FeedStreamTo` has been changed from:
 
@@ -1986,19 +1986,19 @@ Monitor API in the gRPC `Commands` service:
 Please refer to the official documentation and the reference client implementation for details on how to use the new
 API.
 
-https://arduino.github.io/arduino-cli/dev/rpc/commands/#monitorrequest
-https://arduino.github.io/arduino-cli/dev/rpc/commands/#monitorresponse
-https://arduino.github.io/arduino-cli/dev/rpc/commands/#enumeratemonitorportsettingsrequest
-https://arduino.github.io/arduino-cli/dev/rpc/commands/#enumeratemonitorportsettingsresponse
+https://arduino.github.io/ptsolns-cli/dev/rpc/commands/#monitorrequest
+https://arduino.github.io/ptsolns-cli/dev/rpc/commands/#monitorresponse
+https://arduino.github.io/ptsolns-cli/dev/rpc/commands/#enumeratemonitorportsettingsrequest
+https://arduino.github.io/ptsolns-cli/dev/rpc/commands/#enumeratemonitorportsettingsresponse
 
-https://github.com/arduino/arduino-cli/blob/752709af9bf1bf8f6c1e6f689b1e8b86cc4e884e/commands/daemon/term_example/main.go
+https://github.com/arduino/ptsolns-cli/blob/752709af9bf1bf8f6c1e6f689b1e8b86cc4e884e/commands/daemon/term_example/main.go
 
 ## 0.23.0
 
-### Arduino IDE builtin libraries are now excluded from the build when running `arduino-cli` standalone
+### Arduino IDE builtin libraries are now excluded from the build when running `ptsolns-cli` standalone
 
 Previously the "builtin libraries" in the Arduino IDE 1.8.x were always included in the build process. This wasn't the
-intended behaviour, `arduino-cli` should include them only if run as a daemon from the Arduino IDE. Now this is fixed,
+intended behaviour, `ptsolns-cli` should include them only if run as a daemon from the Arduino IDE. Now this is fixed,
 but since it has been the default behaviour from a very long time we decided to report it here as a breaking change.
 
 If a compilation fail for a missing bundled library, you can fix it just by installing the missing library from the
@@ -2015,7 +2015,7 @@ The gRPC message structure `cc.arduino.cli.commands.v1.PlatformReference` has be
 It is currently used only in `cc.arduino.cli.commands.v1.CompileResponse`, so the field type has been changed as well.
 Old gRPC clients must only update gRPC bindings. They can safely ignore the new fields if not needed.
 
-### golang API: `github.com/arduino/arduino-cli/cli/globals.DefaultIndexURL` has been moved under `github.com/arduino/arduino-cli/arduino/globals`
+### golang API: `github.com/arduino/ptsolns-cli/cli/globals.DefaultIndexURL` has been moved under `github.com/arduino/ptsolns-cli/arduino/globals`
 
 Legacy code should just update the import.
 
@@ -2035,18 +2035,18 @@ Just remove the `label` parameter from legacy code.
 
 ## 0.22.0
 
-### `github.com/arduino/arduino-cli/arduino.MultipleBoardsDetectedError` field changed type
+### `github.com/arduino/ptsolns-cli/arduino.MultipleBoardsDetectedError` field changed type
 
-Now the `Port` field of the error is a `github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1.Port`, usually
+Now the `Port` field of the error is a `github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1.Port`, usually
 imported as `rpc.Port`. The old `discovery.Port` can be converted to the new one using the `.ToRPC()` method.
 
-### Function `github.com/arduino/arduino-cli/commands/upload.DetectConnectedBoard(...)` has been removed
+### Function `github.com/arduino/ptsolns-cli/commands/upload.DetectConnectedBoard(...)` has been removed
 
-Use `github.com/arduino/arduino-cli/commands/board.List(...)` to detect boards.
+Use `github.com/arduino/ptsolns-cli/commands/board.List(...)` to detect boards.
 
 ### Function `arguments.GetDiscoveryPort(...)` has been removed
 
-NOTE: the functions in the `arguments` package doesn't have much use outside of the `arduino-cli` so we are considering
+NOTE: the functions in the `arguments` package doesn't have much use outside of the `ptsolns-cli` so we are considering
 to remove them from the public golang API making them `internal`.
 
 The old function:
@@ -2068,25 +2068,25 @@ func CalculateFQBNAndPort(portArgs *Port, fqbnArg *Fqbn, instance *rpc.Instance,
 The parameter is no more needed. Lagacy code will continue to work without modification (the value of the parameter will
 be just ignored).
 
-### The content of package `github.com/arduino/arduino-cli/httpclient` has been moved to a different path
+### The content of package `github.com/arduino/ptsolns-cli/httpclient` has been moved to a different path
 
 In particular:
 
-- `UserAgent` and `NetworkProxy` have been moved to `github.com/arduino/arduino-cli/configuration`
-- the remainder of the package `github.com/arduino/arduino-cli/httpclient` has been moved to
-  `github.com/arduino/arduino-cli/arduino/httpclient`
+- `UserAgent` and `NetworkProxy` have been moved to `github.com/arduino/ptsolns-cli/configuration`
+- the remainder of the package `github.com/arduino/ptsolns-cli/httpclient` has been moved to
+  `github.com/arduino/ptsolns-cli/arduino/httpclient`
 
 The old imports must be updated according to the list above.
 
-### `commands.DownloadProgressCB` and `commands.TaskProgressCB` have been moved to package `github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1`
+### `commands.DownloadProgressCB` and `commands.TaskProgressCB` have been moved to package `github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1`
 
 All references to these types must be updated with the new import.
 
-### `commands.GetDownloaderConfig` has been moved to package `github.com/arduino/arduino-cli/arduino/httpclient`
+### `commands.GetDownloaderConfig` has been moved to package `github.com/arduino/ptsolns-cli/arduino/httpclient`
 
 All references to this function must be updated with the new import.
 
-### `commands.Download` has been removed and replaced by `github.com/arduino/arduino-cli/arduino/httpclient.DownloadFile`
+### `commands.Download` has been removed and replaced by `github.com/arduino/ptsolns-cli/arduino/httpclient.DownloadFile`
 
 The old function must be replaced by the new one that is much more versatile.
 
@@ -2179,7 +2179,7 @@ A new argument `userAgent` has been added to `packagemanager.NewPackageManager`,
 func NewPackageManager(indexDir, packagesDir, downloadDir, tempDir *paths.Path, userAgent string) *PackageManager {
 ```
 
-The userAgent string must be in the format `"ProgramName/Version"`, for example `"arduino-cli/0.20.1"`.
+The userAgent string must be in the format `"ProgramName/Version"`, for example `"ptsolns-cli/0.20.1"`.
 
 ### `commands.Create` function change
 
@@ -2190,7 +2190,7 @@ func Create(req *rpc.CreateRequest, extraUserAgent ...string) (*rpc.CreateRespon
 ```
 
 `extraUserAgent` is an array of strings, so multiple user agent may be provided. Each user agent must be in the format
-`"ProgramName/Version"`, for example `"arduino-cli/0.20.1"`.
+`"ProgramName/Version"`, for example `"ptsolns-cli/0.20.1"`.
 
 ### `commands.Compile` function change
 
@@ -2209,18 +2209,18 @@ func Compile(
 if a callback function is provided the `Compile` command will call it periodically with progress reports with the
 percentage of compilation completed, otherwise, if the parameter is `nil`, no progress reports will be performed.
 
-### `github.com/arduino/arduino-cli/cli/arguments.ParseReferences` function change
+### `github.com/arduino/ptsolns-cli/cli/arguments.ParseReferences` function change
 
 The `parseArch` parameter was removed since it was unused and was always true. This means that the architecture gets
 always parsed by the function.
 
-### `github.com/arduino/arduino-cli/cli/arguments.ParseReference` function change
+### `github.com/arduino/ptsolns-cli/cli/arguments.ParseReference` function change
 
 The `parseArch` parameter was removed since it was unused and was always true. This means that the architecture gets
 always parsed by the function. Furthermore the function now should also correctly interpret `packager:arch` spelled with
 the wrong casing.
 
-### `github.com/arduino/arduino-cli/executils.NewProcess` and `executils.NewProcessFromPath` function change
+### `github.com/arduino/ptsolns-cli/executils.NewProcess` and `executils.NewProcessFromPath` function change
 
 A new argument `extraEnv` has been added to `executils.NewProcess` and `executils.NewProcessFromPath`, the new function
 signature is:
@@ -2235,7 +2235,7 @@ func NewProcessFromPath(extraEnv []string, executable *paths.Path, args ...strin
 
 The `extraEnv` params allow to pass environment variables (in addition to the default ones) to the spawned process.
 
-### `github.com/arduino/arduino-cli/i18n.Init(...)` now requires an empty string to be passed for autodetection of locale
+### `github.com/arduino/ptsolns-cli/i18n.Init(...)` now requires an empty string to be passed for autodetection of locale
 
 For automated detection of locale, change the call from:
 
@@ -2249,7 +2249,7 @@ to
 i18n.Init("")
 ```
 
-### `github.com/arduino/arduino-cli/legacy/i18n` module has been removed (in particular the `i18n.Logger`)
+### `github.com/arduino/ptsolns-cli/legacy/i18n` module has been removed (in particular the `i18n.Logger`)
 
 The `i18n.Logger` is no longer available. It was mainly used in the legacy builder struct field `Context.Logger`.
 
@@ -2284,7 +2284,7 @@ The flag `--timeout` in the `board list` command is no longer supported.
 The `board list` command JSON output has been changed quite a bit, from:
 
 ```
-$ arduino-cli board list --format json
+$ ptsolns-cli board list --format json
 [
   {
     "address": "/dev/ttyACM1",
@@ -2306,7 +2306,7 @@ $ arduino-cli board list --format json
 to:
 
 ```
-$ arduino-cli board list --format json
+$ ptsolns-cli board list --format json
 [
   {
     "matching_boards": [
@@ -2397,10 +2397,10 @@ requesting connected board lists, now that information is stored in the `port` f
 
 ### Change public library interface
 
-#### `github.com/arduino/arduino-cli/i18n` package
+#### `github.com/arduino/ptsolns-cli/i18n` package
 
 The behavior of the `Init` function has changed. The user specified locale code is no longer read from the
-`github.com/arduino/arduino-cli/configuration` package and now must be passed directly to `Init` as a string:
+`github.com/arduino/ptsolns-cli/configuration` package and now must be passed directly to `Init` as a string:
 
 ```go
 i18n.Init("it")
@@ -2412,9 +2412,9 @@ Omit the argument for automated locale detection:
 i18n.Init()
 ```
 
-#### `github.com/arduino/arduino-cli/arduino/builder` package
+#### `github.com/arduino/ptsolns-cli/arduino/builder` package
 
-`GenBuildPath()` function has been moved to `github.com/arduino/arduino-cli/arduino/sketch` package. The signature is
+`GenBuildPath()` function has been moved to `github.com/arduino/ptsolns-cli/arduino/sketch` package. The signature is
 unchanged.
 
 `EnsureBuildPathExists` function from has been completely removed, in its place use
@@ -2423,7 +2423,7 @@ unchanged.
 `SketchSaveItemCpp` function signature is changed from `path string, contents []byte, destPath string` to
 `path *paths.Path, contents []byte, destPath *paths.Path`. `paths` is `github.com/arduino/go-paths-helper`.
 
-`SketchLoad` function has been removed, in its place use `New` from `github.com/arduino/arduino-cli/arduino/sketch`
+`SketchLoad` function has been removed, in its place use `New` from `github.com/arduino/ptsolns-cli/arduino/sketch`
 package.
 
 ```diff
@@ -2445,7 +2445,7 @@ If you need to set a custom build path you must instead set it after creating th
 `sketch *sketch.Sketch, destPath string, overrides map[string]string` to
 `sketch *sketch.Sketch, destPath *paths.Path, overrides map[string]string`.
 
-#### `github.com/arduino/arduino-cli/arduino/sketch` package
+#### `github.com/arduino/ptsolns-cli/arduino/sketch` package
 
 `Item` struct has been removed, use `go-paths-helper.Path` in its place.
 
@@ -2475,23 +2475,23 @@ removed, in its place:
 
 `InvalidSketchFoldernameError` has been renamed `InvalidSketchFolderNameError`.
 
-#### `github.com/arduino/arduino-cli/arduino/sketches` package
+#### `github.com/arduino/ptsolns-cli/arduino/sketches` package
 
 `Sketch` struct has been merged with `sketch.Sketch` struct.
 
-`Metadata` and `BoardMetadata` structs have been moved to `github.com/arduino/arduino-cli/arduino/sketch` package.
+`Metadata` and `BoardMetadata` structs have been moved to `github.com/arduino/ptsolns-cli/arduino/sketch` package.
 
 `NewSketchFromPath` has been deleted, use `sketch.New` in its place.
 
 `ImportMetadata` is now private called internally by `sketch.New`.
 
-`ExportMetadata` has been moved to `github.com/arduino/arduino-cli/arduino/sketch` package.
+`ExportMetadata` has been moved to `github.com/arduino/ptsolns-cli/arduino/sketch` package.
 
 `BuildPath` has been removed, use `sketch.Sketch.BuildPath` in its place.
 
-`CheckForPdeFiles` has been moved to `github.com/arduino/arduino-cli/arduino/sketch` package.
+`CheckForPdeFiles` has been moved to `github.com/arduino/ptsolns-cli/arduino/sketch` package.
 
-#### `github.com/arduino/arduino-cli/legacy/builder/types` package
+#### `github.com/arduino/ptsolns-cli/legacy/builder/types` package
 
 `Sketch` has been removed, use `sketch.Sketch` in its place.
 
@@ -2504,7 +2504,7 @@ removed, in its place:
 The `board details` output WRT board identification properties has changed, before it was:
 
 ```
-$ arduino-cli board details arduino:samd:mkr1000
+$ ptsolns-cli board details arduino:samd:mkr1000
 Board name:                Arduino MKR1000
 FQBN:                      arduino:samd:mkr1000
 Board version:             1.8.11
@@ -2518,7 +2518,7 @@ Identification properties: VID:0x2341 PID:0x824e
                            VID:0x2341 PID:0x004e
 [...]
 
-$ arduino-cli board details arduino:samd:mkr1000 --format json
+$ ptsolns-cli board details arduino:samd:mkr1000 --format json
 [...]
   "identification_prefs": [
     {
@@ -2553,7 +2553,7 @@ now the properties have been renamed from `identification_prefs` to `identificat
 specific to USB but they can theoretically be any set of key/values:
 
 ```
-$ arduino-cli board details arduino:samd:mkr1000
+$ ptsolns-cli board details arduino:samd:mkr1000
 Board name:                Arduino MKR1000
 FQBN:                      arduino:samd:mkr1000
 Board version:             1.8.11
@@ -2574,7 +2574,7 @@ Identification properties: vid=0x2341
                            pid=0x024e
 [...]
 
-$ arduino-cli board details arduino:samd:mkr1000 --format json
+$ ptsolns-cli board details arduino:samd:mkr1000 --format json
 [...]
   "identification_properties": [
     {
@@ -2703,7 +2703,7 @@ This behaviour is now removed and the internal `CoreInstance` must be explicitly
 
 ### Removed rarely used golang API
 
-The following function from the `github.com/arduino/arduino-cli/arduino/libraries` module is no longer available:
+The following function from the `github.com/arduino/ptsolns-cli/arduino/libraries` module is no longer available:
 
 ```go
 func (lm *LibrariesManager) UpdateIndex(config *downloader.Config) (*downloader.Downloader, error) {
@@ -2737,7 +2737,7 @@ changes are trivial and falls into the following categories:
 - Package names are now versioned (for example `cc.arduino.cli.commands` -> `cc.arduino.cli.commands.v1`)
 - Repeated responses are now in plural form (`identification_pref` -> `identification_prefs`, `platform` -> `platforms`)
 
-### arduino-cli JSON output breaking changes
+### ptsolns-cli JSON output breaking changes
 
 Consumers of the JSON output of the CLI must update their clients if they use one of the following commands:
 
@@ -2753,7 +2753,7 @@ Consumers of the JSON output of the CLI must update their clients if they use on
   The new output is like:
 
   ```
-  $ arduino-cli core search Due --format json
+  $ ptsolns-cli core search Due --format json
   [
     {
       "id": "arduino:sam",
@@ -2789,7 +2789,7 @@ Consumers of the JSON output of the CLI must update their clients if they use on
   The new output is like:
 
   ```
-  $ arduino-cli board details arduino:avr:uno --format json
+  $ ptsolns-cli board details arduino:avr:uno --format json
   {
     "fqbn": "arduino:avr:uno",
     "name": "Arduino Uno",
@@ -2866,7 +2866,7 @@ Consumers of the JSON output of the CLI must update their clients if they use on
   The new output is like:
 
   ```
-  $ arduino-cli board listall Uno --format json
+  $ ptsolns-cli board listall Uno --format json
   {
     "boards": [
       {
@@ -2899,7 +2899,7 @@ Consumers of the JSON output of the CLI must update their clients if they use on
   The new output is like:
 
   ```
-  $ arduino-cli board search Uno --format json
+  $ ptsolns-cli board search Uno --format json
   [
     {
       "name": "Arduino Uno",
@@ -2924,7 +2924,7 @@ Consumers of the JSON output of the CLI must update their clients if they use on
   The new output is like:
 
   ```
-  $ arduino-cli lib deps Arduino_MKRIoTCarrier --format json
+  $ ptsolns-cli lib deps Arduino_MKRIoTCarrier --format json
   {
     "dependencies": [
       {
@@ -2948,7 +2948,7 @@ Consumers of the JSON output of the CLI must update their clients if they use on
   The new output is like:
 
   ```
-  $ arduino-cli lib search NTPClient --format json
+  $ ptsolns-cli lib search NTPClient --format json
   {
     "libraries": [
       {
@@ -3017,7 +3017,7 @@ Consumers of the JSON output of the CLI must update their clients if they use on
   The new output is like:
 
   ```
-  $ arduino-cli board list --format json
+  $ ptsolns-cli board list --format json
   [
     {
       "address": "/dev/ttyACM0",
@@ -3052,7 +3052,7 @@ Consumers of the JSON output of the CLI must update their clients if they use on
       "serial_number": "BECC45F754185EC9"
     }
   ]
-  $ arduino-cli board list -w --format json
+  $ ptsolns-cli board list -w --format json
   {
     "type": "add",
     "address": "/dev/ttyACM0",
@@ -3109,15 +3109,15 @@ way so that they an identical behaviour.
 All instances of the term `telemetry` in the code and the documentation has been changed to `metrics`. This has been
 done to clarify that no data is currently gathered from users of the CLI.
 
-To handle this change the users must edit their config file, usually `arduino-cli.yaml`, and change the `telemetry` key
+To handle this change the users must edit their config file, usually `ptsolns-cli.yaml`, and change the `telemetry` key
 to `metrics`. The modification must be done by manually editing the file using a text editor, it can't be done via CLI.
 No other action is necessary.
 
-The default folders for the `arduino-cli.yaml` are:
+The default folders for the `ptsolns-cli.yaml` are:
 
-- Linux: `/home/<your_username>/.arduino15/arduino-cli.yaml`
-- OS X: `/Users/<your_username>/Library/Arduino15/arduino-cli.yaml`
-- Windows: `C:\Users\<your_username>\AppData\Local\Arduino15\arduino-cli.yaml`
+- Linux: `/home/<your_username>/.ptsolns15/ptsolns-cli.yaml`
+- OS X: `/Users/<your_username>/Library/ptsolns15/ptsolns-cli.yaml`
+- Windows: `C:\Users\<your_username>\AppData\Local\ptsolns15\ptsolns-cli.yaml`
 
 ## 0.14.0
 
@@ -3131,7 +3131,7 @@ Previously it was required:
 
 Now:
 
-- Only the configuration needs to be supplied, the `arduino-cli` or the GUI tool will figure out how to call and setup
+- Only the configuration needs to be supplied, the `ptsolns-cli` or the GUI tool will figure out how to call and setup
   the `gdb` session. An example of configuration is the following:
 
 ```

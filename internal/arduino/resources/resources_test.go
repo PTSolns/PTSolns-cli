@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -25,7 +25,7 @@ import (
 	"net/url"
 	"testing"
 
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 	"go.bug.st/downloader/v2"
@@ -44,7 +44,7 @@ func TestDownloadAndChecksums(t *testing.T) {
 		CachePath:       "cache",
 		Checksum:        "SHA-256:6a338cf4d6d501176a2d352c87a8d72ac7488b8c5b82cdf2a4e2cef630391092",
 		Size:            486,
-		URL:             "https://raw.githubusercontent.com/arduino/arduino-cli/master/internal/integrationtest/testdata/core.zip",
+		URL:             "https://raw.githubusercontent.com/arduino/ptsolns-cli/master/internal/integrationtest/testdata/core.zip",
 	}
 	digest, err := hex.DecodeString("6a338cf4d6d501176a2d352c87a8d72ac7488b8c5b82cdf2a4e2cef630391092")
 	require.NoError(t, err)
@@ -180,7 +180,7 @@ func TestIndexFileName(t *testing.T) {
 		{url: "package_index.json", expected: "package_index.json"},
 		{url: "package_index.json.gz", expected: "package_index.json"},
 		{url: "package_index.tar.bz2", expected: "package_index.json"},
-		// https://github.com/arduino/arduino-cli/issues/2345
+		// https://github.com/arduino/ptsolns-cli/issues/2345
 		{url: "package_arduino.cc_index.json", expected: "package_arduino.cc_index.json"},
 		{url: "package_arduino.cc_index.json.gz", expected: "package_arduino.cc_index.json"},
 		{url: "package_arduino.cc_index.tar.bz2", expected: "package_arduino.cc_index.json"},

@@ -1,14 +1,14 @@
-# arduino-cli
+# ptsolns-cli
 
 ![cli-logo](./docs/img/CLI_Logo_small.png)
 
 Arduino CLI is an all-in-one solution that provides Boards/Library Managers, sketch builder, board detection, uploader,
 and many other tools needed to use any Arduino compatible board and platform from command line or machine interfaces.
 
-[![Test Go status](https://github.com/arduino/arduino-cli/actions/workflows/test-go-task.yml/badge.svg)](https://github.com/arduino/arduino-cli/actions/workflows/test-go-task.yml)
-[![Publish Nightly Build status](https://github.com/arduino/arduino-cli/actions/workflows/publish-go-nightly-task.yml/badge.svg)](https://github.com/arduino/arduino-cli/actions/workflows/publish-go-nightly-task.yml)
-[![Deploy Website status](https://github.com/arduino/arduino-cli/actions/workflows/deploy-cobra-mkdocs-versioned-poetry.yml/badge.svg)](https://github.com/arduino/arduino-cli/actions/workflows/deploy-cobra-mkdocs-versioned-poetry.yml)
-[![Codecov](https://codecov.io/gh/arduino/arduino-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/arduino/arduino-cli)
+[![Test Go status](https://github.com/arduino/ptsolns-cli/actions/workflows/test-go-task.yml/badge.svg)](https://github.com/arduino/ptsolns-cli/actions/workflows/test-go-task.yml)
+[![Publish Nightly Build status](https://github.com/arduino/ptsolns-cli/actions/workflows/publish-go-nightly-task.yml/badge.svg)](https://github.com/arduino/ptsolns-cli/actions/workflows/publish-go-nightly-task.yml)
+[![Deploy Website status](https://github.com/arduino/ptsolns-cli/actions/workflows/deploy-cobra-mkdocs-versioned-poetry.yml/badge.svg)](https://github.com/arduino/ptsolns-cli/actions/workflows/deploy-cobra-mkdocs-versioned-poetry.yml)
+[![Codecov](https://codecov.io/gh/arduino/ptsolns-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/arduino/ptsolns-cli)
 
 ## Docs
 
@@ -50,12 +50,12 @@ is mandatory if you want to modify or otherwise use the software for commercial 
 software without disclosing the source code of your own applications. To purchase a commercial license, send an email to
 license@arduino.cc
 
-[install]: https://arduino.github.io/arduino-cli/latest/installation
-[user documentation]: https://arduino.github.io/arduino-cli/latest/
-[getting started]: https://arduino.github.io/arduino-cli/latest/getting-started/
-[commands reference]: https://arduino.github.io/arduino-cli/latest/commands/arduino-cli
-[faq]: https://arduino.github.io/arduino-cli/latest/FAQ/
-[how to contribute]: https://arduino.github.io/arduino-cli/latest/CONTRIBUTING/
-[contributors]: https://github.com/arduino/arduino-cli/graphs/contributors
-[nightly builds]: https://arduino.github.io/arduino-cli/latest/installation/#nightly-builds
-[security policy]: https://github.com/arduino/arduino-cli/security/policy
+[install]: https://arduino.github.io/ptsolns-cli/latest/installation
+[user documentation]: https://arduino.github.io/ptsolns-cli/latest/
+[getting started]: https://arduino.github.io/ptsolns-cli/latest/getting-started/
+[commands reference]: https://arduino.github.io/ptsolns-cli/latest/commands/ptsolns-cli
+[faq]: https://arduino.github.io/ptsolns-cli/latest/FAQ/
+[how to contribute]: https://arduino.github.io/ptsolns-cli/latest/CONTRIBUTING/
+[contributors]: https://github.com/arduino/ptsolns-cli/graphs/contributors
+[nightly builds]: https://arduino.github.io/ptsolns-cli/latest/installation/#nightly-builds
+[security policy]: https://github.com/arduino/ptsolns-cli/security/policy

@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -24,16 +24,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/arduino-cli/commands/cmderrors"
-	"github.com/arduino/arduino-cli/commands/internal/instances"
-	f "github.com/arduino/arduino-cli/internal/algorithms"
-	"github.com/arduino/arduino-cli/internal/arduino/cores"
-	"github.com/arduino/arduino-cli/internal/arduino/cores/packagemanager"
-	"github.com/arduino/arduino-cli/internal/arduino/globals"
-	"github.com/arduino/arduino-cli/internal/arduino/sketch"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	"github.com/arduino/arduino-cli/pkg/fqbn"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/commands/cmderrors"
+	"github.com/arduino/ptsolns-cli/commands/internal/instances"
+	f "github.com/arduino/ptsolns-cli/internal/algorithms"
+	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
+	"github.com/arduino/ptsolns-cli/internal/arduino/cores/packagemanager"
+	"github.com/arduino/ptsolns-cli/internal/arduino/globals"
+	"github.com/arduino/ptsolns-cli/internal/arduino/sketch"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/pkg/fqbn"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	paths "github.com/arduino/go-paths-helper"
 	properties "github.com/arduino/go-properties-orderedmap"
 	serialutils "github.com/arduino/go-serial-utils"
@@ -91,7 +91,7 @@ func getToolID(props *properties.Map, action, protocol string) (string, error) {
 
 	if t, ok := props.GetOk(defaultToolProperty); ok {
 		// Fallback for platform that don't support the specified protocol for specified action:
-		// https://arduino.github.io/arduino-cli/latest/platform-specification/#sketch-upload-configuration
+		// https://arduino.github.io/ptsolns-cli/latest/platform-specification/#sketch-upload-configuration
 		return t, nil
 	}
 
@@ -392,7 +392,7 @@ func (s *arduinoCoreServerImpl) runProgramAction(ctx context.Context, pme *packa
 	// Certain tools require the user to provide custom fields at run time,
 	// if they've been provided set them
 	// For more info:
-	// https://arduino.github.io/arduino-cli/latest/platform-specification/#user-provided-fields
+	// https://arduino.github.io/ptsolns-cli/latest/platform-specification/#user-provided-fields
 	for name, value := range userFields {
 		uploadProperties.Set(fmt.Sprintf("%s.field.%s", action, name), value)
 	}
@@ -477,7 +477,7 @@ func (s *arduinoCoreServerImpl) runProgramAction(ctx context.Context, pme *packa
 
 	// Force port wait to make easier to unbrick boards like the Arduino Leonardo, or similar with native USB,
 	// when a sketch causes a crash and the native USB serial port is lost.
-	// See https://github.com/arduino/arduino-cli/issues/1943 for the details.
+	// See https://github.com/arduino/ptsolns-cli/issues/1943 for the details.
 	//
 	// In order to trigger the forced serial-port-wait the following conditions must be met:
 	// - No upload port specified (protocol == "default")

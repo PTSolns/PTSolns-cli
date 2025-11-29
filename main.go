@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -21,21 +21,21 @@ import (
 	"io"
 	"os"
 
-	"github.com/arduino/arduino-cli/commands"
-	"github.com/arduino/arduino-cli/internal/cli"
-	"github.com/arduino/arduino-cli/internal/cli/config"
-	"github.com/arduino/arduino-cli/internal/cli/configuration"
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	"github.com/arduino/arduino-cli/internal/locales"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/commands"
+	"github.com/arduino/ptsolns-cli/internal/cli"
+	"github.com/arduino/ptsolns-cli/internal/cli/config"
+	"github.com/arduino/ptsolns-cli/internal/cli/configuration"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/locales"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
 
 func main() {
-	// Disable logging until it is setup in the arduino-cli pre-run
+	// Disable logging until it is setup in the ptsolns-cli pre-run
 	logrus.SetOutput(io.Discard)
 
 	// Search for the configuration file in the command line arguments and in the environment

@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -28,7 +28,7 @@ import (
 	"strings"
 	"time"
 
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -38,18 +38,18 @@ var (
 )
 
 // The main function implements an example workflow to show how to interact
-// with the gRPC API exposed by arduino-cli when running in daemon mode.
+// with the gRPC API exposed by ptsolns-cli when running in daemon mode.
 func main() {
 
 	// Establish a connection with the gRPC server, started with the command:
-	// arduino-cli daemon
+	// ptsolns-cli daemon
 	conn, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
-		log.Fatal("error connecting to arduino-cli rpc server, you can start it by running `arduino-cli daemon`")
+		log.Fatal("error connecting to ptsolns-cli rpc server, you can start it by running `ptsolns-cli daemon`")
 	}
 	defer conn.Close()
 
-	// To avoid polluting an existing arduino-cli installation, the example
+	// To avoid polluting an existing ptsolns-cli installation, the example
 	// client uses a temp folder to keep cores, libraries and the like.
 	// You can point `dataDir` to a location that better fits your needs.
 	dataDir, err = os.MkdirTemp("", "arduino-rpc-client")
@@ -71,7 +71,7 @@ func main() {
 	log.Println("calling LoadSketch")
 	callLoadSketch(client)
 
-	// Use SetValue to configure the arduino-cli directories.
+	// Use SetValue to configure the ptsolns-cli directories.
 	callSetValue(client, "directories.data", `"`+dataDir+`"`)
 	callSetValue(client, "directories.downloads", `"`+path.Join(dataDir, "staging")+`"`)
 	callSetValue(client, "directories.user", `"`+path.Join(dataDir, "sketchbook")+`"`)
@@ -225,7 +225,7 @@ func callVersion(client rpc.ArduinoCoreServiceClient) {
 		log.Fatalf("Error getting version: %s", err)
 	}
 
-	log.Printf("arduino-cli version: %v", versionResp.GetVersion())
+	log.Printf("ptsolns-cli version: %v", versionResp.GetVersion())
 }
 
 func callSetValue(client rpc.ArduinoCoreServiceClient, key, jsonValue string) {

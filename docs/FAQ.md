@@ -1,6 +1,6 @@
 ## Arduino Nano/Uno/Mega is not detected
 
-When you run [`arduino-cli board list`][arduino cli board list], your board doesn't show up. Possible causes:
+When you run [`ptsolns-cli board list`][arduino cli board list], your board doesn't show up. Possible causes:
 
 - Your board is a cheaper derivative, or
 - It's a board, such the classic Nano, that uses a USB to serial converter like FTDI FT232 or CH340. These chips always
@@ -18,7 +18,7 @@ how FQBN works, you should understand the [Arduino platform specification][0].
 
 Additional board options have to be separated by commas (instead of colon):
 
-`$ arduino-cli compile --fqbn "esp8266:esp8266:generic:xtal=160,baud=57600" TestSketch`
+`$ ptsolns-cli compile --fqbn "esp8266:esp8266:generic:xtal=160,baud=57600" TestSketch`
 
 ## Where is the Serial Monitor?
 
@@ -32,19 +32,19 @@ Windows, a good choice for command line usage is Plink, included with [PuTTY][pu
 
 [Configuration parameters][configuration parameters] of the monitor can be obtained by executing the following command:
 
-`$ arduino-cli monitor -p <port> --describe`
+`$ ptsolns-cli monitor -p <port> --describe`
 
 These parameters can be modified by passing a list of `<key>=<desiredValue>` pairs to the `--config` flag. For example,
 when using a serial port, the monitor baud rate can be set to 4800 with the following command:
 
-`$ arduino-cli monitor -p <port> --config baudrate=4800`
+`$ ptsolns-cli monitor -p <port> --config baudrate=4800`
 
 ## "Permission denied" error in sketch upload
 
 This problem might happen on some Linux systems, and can be solved by setting up serial port permissions. First, search
 for the port your board is connected to, with the command:
 
-`$ arduino-cli board list`
+`$ ptsolns-cli board list`
 
 Then add your user to the group with the following command, replacing `<username>` with your username and `<group>` with
 your group name. Logging out and in again is necessary for the changes to take effect.
@@ -55,9 +55,9 @@ your group name. Logging out and in again is necessary for the changes to take e
 
 If your question wasn't answered, feel free to ask on [Arduino CLI's forum board][1].
 
-[arduino cli board list]: commands/arduino-cli_board_list.md
+[arduino cli board list]: commands/ptsolns-cli_board_list.md
 [0]: platform-specification.md
-[1]: https://forum.arduino.cc/c/software/arduino-cli/89
+[1]: https://forum.arduino.cc/c/software/ptsolns-cli/89
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/
-[monitor command]: commands/arduino-cli_monitor.md
+[monitor command]: commands/ptsolns-cli_monitor.md
 [configuration parameters]: pluggable-monitor-specification.md#describe-command

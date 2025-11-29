@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2023 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -18,8 +18,8 @@ package preprocessor
 import (
 	"strings"
 
-	"github.com/arduino/arduino-cli/internal/arduino/builder/cpp"
-	"github.com/arduino/arduino-cli/internal/arduino/builder/internal/runner"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/runner"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-properties-orderedmap"
 	"go.bug.st/f"
@@ -63,6 +63,6 @@ func GCC(
 	args = f.Filter(args, f.NotEquals("-MMD"))
 
 	// Limit the stderr output to 100 KiB
-	// https://github.com/arduino/arduino-cli/pull/2883
+	// https://github.com/arduino/ptsolns-cli/pull/2883
 	return runner.NewTaskWithLimitedStderr(100*1024, args...)
 }

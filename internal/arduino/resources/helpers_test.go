@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -23,8 +23,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/arduino/arduino-cli/internal/cli/configuration"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/internal/cli/configuration"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 )
@@ -37,7 +37,7 @@ func (h *EchoHandler) ServeHTTP(writer http.ResponseWriter, request *http.Reques
 }
 
 func TestDownloadApplyUserAgentHeaderUsingConfig(t *testing.T) {
-	goldUserAgentValue := "arduino-cli/0.0.0-test.preview"
+	goldUserAgentValue := "ptsolns-cli/0.0.0-test.preview"
 
 	tmp, err := paths.MkTempDir("", "")
 	require.NoError(t, err)
@@ -65,7 +65,7 @@ func TestDownloadApplyUserAgentHeaderUsingConfig(t *testing.T) {
 	// expect something like:
 	//    GET /echo HTTP/1.1
 	//    Host: 127.0.0.1:64999
-	//    User-Agent: arduino-cli/0.0.0-test.preview  (amd64; linux; go1.12.4) Commit:deadbeef/Build:2019-06-12 11:11:11.111
+	//    User-Agent: ptsolns-cli/0.0.0-test.preview  (amd64; linux; go1.12.4) Commit:deadbeef/Build:2019-06-12 11:11:11.111
 	//    Accept-Encoding: gzip
 
 	b, err := os.ReadFile(tmp.String() + "/cache/echo.txt") // just pass the file name

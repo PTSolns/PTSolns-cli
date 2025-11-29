@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-properties-orderedmap"
 	"github.com/stretchr/testify/require"
@@ -45,7 +45,7 @@ func TestRuntimeToolPropertiesGeneration(t *testing.T) {
 	sketch, err := paths.New("testdata", "bare_minimum").Abs()
 	require.NoError(t, err)
 
-	// As seen in https://github.com/arduino/arduino-cli/issues/73 the map randomess
+	// As seen in https://github.com/arduino/ptsolns-cli/issues/73 the map randomess
 	// may make the function fail half of the times. Repeating the test 3 times
 	// greatly increases the chances to trigger the bad case.
 	for i := 0; i < 3; i++ {
@@ -181,7 +181,7 @@ func TestCompilerErrOutput(t *testing.T) {
 
 	t.Run("LibraryDiscoverFalseErrors", func(t *testing.T) {
 		// Check that library discover do not generate false errors
-		// https://github.com/arduino/arduino-cli/issues/2263
+		// https://github.com/arduino/ptsolns-cli/issues/2263
 
 		// prepare sketch
 		sketch, err := paths.New("testdata", "using_Wire").Abs()
@@ -229,9 +229,9 @@ func TestCompileRelativeLibraryPath(t *testing.T) {
 	// Initialize configs to enable --zip-path flag
 	_, _, err := cli.Run("config", "init", "--dest-dir", ".")
 	require.NoError(t, err)
-	_, _, err = cli.Run("config", "set", "library.enable_unsafe_install", "true", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("config", "set", "library.enable_unsafe_install", "true", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
-	configFile := cli.WorkingDir().Join("arduino-cli.yaml")
+	configFile := cli.WorkingDir().Join("ptsolns-cli.yaml")
 
 	_, _, err = cli.Run("core", "install", "arduino:avr")
 	require.NoError(t, err)

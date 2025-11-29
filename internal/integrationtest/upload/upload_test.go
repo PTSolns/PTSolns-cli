@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 	"go.bug.st/testifyjson/requirejson"
@@ -40,7 +40,7 @@ type board struct {
 
 func detectedBoards(t *testing.T, cli *integrationtest.ArduinoCLI) []board {
 	// This fixture provides a list of all the boards attached to the host.
-	// This fixture will parse the JSON output of `arduino-cli board list --json`
+	// This fixture will parse the JSON output of `ptsolns-cli board list --json`
 	// to extract all the connected boards data.
 
 	// :returns a list `Board` objects.
@@ -411,7 +411,7 @@ func TestUploadWithInputDirContainingMultipleBinaries(t *testing.T) {
 	defer env.CleanUp()
 
 	// This tests verifies the behaviour outlined in this issue:
-	// https://github.com/arduino/arduino-cli/issues/765#issuecomment-699678646
+	// https://github.com/arduino/ptsolns-cli/issues/765#issuecomment-699678646
 	_, _, err := cli.Run("update")
 	require.NoError(t, err)
 
@@ -581,7 +581,7 @@ func TestCompileAndUploadToPortWithBoardAutodetect(t *testing.T) {
 }
 
 func TestPanicIfUploadToolReferenceAnInexistentPlatform(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/issues/2042
+	// See: https://github.com/arduino/ptsolns-cli/issues/2042
 
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()

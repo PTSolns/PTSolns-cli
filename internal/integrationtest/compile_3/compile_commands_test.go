@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -19,14 +19,14 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 	"go.bug.st/testifyjson/requirejson"
 )
 
 func TestCompileCommandsJSONGeneration(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/issues/2401
+	// See: https://github.com/arduino/ptsolns-cli/issues/2401
 
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
@@ -61,7 +61,7 @@ func TestCompileCommandsJSONGeneration(t *testing.T) {
 		compileCommands := requirejson.Parse(t, compileCommandJson)
 		// Check that the variant include path is present, one of the arguments must be
 		// something like:
-		// "-I/home/user/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/standard"
+		// "-I/home/user/.ptsolns15/packages/arduino/hardware/avr/1.8.6/variants/standard"
 		compileCommands.Query(`[ .[0].arguments[] | contains("standard") ] | any`).MustEqual(`true`)
 	}
 
@@ -83,7 +83,7 @@ func TestCompileCommandsJSONGeneration(t *testing.T) {
 		compileCommands := requirejson.Parse(t, compileCommandJson)
 		// Check that the variant include path is present, one of the arguments must be
 		// something like:
-		// "-I/home/user/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/standard"
+		// "-I/home/user/.ptsolns15/packages/arduino/hardware/avr/1.8.6/variants/standard"
 		compileCommands.Query(`[ .[0].arguments[] | contains("standard") ] | any`).MustEqual(`true`)
 	}
 }

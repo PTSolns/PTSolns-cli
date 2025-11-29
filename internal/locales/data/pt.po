@@ -193,8 +193,8 @@ msgid "Arduino CLI."
 msgstr "Linha de Comando Arduino."
 
 #: internal/cli/cli.go:89
-msgid "Arduino Command Line Interface (arduino-cli)."
-msgstr "Interface de Linha de Comando Arduino (arduino-cli)."
+msgid "Arduino Command Line Interface (ptsolns-cli)."
+msgstr "Interface de Linha de Comando Arduino (ptsolns-cli)."
 
 #: internal/cli/board/board.go:30 internal/cli/board/board.go:31
 msgid "Arduino board commands."

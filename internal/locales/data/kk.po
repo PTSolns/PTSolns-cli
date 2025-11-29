@@ -187,7 +187,7 @@ msgid "Arduino CLI."
 msgstr ""
 
 #: internal/cli/cli.go:71
-msgid "Arduino Command Line Interface (arduino-cli)."
+msgid "Arduino Command Line Interface (ptsolns-cli)."
 msgstr ""
 
 #: internal/cli/board/board.go:31 internal/cli/board/board.go:32

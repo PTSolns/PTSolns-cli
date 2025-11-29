@@ -3,7 +3,7 @@
 This a client that simulates a gRPC consumer. We're using this for the time being to document the interaction with the
 gRPC interface.
 
-To use it run `arduino-cli daemon` and then `client_example`.
+To use it run `ptsolns-cli daemon` and then `client_example`.
 
 To test the proxy settings first run:
 

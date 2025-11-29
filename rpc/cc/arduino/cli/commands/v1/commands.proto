@@ -1,4 +1,4 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (https://www.arduino.cc/)
 //
@@ -29,7 +29,7 @@ import "cc/arduino/cli/commands/v1/settings.proto";
 import "cc/arduino/cli/commands/v1/upload.proto";
 import "google/rpc/status.proto";
 
-option go_package = "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1;commands";
+option go_package = "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1;commands";
 
 // The main Arduino Platform service API.
 service ArduinoCoreService {

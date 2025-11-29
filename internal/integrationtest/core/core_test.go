@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
@@ -37,7 +37,7 @@ import (
 )
 
 func TestCorrectHandlingOfPlatformVersionProperty(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/issues/1823
+	// See: https://github.com/arduino/ptsolns-cli/issues/1823
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
@@ -285,7 +285,7 @@ func TestCoreInstallEsp32(t *testing.T) {
 	require.NoError(t, json.Unmarshal(out, &builderOutput))
 	buildDir := paths.New(builderOutput.BuilderResult.BuildPath)
 
-	// prevent regressions for https://github.com/arduino/arduino-cli/issues/163
+	// prevent regressions for https://github.com/arduino/ptsolns-cli/issues/163
 	require.FileExists(t, buildDir.Join(sketchName+".ino.partitions.bin").String())
 }
 
@@ -417,7 +417,7 @@ func TestCoreZipslip(t *testing.T) {
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
-	url := "https://raw.githubusercontent.com/arduino/arduino-cli/master/internal/integrationtest/testdata/test_index.json"
+	url := "https://raw.githubusercontent.com/arduino/ptsolns-cli/master/internal/integrationtest/testdata/test_index.json"
 	_, _, err := cli.Run("core", "update-index", "--additional-urls="+url)
 	require.NoError(t, err)
 
@@ -431,7 +431,7 @@ func TestCoreBrokenInstall(t *testing.T) {
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
-	url := "https://raw.githubusercontent.com/arduino/arduino-cli/master/internal/integrationtest/testdata/test_index.json"
+	url := "https://raw.githubusercontent.com/arduino/ptsolns-cli/master/internal/integrationtest/testdata/test_index.json"
 	_, _, err := cli.Run("core", "update-index", "--additional-urls="+url)
 	require.NoError(t, err)
 	_, _, err = cli.Run("core", "install", "brokenchecksum:x86", "--additional-urls="+url)
@@ -1065,12 +1065,12 @@ func TestCoreIndexWithoutChecksum(t *testing.T) {
 	_, _, err := cli.Run("config", "init", "--dest-dir", ".")
 	require.NoError(t, err)
 	url := "https://raw.githubusercontent.com/keyboardio/ArduinoCore-GD32-Keyboardio/ae5938af2f485910729e7d27aa233032a1cb4734/package_gd32_index.json" // noqa: E501
-	_, _, err = cli.Run("config", "add", "board_manager.additional_urls", url, "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("config", "add", "board_manager.additional_urls", url, "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
-	_, _, err = cli.Run("core", "update-index", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("core", "update-index", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
-	_, _, err = cli.Run("core", "list", "--all", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("core", "list", "--all", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err) // this should not make the cli crash
 }
 
@@ -1350,13 +1350,13 @@ func TestReferencedCoreBuildAndRuntimeProperties(t *testing.T) {
 		out.ArrayMustContain(jsonEncode("build.board.platform.path=" + boardPlatformPath))
 		out.ArrayMustContain(jsonEncode("build.core.platform.path=" + corePlatformPath))
 		out.ArrayMustContain(jsonEncode("build.core.path=" + corePath))
-		// https://github.com/arduino/arduino-cli/issues/2616
+		// https://github.com/arduino/ptsolns-cli/issues/2616
 		out.ArrayMustContain(jsonEncode("runtime.platform.path=" + corePlatformPath))
 	}
 }
 
 func TestCoreInstallWithWrongArchiveSize(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/issues/2332
+	// See: https://github.com/arduino/ptsolns-cli/issues/2332
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
@@ -1368,7 +1368,7 @@ func TestCoreInstallWithWrongArchiveSize(t *testing.T) {
 }
 
 func TestCoreInstallWithMissingOrInvalidChecksumAndUnsafeInstallEnabled(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/issues/1468
+	// See: https://github.com/arduino/ptsolns-cli/issues/1468
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 

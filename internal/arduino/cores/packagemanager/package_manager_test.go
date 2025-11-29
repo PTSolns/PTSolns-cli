@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -24,8 +24,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/arduino/arduino-cli/internal/arduino/cores"
-	"github.com/arduino/arduino-cli/pkg/fqbn"
+	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
+	"github.com/arduino/ptsolns-cli/pkg/fqbn"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-properties-orderedmap"
 	"github.com/stretchr/testify/require"
@@ -490,7 +490,7 @@ func TestFindToolsRequiredForBoard(t *testing.T) {
 		require.NotContains(t, tools, esptool0413)
 	}
 
-	// As seen in https://github.com/arduino/arduino-cli/issues/73 the map randomess
+	// As seen in https://github.com/arduino/ptsolns-cli/issues/73 the map randomess
 	// may make the function fail half of the times. Repeating the test 10 times
 	// greatly increases the chances to trigger the bad case.
 	testConflictingToolsInDifferentPackages()
@@ -546,7 +546,7 @@ func TestFindToolsRequiredForBoard(t *testing.T) {
 	require.NotNil(t, featherTools)
 
 	// Test when a package index requires two different version of the same tool
-	// See: https://github.com/arduino/arduino-cli/issues/166#issuecomment-528295989
+	// See: https://github.com/arduino/ptsolns-cli/issues/166#issuecomment-528295989
 	bossac17 := pme.FindToolDependency(&cores.ToolDependency{
 		ToolPackager: "arduino",
 		ToolName:     "bossac",
@@ -635,7 +635,7 @@ func TestIdentifyBoard(t *testing.T) {
 	require.Equal(t, "[test:avr:b]", fmt.Sprintf("%v", identify("0x9999", "0x0002")))
 	require.Equal(t, "[test:avr:c]", fmt.Sprintf("%v", identify("0x9999", "0x0003")))
 	require.Equal(t, "[test:avr:c]", fmt.Sprintf("%v", identify("0x9999", "0x0004")))
-	// https://github.com/arduino/arduino-cli/issues/456
+	// https://github.com/arduino/ptsolns-cli/issues/456
 	require.Equal(t, "[test:avr:d]", fmt.Sprintf("%v", identify("0x9999", "0x0005")))
 	// Check mixed case
 	require.Equal(t, "[test:avr:e]", fmt.Sprintf("%v", identify("0xAB00", "0xcd00")))

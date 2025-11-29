@@ -98,7 +98,7 @@
       "description": "configuration options relating to Arduino libraries.",
       "properties": {
         "enable_unsafe_install": {
-          "description": "set to `true` to enable the use of the `--git-url` and `--zip-file` flags with [`arduino-cli lib install`][arduino cli lib install]. These are considered \"unsafe\" installation methods because they allow installing files that have not passed through the Library Manager submission process.",
+          "description": "set to `true` to enable the use of the `--git-url` and `--zip-file` flags with [`ptsolns-cli lib install`][arduino cli lib install]. These are considered \"unsafe\" installation methods because they allow installing files that have not passed through the Library Manager submission process.",
           "type": "boolean"
         }
       },
@@ -185,7 +185,7 @@
       "description": "configuration options relating to [Arduino sketches][sketch specification].",
       "properties": {
         "always_export_binaries": {
-          "description": "set to `true` to make [`arduino-cli compile`][arduino-cli compile] always save binaries to the sketch folder. This is the equivalent of using the [`--export-binaries`][arduino-cli compile options] flag.",
+          "description": "set to `true` to make [`ptsolns-cli compile`][ptsolns-cli compile] always save binaries to the sketch folder. This is the equivalent of using the [`--export-binaries`][ptsolns-cli compile options] flag.",
           "type": "boolean"
         }
       },

@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -21,9 +21,9 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/go-configmap"
-	"github.com/arduino/arduino-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/go-configmap"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-win32-utils"
 )
@@ -61,16 +61,16 @@ func getDefaultArduinoDataDir() string {
 
 	switch runtime.GOOS {
 	case "linux":
-		return filepath.Join(userHomeDir, ".arduino15")
+		return filepath.Join(userHomeDir, ".ptsolns15")
 	case "darwin":
-		return filepath.Join(userHomeDir, "Library", "Arduino15")
+		return filepath.Join(userHomeDir, "Library", "ptsolns15")
 	case "windows":
 		localAppDataPath, err := win32.GetLocalAppDataFolder()
 		if err != nil {
 			feedback.Warning(i18n.Tr("Unable to get Local App Data Folder: %v", err))
 			return "."
 		}
-		return filepath.Join(localAppDataPath, "Arduino15")
+		return filepath.Join(localAppDataPath, "ptsolns15")
 	default:
 		return "."
 	}
@@ -144,10 +144,10 @@ func FindConfigFlagsInArgsOrFallbackOnEnv(args []string) string {
 		return p
 	}
 	if p, ok := os.LookupEnv("ARDUINO_DIRECTORIES_DATA"); ok {
-		return filepath.Join(p, "arduino-cli.yaml")
+		return filepath.Join(p, "ptsolns-cli.yaml")
 	}
 	if p, ok := os.LookupEnv("ARDUINO_DATA_DIR"); ok {
-		return filepath.Join(p, "arduino-cli.yaml")
+		return filepath.Join(p, "ptsolns-cli.yaml")
 	}
-	return filepath.Join(getDefaultArduinoDataDir(), "arduino-cli.yaml")
+	return filepath.Join(getDefaultArduinoDataDir(), "ptsolns-cli.yaml")
 }

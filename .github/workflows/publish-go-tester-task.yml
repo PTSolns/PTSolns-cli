@@ -25,7 +25,7 @@ on:
 
 env:
   # As defined by the Taskfile's PROJECT_NAME variable
-  PROJECT_NAME: arduino-cli
+  PROJECT_NAME: ptsolns-cli
   # As defined by the Taskfile's DIST_DIR variable
   DIST_DIR: dist
 

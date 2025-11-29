@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
@@ -100,7 +100,7 @@ func TestLibInstallMultipleSameLibrary(t *testing.T) {
 	cliEnv["ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL"] = "true"
 
 	// Check that 'lib install' didn't create a double install
-	// https://github.com/arduino/arduino-cli/issues/1870
+	// https://github.com/arduino/ptsolns-cli/issues/1870
 	_, _, err := cli.RunWithCustomEnv(cliEnv, "lib", "install", "--git-url", "https://github.com/arduino-libraries/SigFox#1.0.3")
 	require.NoError(t, err)
 	_, _, err = cli.Run("lib", "install", "Arduino SigFox for MKRFox1200")
@@ -113,7 +113,7 @@ func TestLibInstallMultipleSameLibrary(t *testing.T) {
 		LengthMustEqualTo(1, "Found multiple installations of Arduino SigFox for MKRFox1200'")
 
 	// Check that 'lib upgrade' didn't create a double install
-	// https://github.com/arduino/arduino-cli/issues/1870
+	// https://github.com/arduino/ptsolns-cli/issues/1870
 	_, _, err = cli.Run("lib", "uninstall", "Arduino SigFox for MKRFox1200")
 	require.NoError(t, err)
 	_, _, err = cli.RunWithCustomEnv(cliEnv, "lib", "install", "--git-url", "https://github.com/arduino-libraries/SigFox#1.0.3")
@@ -539,13 +539,13 @@ func TestInstall(t *testing.T) {
 	require.NoError(t, err)
 
 	// Test failing-install of library with wrong dependency
-	// (https://github.com/arduino/arduino-cli/issues/534)
+	// (https://github.com/arduino/ptsolns-cli/issues/534)
 	_, stderr, err := cli.Run("lib", "install", "MD_Parola@3.2.0")
 	require.Error(t, err)
 	require.Contains(t, string(stderr), "No valid dependencies solution found: dependency 'MD_MAX72xx' is not available")
 
 	// Test installing a library with a "relaxed" version
-	// https://github.com/arduino/arduino-cli/issues/1727
+	// https://github.com/arduino/ptsolns-cli/issues/1727
 	_, _, err = cli.Run("lib", "install", "ILI9341_t3@1.0")
 	require.NoError(t, err)
 	stdout, _, err := cli.Run("lib", "list", "--json")
@@ -636,7 +636,7 @@ func TestInstallWithGitUrl(t *testing.T) {
 	gitUrl := "https://github.com/arduino-libraries/WiFi101.git"
 
 	// Test git-url library install
-	stdout, _, err := cli.Run("lib", "install", "--git-url", gitUrl, "--config-file", "arduino-cli.yaml")
+	stdout, _, err := cli.Run("lib", "install", "--git-url", gitUrl, "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 	require.Contains(t, string(stdout), "--git-url and --zip-path flags allow installing untrusted files, use it at your own risk.")
 
@@ -644,7 +644,7 @@ func TestInstallWithGitUrl(t *testing.T) {
 	require.DirExists(t, libInstallDir.String())
 
 	// Reinstall library
-	_, _, err = cli.Run("lib", "install", "--git-url", gitUrl, "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("lib", "install", "--git-url", gitUrl, "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
 	// Verifies library remains installed
@@ -663,7 +663,7 @@ func TestInstallWithGitUrlFragmentAsBranch(t *testing.T) {
 
 	t.Run("InvalidRef", func(t *testing.T) {
 		// Test that a bad ref fails
-		_, _, err = cli.Run("lib", "install", "--git-url", "https://github.com/arduino-libraries/WiFi101.git#x-ref-does-not-exist", "--config-file", "arduino-cli.yaml")
+		_, _, err = cli.Run("lib", "install", "--git-url", "https://github.com/arduino-libraries/WiFi101.git#x-ref-does-not-exist", "--config-file", "ptsolns-cli.yaml")
 		require.Error(t, err)
 	})
 
@@ -675,12 +675,12 @@ func TestInstallWithGitUrlFragmentAsBranch(t *testing.T) {
 		require.NoDirExists(t, libInstallDir)
 
 		// Verifies library is installed in expected path
-		_, _, err = cli.Run("lib", "install", "--git-url", gitUrl+"#0.16.0", "--config-file", "arduino-cli.yaml")
+		_, _, err = cli.Run("lib", "install", "--git-url", gitUrl+"#0.16.0", "--config-file", "ptsolns-cli.yaml")
 		require.NoError(t, err)
 		require.DirExists(t, libInstallDir)
 
 		// Reinstall library at an existing ref
-		_, _, err = cli.Run("lib", "install", "--git-url", gitUrl+"#master", "--config-file", "arduino-cli.yaml")
+		_, _, err = cli.Run("lib", "install", "--git-url", gitUrl+"#master", "--config-file", "ptsolns-cli.yaml")
 		require.NoError(t, err)
 
 		// Verifies library remains installed
@@ -693,7 +693,7 @@ func TestInstallWithGitUrlFragmentAsBranch(t *testing.T) {
 
 		// Verify install with ref pointing to a branch
 		require.NoDirExists(t, libInstallDir.String())
-		_, _, err = cli.Run("lib", "install", "--git-url", "https://github.com/arduino-libraries/ArduinoCloud.git#revert-2-typos", "--config-file", "arduino-cli.yaml")
+		_, _, err = cli.Run("lib", "install", "--git-url", "https://github.com/arduino-libraries/ArduinoCloud.git#revert-2-typos", "--config-file", "ptsolns-cli.yaml")
 		require.NoError(t, err)
 		require.DirExists(t, libInstallDir.String())
 
@@ -710,7 +710,7 @@ func TestInstallWithGitUrlFragmentAsBranch(t *testing.T) {
 
 		// Verify install with ref pointing to a branch
 		require.NoDirExists(t, libInstallDir.String())
-		_, _, err = cli.Run("lib", "install", "--git-url", "https://github.com/arduino-libraries/ArduinoCloud.git#fe1a1c5d1f8ea2cb27ece1a3b9344dc1eaed60b6", "--config-file", "arduino-cli.yaml")
+		_, _, err = cli.Run("lib", "install", "--git-url", "https://github.com/arduino-libraries/ArduinoCloud.git#fe1a1c5d1f8ea2cb27ece1a3b9344dc1eaed60b6", "--config-file", "ptsolns-cli.yaml")
 		require.NoError(t, err)
 		require.DirExists(t, libInstallDir.String())
 
@@ -1207,7 +1207,7 @@ func TestInstallZipLibWithMacosMetadata(t *testing.T) {
 	zipPath, err := paths.New("..", "testdata", "fake-lib.zip").Abs()
 	require.NoError(t, err)
 	// Test zip-path install
-	stdout, _, err := cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "arduino-cli.yaml")
+	stdout, _, err := cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 	require.Contains(t, string(stdout), "--git-url and --zip-path flags allow installing untrusted files, use it at your own risk.")
 
@@ -1219,7 +1219,7 @@ func TestInstallZipLibWithMacosMetadata(t *testing.T) {
 	// Reinstall library
 	_, _, err = cli.Run("lib", "install",
 		"--zip-path", zipPath.String(),
-		"--config-file", "arduino-cli.yaml")
+		"--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
 	// Verifies library remains installed
@@ -1245,7 +1245,7 @@ func TestInstallZipInvalidLibrary(t *testing.T) {
 	zipPath, err := paths.New("..", "testdata", "lib-without-header.zip").Abs()
 	require.NoError(t, err)
 	// Test zip-path install
-	_, stderr, err := cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "arduino-cli.yaml")
+	_, stderr, err := cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "ptsolns-cli.yaml")
 	require.Error(t, err)
 	require.Contains(t, string(stderr), "library not valid")
 
@@ -1256,7 +1256,7 @@ func TestInstallZipInvalidLibrary(t *testing.T) {
 	zipPath, err = paths.New("..", "testdata", "lib-without-properties.zip").Abs()
 	require.NoError(t, err)
 	// Test zip-path install
-	_, stderr, err = cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "arduino-cli.yaml")
+	_, stderr, err = cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "ptsolns-cli.yaml")
 	require.Error(t, err)
 	require.Contains(t, string(stderr), "library not valid")
 }
@@ -1291,7 +1291,7 @@ func TestInstallGitInvalidLibrary(t *testing.T) {
 	// Verifies library is not already installed
 	require.NoDirExists(t, libInstallDir.String())
 
-	_, stderr, err := cli.RunWithCustomEnv(envVar, "lib", "install", "--git-url", repoDir.String(), "--config-file", "arduino-cli.yaml")
+	_, stderr, err := cli.RunWithCustomEnv(envVar, "lib", "install", "--git-url", repoDir.String(), "--config-file", "ptsolns-cli.yaml")
 	require.Error(t, err)
 	require.Contains(t, string(stderr), "library not valid")
 	require.NoDirExists(t, libInstallDir.String())
@@ -1317,7 +1317,7 @@ func TestInstallGitInvalidLibrary(t *testing.T) {
 	// Verifies library is not already installed
 	require.NoDirExists(t, libInstallDir.String())
 
-	_, stderr, err = cli.RunWithCustomEnv(envVar, "lib", "install", "--git-url", repoDir.String(), "--config-file", "arduino-cli.yaml")
+	_, stderr, err = cli.RunWithCustomEnv(envVar, "lib", "install", "--git-url", repoDir.String(), "--config-file", "ptsolns-cli.yaml")
 	require.Error(t, err)
 	require.Contains(t, string(stderr), "library not valid")
 	require.NoDirExists(t, libInstallDir.String())
@@ -1438,11 +1438,11 @@ func TestInstallGitUrlAndZipPathFlagsVisibility(t *testing.T) {
 	_, _, err = cli.RunWithCustomEnv(envVar, "config", "init", "--dest-dir", ".")
 	require.NoError(t, err)
 
-	stdout, _, err = cli.Run("lib", "install", "--git-url", gitUrl, "--config-file", "arduino-cli.yaml")
+	stdout, _, err = cli.Run("lib", "install", "--git-url", gitUrl, "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 	require.Contains(t, string(stdout), "--git-url and --zip-path flags allow installing untrusted files, use it at your own risk.")
 
-	stdout, _, err = cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "arduino-cli.yaml")
+	stdout, _, err = cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 	require.Contains(t, string(stdout), "--git-url and --zip-path flags allow installing untrusted files, use it at your own risk.")
 }
@@ -1469,7 +1469,7 @@ func TestInstallWithZipPath(t *testing.T) {
 	require.NoDirExists(t, libInstallDir.String())
 
 	// Test zip-path install
-	stdout, _, err := cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "arduino-cli.yaml")
+	stdout, _, err := cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 	require.Contains(t, string(stdout), "--git-url and --zip-path flags allow installing untrusted files, use it at your own risk.")
 
@@ -1485,7 +1485,7 @@ func TestInstallWithZipPath(t *testing.T) {
 	require.Contains(t, files, libInstallDir.Join("README.adoc"))
 
 	// Reinstall library
-	_, _, err = cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("lib", "install", "--zip-path", zipPath.String(), "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
 	// Verifies library remains installed
@@ -1617,7 +1617,7 @@ func TestLibBundlesWhenLibWithTheSameNameIsInstalledGlobally(t *testing.T) {
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
-	// See: https://github.com/arduino/arduino-cli/issues/1566
+	// See: https://github.com/arduino/ptsolns-cli/issues/1566
 	_, _, err := cli.Run("core", "install", "arduino:samd@1.8.13")
 	require.NoError(t, err)
 	{
@@ -1638,7 +1638,7 @@ func TestLibBundlesWhenLibWithTheSameNameIsInstalledGlobally(t *testing.T) {
 		j.Query(`.installed_libraries.[0].library.compatible_with."arduino:samd:mkrzero"`).MustEqual(`true`)
 	}
 
-	// See: https://github.com/arduino/arduino-cli/issues/1656
+	// See: https://github.com/arduino/ptsolns-cli/issues/1656
 	{
 		_, _, err = cli.Run("core", "update-index", "--additional-urls", "https://arduino.esp8266.com/stable/package_esp8266com_index.json")
 		require.NoError(t, err)
@@ -1691,7 +1691,7 @@ func TestLibListDoesNotIncludeEmptyLibraries(t *testing.T) {
 }
 
 func TestDependencyResolver(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/issues/2135
+	// See: https://github.com/arduino/ptsolns-cli/issues/2135
 
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
@@ -1711,7 +1711,7 @@ func TestDependencyResolver(t *testing.T) {
 }
 
 func TestDependencyResolverNoOverwrite(t *testing.T) {
-	// https://github.com/arduino/arduino-cli/issues/1799
+	// https://github.com/arduino/ptsolns-cli/issues/1799
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 

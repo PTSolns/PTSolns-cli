@@ -10,7 +10,7 @@ The Library Manager allows users to automatically download and install libraries
 to use graphical interface in the
 [Arduino IDE](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries#using-the-library-manager)/[Arduino IDE 2.0](https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-installing-a-library#installing-a-library)
 and [Arduino Cloud Editor](https://docs.arduino.cc/arduino-cloud/guides/editor/#library-manager) as well as
-[`arduino-cli lib`](commands/arduino-cli_lib.md).
+[`ptsolns-cli lib`](commands/ptsolns-cli_lib.md).
 
 More information about how Library Manager works is available
 [here](https://github.com/arduino/library-registry/blob/main/FAQ.md#readme).
@@ -71,7 +71,7 @@ otherwise below, **all fields are required**. The available fields are:
 - **depends** - **(available from Arduino IDE 1.8.10/Arduino CLI 0.7.0)** (optional) a comma-separated list of
   dependencies (libraries that are needed to build the current library). The Arduino IDE's Library Manager will offer to
   install the dependencies during installation of the library.
-  [`arduino-cli lib install`](commands/arduino-cli_lib_install.md) will automatically install the dependencies. Since
+  [`ptsolns-cli lib install`](commands/ptsolns-cli_lib_install.md) will automatically install the dependencies. Since
   spaces are allowed in the `name` of a library, but not commas, you can refer to libraries containing spaces in the
   name without ambiguity for example:<br> `depends=Very long library name, Another library with long-name`<br>
   [Version constraints](#version-constraints) for the dependency may be specified in parentheses after the name:<br>

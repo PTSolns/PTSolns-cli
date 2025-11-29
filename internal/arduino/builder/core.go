@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -22,11 +22,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/arduino/arduino-cli/internal/arduino/builder/cpp"
-	"github.com/arduino/arduino-cli/internal/arduino/builder/internal/utils"
-	"github.com/arduino/arduino-cli/internal/arduino/builder/logger"
-	"github.com/arduino/arduino-cli/internal/buildcache"
-	"github.com/arduino/arduino-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/utils"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/logger"
+	"github.com/arduino/ptsolns-cli/internal/buildcache"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	"go.bug.st/f"
 )
@@ -165,7 +165,7 @@ func (b *Builder) compileCore() (*paths.Path, paths.PathList, error) {
 			} else if os.IsNotExist(err) {
 				b.logger.Info(i18n.Tr("Unable to cache built core, please tell %[1]s maintainers to follow %[2]s",
 					b.buildPlatform,
-					"https://arduino.github.io/arduino-cli/latest/platform-specification/#recipes-to-build-the-corea-archive-file"))
+					"https://arduino.github.io/ptsolns-cli/latest/platform-specification/#recipes-to-build-the-corea-archive-file"))
 			} else {
 				b.logger.Info(i18n.Tr("Error archiving built core (caching) in %[1]s: %[2]s", targetArchivedCore, err))
 			}

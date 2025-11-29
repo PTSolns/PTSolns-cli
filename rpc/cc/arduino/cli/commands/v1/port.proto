@@ -1,4 +1,4 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (https://www.arduino.cc/)
 //
@@ -18,7 +18,7 @@ syntax = "proto3";
 
 package cc.arduino.cli.commands.v1;
 
-option go_package = "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1;commands";
+option go_package = "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1;commands";
 
 // Port represents a board port that may be used to upload or to monitor a board.
 message Port {

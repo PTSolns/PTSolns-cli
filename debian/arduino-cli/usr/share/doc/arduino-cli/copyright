@@ -1,7 +1,7 @@
 Copyright 2025 ARDUINO SA (http://www.arduino.cc/)
 
 This software is released under the GNU General Public License version 3,
-which covers the main part of arduino-cli.
+which covers the main part of ptsolns-cli.
 The terms of this license can be found at:
 https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -2519,7 +2519,7 @@ This file includes licensing information for
 Copyright (c) 2024 ARDUINO SA (www.arduino.cc)
 
 The software is released under the GNU General Public License, which covers the main body
-of the arduino-cli code. The terms of this license can be found at:
+of the ptsolns-cli code. The terms of this license can be found at:
 https://www.gnu.org/licenses/gpl-3.0.en.html
 
 You can be released from the requirements of the above licenses by purchasing

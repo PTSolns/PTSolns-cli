@@ -17,14 +17,14 @@ complicated. We heavily rely on sub-commands to provide a rich set of different 
 so that users can easily explore the interface while getting very specific contextual help (even in Chinese!).
 
 ```
-$ LANG=zh arduino-cli
-Arduino 命令行界面 (arduino-cli)
+$ LANG=zh ptsolns-cli
+Arduino 命令行界面 (ptsolns-cli)
 
 用法：
-  arduino-cli [command]
+  ptsolns-cli [command]
 
 示例：
-  arduino-cli <命令> [参数...]
+  ptsolns-cli <命令> [参数...]
 
 可用命令：
   board           Arduino 开发板命令
@@ -50,14 +50,14 @@ Arduino 命令行界面 (arduino-cli)
       --additional-urls strings   以逗号分隔的开发板管理器附加地址列表。
       --config-file string        自定义配置文件（如果未指定，将使用默认值）。
       --format string             日志的输出格​​式，可以是：text, json, jsonmini, yaml (default "text")
-  -h, --help                      help for arduino-cli
+  -h, --help                      help for ptsolns-cli
       --log                       在标准输出上打印日志。
       --log-file string           写入日志的文件的路径。
       --log-format string         日志的输出格​​式，可以是：text, json
       --log-level string          记录此级别及以上的消息。有效级别为 trace, debug, info, warn, error, fatal, panic
       --no-color                  Disable colored output.
 
-使用 "arduino-cli [command] --help" 获取有关命令的更多信息。
+使用 "ptsolns-cli [command] --help" 获取有关命令的更多信息。
 ```
 
 ### Console applications for robots
@@ -66,17 +66,17 @@ Humans are not the only type of customers we want to support and the Arduino CLI
 programmatically - think about automation pipelines or a [CI][continuous integration]/[CD][continuous deployment]
 system. There are some niceties to observe when you write software that’s supposed to be easy to run when unattended and
 one in particular is the ability to run without a configuration file. This is possible because every configuration
-option you find in the arduino-cli.yaml configuration file can be provided either through a command line flag or by
+option you find in the ptsolns-cli.yaml configuration file can be provided either through a command line flag or by
 setting an environment variable. To give an example, the following commands are all equivalent and will fetch the
 external package index for ESP32 platforms:
 
 ```
-$ cat ~/.arduino15/arduino-cli.yaml
+$ cat ~/.ptsolns15/ptsolns-cli.yaml
 board_manager:
   additional_urls:
     - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 
-$ arduino-cli core update-index
+$ ptsolns-cli core update-index
 Downloading index: package_index.tar.bz2 downloaded
 Downloading index: package_esp32_index.json downloaded
 ```
@@ -85,7 +85,7 @@ or:
 
 ```
 $ export ARDUINO_BOARD_MANAGER_ADDITIONAL_URLS="https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json"
-$ arduino-cli core update-index
+$ ptsolns-cli core update-index
 Downloading index: package_index.tar.bz2 downloaded
 Downloading index: package_esp32_index.json downloaded
 ```
@@ -93,7 +93,7 @@ Downloading index: package_esp32_index.json downloaded
 or:
 
 ```
-$ arduino-cli core update-index --additional-urls="https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json"
+$ ptsolns-cli core update-index --additional-urls="https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json"
 Downloading index: package_index.tar.bz2 downloaded
 Downloading index: package_esp32_index.json downloaded
 ```
@@ -106,7 +106,7 @@ that’s easy to parse. For example, the following figure shows what getting the
 using the `jq` tools may look like:
 
 ```
-$ arduino-cli lib search FlashStorage --format json | jq .libraries[0].latest
+$ ptsolns-cli lib search FlashStorage --format json | jq .libraries[0].latest
 {
   "author": "Various",
   "version": "1.0.0",
@@ -146,12 +146,12 @@ following is some [Golang] code capable of retrieving the version number of a re
 instance:
 
 ```go
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -168,7 +168,7 @@ import (
 	"log"
 	"time"
 
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -178,7 +178,7 @@ func main() {
 	conn, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Println(err)
-		log.Fatal("error connecting to arduino-cli rpc server, you can start it by running `arduino-cli daemon`")
+		log.Fatal("error connecting to ptsolns-cli rpc server, you can start it by running `ptsolns-cli daemon`")
 	}
 	defer conn.Close()
 
@@ -190,7 +190,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error getting version: %s", err)
 	}
-	log.Printf("arduino-cli version: %v", versionResp.GetVersion())
+	log.Printf("ptsolns-cli version: %v", versionResp.GetVersion())
 }
 ```
 
@@ -215,12 +215,12 @@ some backend services powering [Arduino Cloud] can compile sketches and manage l
 what it means to embed the Arduino CLI, here is how to search for a core using the API:
 
 ```go
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -238,8 +238,8 @@ import (
 	"io"
 	"log"
 
-	"github.com/arduino/arduino-cli/commands"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/commands"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/sirupsen/logrus"
 )
 
@@ -307,14 +307,14 @@ tracker] if you’ve got a use case that doesn’t fit one of the three pillars.
 [configuration documentation]: configuration.md
 [json]: https://www.json.org
 [installation script]: installation.md#use-the-install-script
-[command reference]: commands/arduino-cli.md
+[command reference]: commands/ptsolns-cli.md
 [grpc]: https://grpc.io/
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
-[daemon mode]: commands/arduino-cli_daemon.md
+[daemon mode]: commands/ptsolns-cli_daemon.md
 [grpc interface reference]: rpc/commands.md
 [grpc supported languages]: https://grpc.io/docs/languages/
-[arduino cli repository]: https://github.com/arduino/arduino-cli
-[grpc client example]: https://github.com/arduino/arduino-cli/blob/master/rpc/internal/client_example
-[commands package]: https://github.com/arduino/arduino-cli/tree/master/commands
-[issue tracker]: https://github.com/arduino/arduino-cli/issues
+[arduino cli repository]: https://github.com/arduino/ptsolns-cli
+[grpc client example]: https://github.com/arduino/ptsolns-cli/blob/master/rpc/internal/client_example
+[commands package]: https://github.com/arduino/ptsolns-cli/tree/master/commands
+[issue tracker]: https://github.com/arduino/ptsolns-cli/issues
 [contextual help screenshot]: img/CLI_contextual_help_screenshot.png

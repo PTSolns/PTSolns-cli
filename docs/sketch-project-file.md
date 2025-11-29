@@ -138,7 +138,7 @@ When a sketch project file is present, it can be leveraged to compile the sketch
 `compile` command:
 
 ```
-arduino-cli compile --profile nanorp
+ptsolns-cli compile --profile nanorp
 ```
 
 In this case, the sketch will be compiled using the core platform and libraries specified in the nanorp profile. If a
@@ -156,7 +156,7 @@ and libraries installed in the system.
 If a `default_profile` is specified in the `sketch.yaml` then the “classic” compile command:
 
 ```
-arduino-cli compile [sketch]
+ptsolns-cli compile [sketch]
 ```
 
 will, instead, trigger a profile-based build using the default profile indicated in the `sketch.yaml`.
@@ -187,7 +187,7 @@ default_profile: myprofile
 ```
 
 With this configuration set, it is not necessary to specify the `--fqbn`, `--programmer`, `--port`, `--protocol` or
-`--profile` flags to the [`arduino-cli compile`](commands/arduino-cli_compile.md),
-[`arduino-cli upload`](commands/arduino-cli_upload.md) or [`arduino-cli debug`](commands/arduino-cli_debug.md) commands
+`--profile` flags to the [`ptsolns-cli compile`](commands/ptsolns-cli_compile.md),
+[`ptsolns-cli upload`](commands/ptsolns-cli_upload.md) or [`ptsolns-cli debug`](commands/ptsolns-cli_debug.md) commands
 when compiling, uploading or debugging the sketch. Moreover in the `monitor` command it is not necessary to specify the
 `--config baudrate=115200` to communicate with the monitor port of the board.

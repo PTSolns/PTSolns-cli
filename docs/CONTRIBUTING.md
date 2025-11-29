@@ -90,7 +90,7 @@ task build
 ```
 
 The project uses Go modules so dependencies will be downloaded automatically. At the end of the build, you should find
-an `arduino-cli` executable in the same folder.
+an `ptsolns-cli` executable in the same folder.
 
 ### Running the tests
 
@@ -177,13 +177,13 @@ This will run the integration tests automatically.
 To run specific packages you must run `go test`.
 
 ```shell
-go test -v github.com/arduino/arduino-cli/internal/integrationtest/lib
+go test -v github.com/arduino/ptsolns-cli/internal/integrationtest/lib
 ```
 
 To run very specific test functions:
 
 ```shell
-go test -v github.com/arduino/arduino-cli/internal/integrationtest/lib -run TestLibUpgradeCommand
+go test -v github.com/arduino/ptsolns-cli/internal/integrationtest/lib -run TestLibUpgradeCommand
 ```
 
 ### Dependency license metadata
@@ -303,7 +303,7 @@ package main
 
 import (
   "fmt"
-  "github.com/arduino/arduino-cli/internal/i18n"
+  "github.com/arduino/ptsolns-cli/internal/i18n"
 )
 
 func main() {
@@ -327,23 +327,23 @@ someone else who does need it.
 If your PR doesn't need to be included in the changelog, please start the commit message and PR title with the string
 **[skip changelog]**
 
-[0]: https://cla-assistant.io/arduino/arduino-cli
+[0]: https://cla-assistant.io/arduino/ptsolns-cli
 [1]: https://go.dev/doc/install
 [2]: https://taskfile.dev/#/installation
 [3]: https://www.python.org/downloads/
 [6]: https://buf.build/docs/installation/
 [7]: https://pages.github.com/
 [9]: https://www.mkdocs.org/
-[11]: https://github.com/arduino/arduino-cli/blob/master/.github/workflows/deploy-cobra-mkdocs-versioned-poetry.yml
+[11]: https://github.com/arduino/ptsolns-cli/blob/master/.github/workflows/deploy-cobra-mkdocs-versioned-poetry.yml
 [12]:
   https://github.com/arduino/tooling-project-assets/blob/main/workflow-templates/deploy-cobra-mkdocs-versioned-poetry.md
 [forum]: https://forum.arduino.cc/index.php?board=145.0
 [issues]: #issue-reports
-[nightly]: https://arduino.github.io/arduino-cli/latest/installation/#nightly-builds
+[nightly]: https://arduino.github.io/ptsolns-cli/latest/installation/#nightly-builds
 [prs]: #pull-requests
-[translate]: https://www.transifex.com/arduino-1/arduino-cli/
+[translate]: https://www.transifex.com/arduino-1/ptsolns-cli/
 [store]: https://store.arduino.cc
-[issue-tracker]: https://github.com/arduino/arduino-cli/issues?q=
+[issue-tracker]: https://github.com/arduino/ptsolns-cli/issues?q=
 [reactions]: https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments
 [prettier-website]: https://prettier.io/
 [prettier-vscode-extension]: https://github.com/prettier/prettier-vscode

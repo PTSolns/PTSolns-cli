@@ -9,4 +9,4 @@ at the source:
   `#: internal/cli/lib/check_deps.go:102` indicates the source string is at line 102 of the file
   [`internal/cli/lib/check_deps.go`](../../../internal/cli/lib/check_deps.go)
 - **All other files** - the localization is done on **Transifex**: <br />
-  https://explore.transifex.com/arduino-1/arduino-cli/
+  https://explore.transifex.com/arduino-1/ptsolns-cli/

@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 )
@@ -38,7 +38,7 @@ func loadConfig(t *testing.T, srv rpc.ArduinoCoreServiceServer, confPath *paths.
 
 func TestGetAll(t *testing.T) {
 	srv := NewArduinoCoreServer()
-	loadConfig(t, srv, paths.New("testdata", "arduino-cli.yml"))
+	loadConfig(t, srv, paths.New("testdata", "ptsolns-cli.yml"))
 	resp, err := srv.ConfigurationGet(context.Background(), &rpc.ConfigurationGetRequest{})
 	require.Nil(t, err)
 
@@ -57,8 +57,8 @@ func TestGetAll(t *testing.T) {
 		},
 		"directories": {
 			"builtin": {},
-			"data": "/home/massi/.arduino15",
-			"downloads": "/home/massi/.arduino15/staging",
+			"data": "/home/massi/.ptsolns15",
+			"downloads": "/home/massi/.ptsolns15/staging",
 			"user": `+defaultUserDir.GetEncodedValue()+`
 		},
 		"library": {},
@@ -80,7 +80,7 @@ func TestGetAll(t *testing.T) {
 
 func TestMerge(t *testing.T) {
 	srv := NewArduinoCoreServer()
-	loadConfig(t, srv, paths.New("testdata", "arduino-cli.yml"))
+	loadConfig(t, srv, paths.New("testdata", "ptsolns-cli.yml"))
 
 	ctx := context.Background()
 
@@ -133,7 +133,7 @@ func TestMerge(t *testing.T) {
 
 func TestGetValue(t *testing.T) {
 	srv := NewArduinoCoreServer()
-	loadConfig(t, srv, paths.New("testdata", "arduino-cli.yml"))
+	loadConfig(t, srv, paths.New("testdata", "ptsolns-cli.yml"))
 
 	key := &rpc.SettingsGetValueRequest{Key: "daemon"}
 	resp, err := srv.SettingsGetValue(context.Background(), key)
@@ -148,7 +148,7 @@ func TestGetValue(t *testing.T) {
 
 func TestGetOfSettedValue(t *testing.T) {
 	srv := NewArduinoCoreServer()
-	loadConfig(t, srv, paths.New("testdata", "arduino-cli.yml"))
+	loadConfig(t, srv, paths.New("testdata", "ptsolns-cli.yml"))
 
 	// Verifies value is not set (try with a key without a default, like "directories.builtin.libraries")
 	ctx := context.Background()
@@ -170,7 +170,7 @@ func TestGetOfSettedValue(t *testing.T) {
 
 func TestGetValueNotFound(t *testing.T) {
 	srv := NewArduinoCoreServer()
-	loadConfig(t, srv, paths.New("testdata", "arduino-cli.yml"))
+	loadConfig(t, srv, paths.New("testdata", "ptsolns-cli.yml"))
 
 	key := &rpc.SettingsGetValueRequest{Key: "DOESNTEXIST"}
 	_, err := srv.SettingsGetValue(context.Background(), key)
@@ -179,7 +179,7 @@ func TestGetValueNotFound(t *testing.T) {
 
 func TestWrite(t *testing.T) {
 	srv := NewArduinoCoreServer()
-	loadConfig(t, srv, paths.New("testdata", "arduino-cli.yml"))
+	loadConfig(t, srv, paths.New("testdata", "ptsolns-cli.yml"))
 
 	// Writes some settings
 	val := &rpc.SettingsSetValueRequest{
@@ -205,8 +205,8 @@ daemon:
   port: "50051"
 
 directories:
-  data: /home/massi/.arduino15
-  downloads: /home/massi/.arduino15/staging
+  data: /home/massi/.ptsolns15
+  downloads: /home/massi/.ptsolns15/staging
   builtin:
     libraries: bar
 
@@ -222,7 +222,7 @@ network:
 
 func TestDelete(t *testing.T) {
 	srv := NewArduinoCoreServer()
-	loadConfig(t, srv, paths.New("testdata", "arduino-cli.yml"))
+	loadConfig(t, srv, paths.New("testdata", "ptsolns-cli.yml"))
 
 	// Check loaded config
 	resp, err := srv.ConfigurationSave(context.Background(), &rpc.ConfigurationSaveRequest{
@@ -239,8 +239,8 @@ daemon:
   port: "50051"
 
 directories:
-  data: /home/massi/.arduino15
-  downloads: /home/massi/.arduino15/staging
+  data: /home/massi/.ptsolns15
+  downloads: /home/massi/.ptsolns15/staging
 
 logging:
   file: ""
@@ -278,8 +278,8 @@ daemon:
   port: "50051"
 
 directories:
-  data: /home/massi/.arduino15
-  downloads: /home/massi/.arduino15/staging
+  data: /home/massi/.ptsolns15
+  downloads: /home/massi/.ptsolns15/staging
 
 logging:
   file: ""

@@ -24,8 +24,8 @@ jobs:
     name: ${{ matrix.certificate.identifier }}
     # Only run when the workflow will have access to the certificate secrets.
     if: >
-      (github.event_name != 'pull_request' && github.repository == 'arduino/arduino-cli') ||
-      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'arduino/arduino-cli')
+      (github.event_name != 'pull_request' && github.repository == 'arduino/ptsolns-cli') ||
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'arduino/ptsolns-cli')
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

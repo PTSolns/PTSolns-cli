@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -20,7 +20,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/stretchr/testify/require"
 	semver "go.bug.st/relaxed-semver"
 	"go.bug.st/testifyjson/requirejson"
@@ -55,8 +55,8 @@ func TestVersion(t *testing.T) {
 	err = json.Unmarshal(stdout, &jsonMap)
 	require.NoError(t, err)
 
-	// Checks if Application's value is arduino-cli
-	require.Equal(t, jsonMap["Application"], "arduino-cli")
+	// Checks if Application's value is ptsolns-cli
+	require.Equal(t, jsonMap["Application"], "ptsolns-cli")
 
 	// Checks if VersionString's value is git-snapshot, nightly or a valid semantic versioning
 	switch version := jsonMap["VersionString"]; version {

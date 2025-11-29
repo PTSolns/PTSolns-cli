@@ -203,8 +203,8 @@ msgid "Arduino CLI."
 msgstr "Arduino CLI."
 
 #: internal/cli/cli.go:89
-msgid "Arduino Command Line Interface (arduino-cli)."
-msgstr "Arduino Befehlszeilen-Schnittstelle (arduino-cli)."
+msgid "Arduino Command Line Interface (ptsolns-cli)."
+msgstr "Arduino Befehlszeilen-Schnittstelle (ptsolns-cli)."
 
 #: internal/cli/board/board.go:30 internal/cli/board/board.go:31
 msgid "Arduino board commands."
@@ -2096,7 +2096,7 @@ msgstr "Starten im stillen Modus, zeige nur die Monitorein- und -ausgaben"
 
 #: internal/cli/daemon/daemon.go:47
 msgid "Run the Arduino CLI as a gRPC daemon."
-msgstr "Arduino-CLI als gRPC-Daemon ausführen"
+msgstr "ptsolns-cli als gRPC-Daemon ausführen"
 
 #: internal/arduino/builder/core.go:43
 msgid "Running normal build of the core..."

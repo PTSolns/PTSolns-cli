@@ -269,7 +269,7 @@ Each PLATFORM describes a core for a specific architecture. The fields needed ar
     (`_`), dashes (`-`), and dots (`.`).
 - `version`: the version of the platform.
 - `deprecated`: (optional) setting to `true` causes the platform to be moved to the bottom of all Boards Manager and
-  [`arduino-cli core`](https://arduino.github.io/arduino-cli/latest/commands/arduino-cli_core/) listings and marked
+  [`ptsolns-cli core`](https://arduino.github.io/ptsolns-cli/latest/commands/ptsolns-cli_core/) listings and marked
   "DEPRECATED".
 - `category`: this field is reserved, a 3rd party core must set it to `Contributed`
 - `help`/`online`: is a URL that is displayed on the Arduino IDE's Boards Manager as an "Online Help" link
@@ -303,7 +303,7 @@ rules Arduino IDE follows for parsing versions
 - Otherwise, simply parse `version` into a Version using `Version.valueOf`
 
 Note: if you miss a bracket in the JSON index, then add the URL to your Preferences, and open Boards Manager it can
-cause the Arduino IDE to no longer load until you have deleted the file from your arduino15 folder.
+cause the Arduino IDE to no longer load until you have deleted the file from your ptsolns15 folder.
 
 #### How a tool's path is determined in platform.txt
 

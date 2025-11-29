@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -20,9 +20,9 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"go.bug.st/f"
@@ -51,7 +51,7 @@ func initSetCommand(srv rpc.ArduinoCoreServiceServer) *cobra.Command {
 }
 
 func runSetCommand(ctx context.Context, srv rpc.ArduinoCoreServiceServer, args []string) {
-	logrus.Info("Executing `arduino-cli config set`")
+	logrus.Info("Executing `ptsolns-cli config set`")
 
 	req := &rpc.SettingsSetValueRequest{
 		Key: args[0],

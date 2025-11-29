@@ -171,7 +171,7 @@ version=1.5.3
 ```
 
 The **name** will be shown as the Arduino IDE's Board menu section title or the Name field of
-[`arduino-cli core list`](commands/arduino-cli_core_list.md)'s output for the platform.<br> The **version** is currently
+[`ptsolns-cli core list`](commands/ptsolns-cli_core_list.md)'s output for the platform.<br> The **version** is currently
 unused, it is reserved for future use (probably together with the Boards Manager to handle dependencies on cores).
 
 ### Build process
@@ -209,7 +209,7 @@ Some of them allow specifying trusted security credentials (signing and encrypti
 If any of these properties are defined, the others are required.
 
 These properties can be overwritten respectively with `--keys-keychain`, `--sign-key`, `--encrypt-key`
-[compile](commands/arduino-cli_compile.md) flags in the Arduino CLI.
+[compile](commands/ptsolns-cli_compile.md) flags in the Arduino CLI.
 
 #### Recipes to compile source code
 
@@ -522,7 +522,7 @@ recipe.hooks.sketch.prebuild.11.pattern=echo 11
 
 Note: all the `pre*` hooks are executed while producing the "compilation database" (a JSON file with the list of
 commands to run to compile the sketch), but the `post*` hooks and all compile commands are skipped. See the
-[`arduino-cli compile`](commands/arduino-cli_compile.md) command reference for more info.
+[`ptsolns-cli compile`](commands/ptsolns-cli_compile.md) command reference for more info.
 
 ## Global platform.txt
 
@@ -753,9 +753,9 @@ The value of the property is ignored; it's the presence or absence of the proper
 This file contains definitions for external programmers. These programmers are used by:
 
 - The [**Tools > Burn Bootloader**](#burn-bootloader) feature of the IDEs and
-  [`arduino-cli burn-bootloader`](commands/arduino-cli_burn-bootloader.md)
+  [`ptsolns-cli burn-bootloader`](commands/ptsolns-cli_burn-bootloader.md)
 - The [**Sketch > Upload Using Programmer**](#upload-using-an-external-programmer) feature of the IDEs and
-  [`arduino-cli upload --programmer <programmer ID>`](commands/arduino-cli_upload.md#options)
+  [`ptsolns-cli upload --programmer <programmer ID>`](commands/ptsolns-cli_upload.md#options)
 
 programmers.txt works similarly to [boards.txt](#boardstxt). Programmers are referenced by their short name: the
 programmer ID. The settings for a programmer are defined through a set of properties with keys that use the programmer
@@ -779,8 +779,8 @@ These properties can only be used in the recipes of the actions that use the pro
 `program`).
 
 The **arduinoasisp.name** property defines the human-friendly name of the programmer. This is shown in the **Tools >
-Programmer** menu of the IDEs and the output of [`arduino-cli upload --programmer list`](commands/arduino-cli_upload.md)
-and [`arduino-cli burn-bootloader --programmer list`](commands/arduino-cli_burn-bootloader.md).
+Programmer** menu of the IDEs and the output of [`ptsolns-cli upload --programmer list`](commands/ptsolns-cli_upload.md)
+and [`ptsolns-cli burn-bootloader --programmer list`](commands/ptsolns-cli_burn-bootloader.md).
 
 In Arduino IDE 1.8.12 and older, all programmers of all installed platforms were made available for use. Starting with
 Arduino IDE 1.8.13 (and in all relevant versions of other Arduino development tools), only the programmers defined by
@@ -864,8 +864,8 @@ for details on how the runtime properties are determined.
 All the tools launched to compile or upload a sketch will have the following environment variable set:
 
 `ARDUINO_USER_AGENT`: contains the name and version of the client used by the user in
-[HTTP user-agent format](https://en.wikipedia.org/wiki/User_agent), for example `"arduino-cli/0.21.0"`. It may also
-contain multiple space-delimited entries like `"arduino-cli/0.21.0 ArduinoIDE/2.0.0-rc1"` if this information is
+[HTTP user-agent format](https://en.wikipedia.org/wiki/User_agent), for example `"ptsolns-cli/0.21.0"`. It may also
+contain multiple space-delimited entries like `"ptsolns-cli/0.21.0 ArduinoIDE/2.0.0-rc1"` if this information is
 available.
 
 ### Pluggable discovery
@@ -1059,7 +1059,7 @@ tools.avrdude.upload.params.quiet      =>    upload.verbose
 ### Sketch upload configuration
 
 The Upload action is triggered when the user clicks on the "Upload" button on the IDE toolbar or uses
-[`arduino-cli upload`](commands/arduino-cli_upload.md). Arduino uses the term "upload" for the process of transferring a
+[`ptsolns-cli upload`](commands/ptsolns-cli_upload.md). Arduino uses the term "upload" for the process of transferring a
 program to the Arduino board.
 
 The **upload.tool.<protocol_name\>** property determines the tool to be used for upload. A specific
@@ -1263,7 +1263,7 @@ This is a really long label that ideally must nev…
 #### Upload verification
 
 Upload verification can be enabled via the Arduino IDE's **File > Preferences > Verify code after upload** or
-`arduino-cli upload --verify`. This uses a system similar to the [verbose parameter](#verbose-parameter).
+`ptsolns-cli upload --verify`. This uses a system similar to the [verbose parameter](#verbose-parameter).
 
 **tools.TOOL_ID.ACTION.params.verify** defines the value of the **ACTION.verify** property when verification is enabled
 and **tools.TOOL_ID.ACTION.params.noverify** the value when verification is disabled.
@@ -1307,7 +1307,7 @@ To let the Arduino development software perform these steps, two board propertie
   Additionally, after the upload is complete, the IDE again waits for a new port to appear (or the originally selected
   port to be present).
 
-Note that the IDE implementation of this 1200 bps touch has some peculiarities, and the newer `arduino-cli`
+Note that the IDE implementation of this 1200 bps touch has some peculiarities, and the newer `ptsolns-cli`
 implementation also seems different (does not wait for the port after the reset, which is probably only needed in the
 IDE to prevent opening the wrong port on the serial monitor, and does not have a shorter timeout when the port never
 disappears).
@@ -1321,7 +1321,7 @@ support uploading via programmer.
 ### Serial port
 
 The full path (e.g., `/dev/ttyACM0`) of the port selected via the IDE or
-[`arduino-cli upload`](commands/arduino-cli_upload.md)'s `--port` option is available as a configuration property
+[`ptsolns-cli upload`](commands/ptsolns-cli_upload.md)'s `--port` option is available as a configuration property
 **{upload.port.address}**.
 
 The file component of the port's path (e.g., `ttyACM0`) is available as the configuration property
@@ -1334,7 +1334,7 @@ available only if protocol in use is **serial**.
 ### Upload using an external programmer
 
 The `program` action is triggered via the **Sketch > Upload Using Programmer** feature of the IDEs or
-[`arduino-cli upload --programmer <programmer ID>`](commands/arduino-cli_upload.md). This action is used to transfer a
+[`ptsolns-cli upload --programmer <programmer ID>`](commands/ptsolns-cli_upload.md). This action is used to transfer a
 compiled sketch to a board using an external programmer.
 
 The **program.tool** property determines the tool to be used for this action. This property is typically defined for
@@ -1373,7 +1373,7 @@ other than the Arduino IDE, the handling of properties is the same as when doing
 ### Burn Bootloader
 
 The `erase` and `bootloader` actions are triggered via the **Tools > Burn Bootloader** feature of the Arduino IDE or
-[`arduino-cli burn-bootloader`](commands/arduino-cli_burn-bootloader.md). This action is used to flash a bootloader to
+[`ptsolns-cli burn-bootloader`](commands/ptsolns-cli_burn-bootloader.md). This action is used to flash a bootloader to
 the board.
 
 "Burn Bootloader" is unique in that it uses two actions, which are executed in sequence:
@@ -1408,7 +1408,7 @@ leonardo.bootloader.tool=avrdude
 ```
 
 When using the Arduino IDE, if the board uses a
-[core reference](https://arduino.github.io/arduino-cli/dev/platform-specification/#core-reference), the platform.txt of
+[core reference](https://arduino.github.io/ptsolns-cli/dev/platform-specification/#core-reference), the platform.txt of
 the [core platform](#platform-terminology) is not used at all in defining the recipes for `erase` and `bootloader`
 actions. When using Arduino development software other than the Arduino IDE, the handling of properties from the core
 platform's platform.txt is done as usual.
@@ -1418,7 +1418,7 @@ platform's platform.txt is done as usual.
 Starting from Arduino CLI 0.9.0 / Arduino IDE 2.x, sketch debugging support is available for platforms.
 
 The debug action is triggered when the user clicks the Debug button in the Arduino IDE or runs the
-[`arduino-cli debug`](commands/arduino-cli_debug.md) command.
+[`ptsolns-cli debug`](commands/ptsolns-cli_debug.md) command.
 
 Since opening a debug session requires the orchestration of numerous tools, the CLI/IDE will take care of that duty:
 differently from the upload actions, there is no need for the platform to provide debug recipes, the only requirement is
@@ -1590,7 +1590,7 @@ debugging. For this reason, it may be helpful to use different compiler flags wh
 debugger. The flags for use when compiling for debugging can be defined via the **compiler.optimization_flags.debug**
 property, and those for normal use via the **compiler.optimization_flags.release** property. The
 **compiler.optimization_flags** property will be defined according to one or the other depending on the Arduino Pro
-IDE's **Sketch > Optimize for Debugging** setting or [`arduino-cli compile`](commands/arduino-cli_compile.md)'s
+IDE's **Sketch > Optimize for Debugging** setting or [`ptsolns-cli compile`](commands/ptsolns-cli_compile.md)'s
 `--optimize-for-debug` option.
 
 ## Custom board options
@@ -1811,7 +1811,7 @@ software is in use:
 - **Arduino IDE 2.x**: runs the script for any installed platform.
 - **Arduino CLI**: (since 0.12.0) runs the script for any installed platform when Arduino CLI is in "interactive" mode.
   This behavior
-  [can be configured](https://arduino.github.io/arduino-cli/latest/commands/arduino-cli_core_install/#options)
+  [can be configured](https://arduino.github.io/ptsolns-cli/latest/commands/ptsolns-cli_core_install/#options)
 
 ## Pre-uninstall script
 
@@ -1829,4 +1829,4 @@ The circumstances under which the pre-uninstall script will run are different de
 software is in use:
 
 - **Arduino CLI**: runs the script for any installed platform when Arduino CLI is in "interactive" mode. This behavior
-  [can be configured](https://arduino.github.io/arduino-cli/latest/commands/arduino-cli_core_install/#options)
+  [can be configured](https://arduino.github.io/ptsolns-cli/latest/commands/ptsolns-cli_core_install/#options)

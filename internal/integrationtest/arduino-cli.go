@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -30,7 +30,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/fatih/color"
 	"github.com/stretchr/testify/require"
@@ -43,15 +43,15 @@ func FindRepositoryRootPath(t *testing.T) *paths.Path {
 	repoRootPath, err := paths.Getwd()
 	require.NoError(t, err)
 	for !repoRootPath.Join(".git").Exist() {
-		require.Contains(t, repoRootPath.String(), "arduino-cli", "Error searching for repository root path")
+		require.Contains(t, repoRootPath.String(), "ptsolns-cli", "Error searching for repository root path")
 		repoRootPath = repoRootPath.Parent()
 	}
 	return repoRootPath
 }
 
-// FindArduinoCLIPath returns the path to the arduino-cli executable
+// FindArduinoCLIPath returns the path to the ptsolns-cli executable
 func FindArduinoCLIPath(t *testing.T) *paths.Path {
-	return FindRepositoryRootPath(t).Join("arduino-cli")
+	return FindRepositoryRootPath(t).Join("ptsolns-cli")
 }
 
 // CreateArduinoCLIWithEnvironment performs the minimum amount of actions
@@ -98,7 +98,7 @@ func NewArduinoCliWithinEnvironment(env *Environment, config *ArduinoCLIConfig) 
 		t:             require.New(env.T()),
 		dataDir:       env.RootDir().Join("A"),
 		sketchbookDir: env.RootDir().Join("Arduino"),
-		stagingDir:    env.RootDir().Join("Arduino15/staging"),
+		stagingDir:    env.RootDir().Join("ptsolns15/staging"),
 		workingDir:    env.RootDir(),
 	}
 	if config.UseSharedStagingFolder {
@@ -120,14 +120,14 @@ func NewArduinoCliWithinEnvironment(env *Environment, config *ArduinoCLIConfig) 
 	return cli
 }
 
-// CreateEnvForDaemon performs the minimum required operations to start the arduino-cli daemon.
+// CreateEnvForDaemon performs the minimum required operations to start the ptsolns-cli daemon.
 // It returns a testsuite.Environment and an ArduinoCLI client to perform the integration tests.
 // The Environment must be disposed by calling the CleanUp method via defer.
 func CreateEnvForDaemon(t *testing.T) (*Environment, *ArduinoCLI) {
 	env := NewEnvironment(t)
 
 	cli := NewArduinoCliWithinEnvironment(env, &ArduinoCLIConfig{
-		ArduinoCLIPath:         FindRepositoryRootPath(t).Join("arduino-cli"),
+		ArduinoCLIPath:         FindRepositoryRootPath(t).Join("ptsolns-cli"),
 		UseSharedStagingFolder: true,
 	})
 
@@ -186,12 +186,12 @@ func (cli *ArduinoCLI) CopySketch(sketchName string) *paths.Path {
 	return sketchPath
 }
 
-// Run executes the given arduino-cli command and returns the output.
+// Run executes the given ptsolns-cli command and returns the output.
 func (cli *ArduinoCLI) Run(args ...string) ([]byte, []byte, error) {
 	return cli.RunWithCustomEnv(cli.cliEnvVars, args...)
 }
 
-// RunWithContext executes the given arduino-cli command with the given context and returns the output.
+// RunWithContext executes the given ptsolns-cli command with the given context and returns the output.
 // If the context is canceled, the command is killed.
 func (cli *ArduinoCLI) RunWithContext(ctx context.Context, args ...string) ([]byte, []byte, error) {
 	return cli.RunWithCustomEnvContext(ctx, cli.cliEnvVars, args...)
@@ -327,29 +327,29 @@ func (cli *ArduinoCLI) InstallMockedAvrdude(t *testing.T) {
 	}
 }
 
-// RunWithCustomEnv executes the given arduino-cli command with the given custom env and returns the output.
+// RunWithCustomEnv executes the given ptsolns-cli command with the given custom env and returns the output.
 func (cli *ArduinoCLI) RunWithCustomEnv(env map[string]string, args ...string) ([]byte, []byte, error) {
 	return cli.RunWithCustomEnvContext(context.Background(), env, args...)
 }
 
-// RunWithCustomEnv executes the given arduino-cli command with the given custom env and returns the output.
+// RunWithCustomEnv executes the given ptsolns-cli command with the given custom env and returns the output.
 func (cli *ArduinoCLI) RunWithCustomEnvContext(ctx context.Context, env map[string]string, args ...string) ([]byte, []byte, error) {
 	var stdoutBuf, stderrBuf bytes.Buffer
 	err := cli.run(ctx, &stdoutBuf, &stderrBuf, nil, env, args...)
 
 	errBuf := stderrBuf.Bytes()
-	cli.t.NotContains(string(errBuf), "panic: runtime error:", "arduino-cli panicked")
+	cli.t.NotContains(string(errBuf), "panic: runtime error:", "ptsolns-cli panicked")
 
 	return stdoutBuf.Bytes(), errBuf, err
 }
 
-// RunWithCustomInput executes the given arduino-cli command pushing the given input stream and returns the output.
+// RunWithCustomInput executes the given ptsolns-cli command pushing the given input stream and returns the output.
 func (cli *ArduinoCLI) RunWithCustomInput(in io.Reader, args ...string) ([]byte, []byte, error) {
 	var stdoutBuf, stderrBuf bytes.Buffer
 	err := cli.run(context.Background(), &stdoutBuf, &stderrBuf, in, cli.cliEnvVars, args...)
 
 	errBuf := stderrBuf.Bytes()
-	cli.t.NotContains(string(errBuf), "panic: runtime error:", "arduino-cli panicked")
+	cli.t.NotContains(string(errBuf), "panic: runtime error:", "ptsolns-cli panicked")
 
 	return stdoutBuf.Bytes(), errBuf, err
 }

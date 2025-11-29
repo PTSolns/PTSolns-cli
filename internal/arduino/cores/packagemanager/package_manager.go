@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -27,13 +27,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/arduino/arduino-cli/commands/cmderrors"
-	"github.com/arduino/arduino-cli/internal/arduino/cores"
-	"github.com/arduino/arduino-cli/internal/arduino/cores/packageindex"
-	"github.com/arduino/arduino-cli/internal/arduino/discovery/discoverymanager"
-	"github.com/arduino/arduino-cli/internal/arduino/sketch"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	"github.com/arduino/arduino-cli/pkg/fqbn"
+	"github.com/arduino/ptsolns-cli/commands/cmderrors"
+	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
+	"github.com/arduino/ptsolns-cli/internal/arduino/cores/packageindex"
+	"github.com/arduino/ptsolns-cli/internal/arduino/discovery/discoverymanager"
+	"github.com/arduino/ptsolns-cli/internal/arduino/sketch"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/pkg/fqbn"
 	paths "github.com/arduino/go-paths-helper"
 	properties "github.com/arduino/go-properties-orderedmap"
 	"github.com/arduino/go-timeutils"
@@ -208,7 +208,7 @@ func (pme *Explorer) GetProfile() *sketch.Profile {
 }
 
 // GetEnvVarsForSpawnedProcess produces a set of environment variables that
-// must be sent to all processes spawned from the arduino-cli.
+// must be sent to all processes spawned from the ptsolns-cli.
 func (pme *Explorer) GetEnvVarsForSpawnedProcess() []string {
 	if pme == nil {
 		return nil

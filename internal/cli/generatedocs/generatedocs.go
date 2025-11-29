@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -19,8 +19,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
@@ -58,7 +58,7 @@ func NewCommand() *cobra.Command {
 }
 
 func generateBashCompletions(cmd *cobra.Command, args []string) {
-	logrus.Info("Executing `arduino-cli generate-docs`")
+	logrus.Info("Executing `ptsolns-cli generate-docs`")
 	if outputDir == "" {
 		outputDir = "docs/bash_completions"
 	}

@@ -31,7 +31,7 @@ some examples:
 
 - `HELLO 1 "Arduino IDE 1.8.13"`
 
-- `HELLO 1 "arduino-cli 1.2.3"`
+- `HELLO 1 "ptsolns-cli 1.2.3"`
 
 the response to the command is:
 

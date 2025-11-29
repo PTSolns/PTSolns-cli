@@ -93,7 +93,7 @@ This is an optional file named `sketch.yaml`, located in the root folder of the 
 Inside the sketch project file the user can define one or more "profiles": each profile is a description of all the
 resources needed to build the sketch (platform and libraries each pinned to a specific version).
 
-The sketch project file is also used in the [`arduino-cli board attach`](commands/arduino-cli_board_attach.md) command
+The sketch project file is also used in the [`ptsolns-cli board attach`](commands/ptsolns-cli_board_attach.md) command
 to store the currently selected board and port.
 
 For more information see the [sketch project file](sketch-project-file.md) documentation.

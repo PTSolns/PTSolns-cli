@@ -1,4 +1,4 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (https://www.arduino.cc/)
 //
@@ -75,7 +75,7 @@ type UploadRequest struct {
 	// or in any case fields that can be customized by the user at upload time
 	// and cannot be known previously.
 	// For more info:
-	// https://arduino.github.io/arduino-cli/latest/platform-specification/#user-provided-fields
+	// https://arduino.github.io/ptsolns-cli/latest/platform-specification/#user-provided-fields
 	UserFields map[string]string `protobuf:"bytes,11,rep,name=user_fields,json=userFields,proto3" json:"user_fields,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// List of custom upload properties.
 	UploadProperties []string `protobuf:"bytes,12,rep,name=upload_properties,json=uploadProperties,proto3" json:"upload_properties,omitempty"`
@@ -419,7 +419,7 @@ type UploadUsingProgrammerRequest struct {
 	// or in any case fields that can be customized by the user at upload time
 	// and cannot be known previously.
 	// For more info:
-	// https://arduino.github.io/arduino-cli/latest/platform-specification/#user-provided-fields
+	// https://arduino.github.io/ptsolns-cli/latest/platform-specification/#user-provided-fields
 	UserFields map[string]string `protobuf:"bytes,11,rep,name=user_fields,json=userFields,proto3" json:"user_fields,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// List of custom upload properties.
 	UploadProperties []string `protobuf:"bytes,12,rep,name=upload_properties,json=uploadProperties,proto3" json:"upload_properties,omitempty"`
@@ -649,7 +649,7 @@ type BurnBootloaderRequest struct {
 	// or in any case fields that can be customized by the user at upload time
 	// and cannot be known previously.
 	// For more info:
-	// https://arduino.github.io/arduino-cli/latest/platform-specification/#user-provided-fields
+	// https://arduino.github.io/ptsolns-cli/latest/platform-specification/#user-provided-fields
 	UserFields map[string]string `protobuf:"bytes,11,rep,name=user_fields,json=userFields,proto3" json:"user_fields,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// List of custom upload properties.
 	UploadProperties []string `protobuf:"bytes,12,rep,name=upload_properties,json=uploadProperties,proto3" json:"upload_properties,omitempty"`

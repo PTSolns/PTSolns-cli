@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -27,8 +27,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/arduino-cli/internal/arduino/builder/cpp"
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
@@ -521,10 +521,10 @@ func compileWithExportBinariesConfig(t *testing.T, env *integrationtest.Environm
 	envVar["ARDUINO_SKETCH_ALWAYS_EXPORT_BINARIES"] = "true"
 	_, _, err = cli.RunWithCustomEnv(envVar, "config", "init", "--dest-dir", ".")
 	require.NoError(t, err)
-	defer cli.WorkingDir().Join("arduino-cli.yaml").Remove()
+	defer cli.WorkingDir().Join("ptsolns-cli.yaml").Remove()
 
-	// Test if arduino-cli config file written in the previous run has the `always_export_binaries` flag set.
-	stdout, _, err := cli.Run("config", "dump", "--json", "--config-file", "arduino-cli.yaml")
+	// Test if ptsolns-cli config file written in the previous run has the `always_export_binaries` flag set.
+	stdout, _, err := cli.Run("config", "dump", "--json", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 	requirejson.Contains(t, stdout, `
 		{
@@ -536,7 +536,7 @@ func compileWithExportBinariesConfig(t *testing.T, env *integrationtest.Environm
 		}`)
 
 	// Test compilation with export binaries env var set
-	_, _, err = cli.Run("compile", "-b", fqbn, "--config-file", "arduino-cli.yaml", sketchPath.String())
+	_, _, err = cli.Run("compile", "-b", fqbn, "--config-file", "ptsolns-cli.yaml", sketchPath.String())
 	require.NoError(t, err)
 	require.DirExists(t, sketchPath.Join("build").String())
 
@@ -561,9 +561,9 @@ func compileWithInvalidUrl(t *testing.T, env *integrationtest.Environment, cli *
 
 	_, _, err = cli.Run("config", "init", "--dest-dir", ".", "--additional-urls", "https://example.com/package_example_index.json")
 	require.NoError(t, err)
-	defer cli.WorkingDir().Join("arduino-cli.yaml").Remove()
+	defer cli.WorkingDir().Join("ptsolns-cli.yaml").Remove()
 
-	_, stderr, err := cli.Run("compile", "-b", fqbn, "--config-file", "arduino-cli.yaml", sketchPath.String())
+	_, stderr, err := cli.Run("compile", "-b", fqbn, "--config-file", "ptsolns-cli.yaml", sketchPath.String())
 	require.NoError(t, err)
 	require.Contains(t, string(stderr), "Error initializing instance: Loading index file: loading json index file")
 	expectedIndexfile := cli.DataDir().Join("package_example_index.json")
@@ -772,7 +772,7 @@ func TestCompileWithoutPrecompiledLibraries(t *testing.T) {
 	require.NoError(t, err)
 	//	_, _, err = cli.Run("core", "install", "adafruit:samd@1.6.4", "--additional-urls="+url)
 	//	require.NoError(t, err)
-	//	// should work on adafruit too after https://github.com/arduino/arduino-cli/pull/1134
+	//	// should work on adafruit too after https://github.com/arduino/ptsolns-cli/pull/1134
 	//	_, _, err = cli.Run("compile", "-b", "adafruit:samd:adafruit_feather_m4", sketchPath.String())
 	//	require.NoError(t, err)
 
@@ -811,10 +811,10 @@ func TestCompileWithCustomLibraries(t *testing.T) {
 	require.NoError(t, err)
 
 	// Init the environment explicitly
-	_, _, err = cli.Run("update", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("update", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
-	_, _, err = cli.Run("core", "install", "esp8266:esp8266", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("core", "install", "esp8266:esp8266", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
 	sketchName := "sketch_with_multiple_custom_libraries"
@@ -827,7 +827,7 @@ func TestCompileWithCustomLibraries(t *testing.T) {
 		firstLib.String(),
 		"--libraries", secondLib.String(),
 		"-b", fqbn,
-		"--config-file", "arduino-cli.yaml",
+		"--config-file", "ptsolns-cli.yaml",
 		sketchPath.String())
 	require.NoError(t, err)
 }
@@ -842,31 +842,31 @@ func TestCompileWithArchivesAndLongPaths(t *testing.T) {
 	require.NoError(t, err)
 
 	// Init the environment explicitly
-	_, _, err = cli.Run("update", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("update", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
 	// Install core to compile
-	_, _, err = cli.Run("core", "install", "esp8266:esp8266@2.7.4", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("core", "install", "esp8266:esp8266@2.7.4", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
 	// Install test library
 	// (We must use ArduinoIOTCloud@2.4.1 because it has a folder with a lot of files
 	// that will trigger the creation of an objs.a archive)
-	_, _, err = cli.Run("lib", "install", "ArduinoIoTCloud@2.4.1", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("lib", "install", "ArduinoIoTCloud@2.4.1", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
-	stdout, _, err := cli.Run("lib", "examples", "ArduinoIoTCloud", "--json", "--config-file", "arduino-cli.yaml")
+	stdout, _, err := cli.Run("lib", "examples", "ArduinoIoTCloud", "--json", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 	libOutput := strings.Trim(requirejson.Parse(t, stdout).Query(`.examples.[0].library.install_dir`).String(), `"`)
 	sketchPath := paths.New(libOutput)
 	sketchPath = sketchPath.Join("examples", "ArduinoIoTCloud-Advanced")
 
 	t.Run("CheckCachingOfFolderArchives", func(t *testing.T) {
-		_, _, err = cli.Run("compile", "-b", "esp8266:esp8266:huzzah", sketchPath.String(), "--config-file", "arduino-cli.yaml")
+		_, _, err = cli.Run("compile", "-b", "esp8266:esp8266:huzzah", sketchPath.String(), "--config-file", "ptsolns-cli.yaml")
 		require.NoError(t, err)
 
 		// Run compile again and check if the archive is re-used (cached)
-		out, _, err := cli.Run("compile", "-b", "esp8266:esp8266:huzzah", sketchPath.String(), "--config-file", "arduino-cli.yaml", "-v")
+		out, _, err := cli.Run("compile", "-b", "esp8266:esp8266:huzzah", sketchPath.String(), "--config-file", "ptsolns-cli.yaml", "-v")
 		require.NoError(t, err)
 		require.True(t, regexp.MustCompile(`(?m)^Using previously compiled file:.*libraries.ArduinoIoTCloud.objs\.a$`).Match(out))
 	})
@@ -885,7 +885,7 @@ func TestCompileWithPrecompileLibrary(t *testing.T) {
 
 	// Install precompiled library
 	// For more information see:
-	// https://arduino.github.io/arduino-cli/latest/library-specification/#precompiled-binaries
+	// https://arduino.github.io/ptsolns-cli/latest/library-specification/#precompiled-binaries
 	_, _, err = cli.Run("lib", "install", "BSEC Software Library@1.5.1474")
 	require.NoError(t, err)
 	sketchFolder := cli.SketchbookDir().Join("libraries", "BSEC_Software_Library", "examples", "basic")
@@ -915,22 +915,22 @@ func TestCompileWithFullyPrecompiledLibrary(t *testing.T) {
 
 	// Install fully precompiled library
 	// For more information see:
-	// https://arduino.github.io/arduino-cli/latest/library-specification/#precompiled-binaries
+	// https://arduino.github.io/ptsolns-cli/latest/library-specification/#precompiled-binaries
 	wd, err := paths.Getwd()
 	require.NoError(t, err)
 	_, _, err = cli.Run("lib", "install",
 		"--zip-path", wd.Parent().Join("testdata", "Arduino_TensorFlowLite-2.1.0-ALPHA-precompiled.zip").String(),
-		"--config-file", "arduino-cli.yaml",
+		"--config-file", "ptsolns-cli.yaml",
 	)
 	require.NoError(t, err)
 	sketchFolder := cli.SketchbookDir().Join("libraries", "Arduino_TensorFlowLite", "examples", "hello_world")
 
 	// Install example dependency
-	_, _, err = cli.Run("lib", "install", "Arduino_LSM9DS1", "--config-file", "arduino-cli.yaml")
+	_, _, err = cli.Run("lib", "install", "Arduino_LSM9DS1", "--config-file", "ptsolns-cli.yaml")
 	require.NoError(t, err)
 
 	// Compile and verify dependencies detection for fully precompiled library is skipped
-	stdout, _, err := cli.Run("compile", "-b", fqbn, "--config-file", "arduino-cli.yaml", sketchFolder.String(), "-v")
+	stdout, _, err := cli.Run("compile", "-b", fqbn, "--config-file", "ptsolns-cli.yaml", sketchFolder.String(), "-v")
 	require.NoError(t, err)
 	require.Contains(t, string(stdout), "Skipping dependencies detection for precompiled library Arduino_TensorFlowLite")
 }
@@ -1171,7 +1171,7 @@ func compileWithFakeSecureBootCore(t *testing.T, env *integrationtest.Environmen
 }
 
 func preprocessFlagDoNotMessUpWithOutput(t *testing.T, env *integrationtest.Environment, cli *integrationtest.ArduinoCLI) {
-	// https://github.com/arduino/arduino-cli/issues/2150
+	// https://github.com/arduino/ptsolns-cli/issues/2150
 
 	// go test -v ./internal/integrationtest/compile_1 --run=TestCompile$/PreprocessFlagDoNotMessUpWithOutput
 
@@ -1263,7 +1263,7 @@ func buildWithCustomBuildPath(t *testing.T, env *integrationtest.Environment, cl
 
 		// Run again a couple of times with a different build path, to verify that old build
 		// path is not copied back in the sketch build recursively.
-		// https://github.com/arduino/arduino-cli/issues/2266
+		// https://github.com/arduino/ptsolns-cli/issues/2266
 		secondBuildPath := sketchPath.Join("build2")
 		_, _, err = cli.Run("compile", "-b", "arduino:avr:uno", "--build-path", secondBuildPath.String(), sketchPath.String())
 		require.NoError(t, err)

@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -28,9 +28,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/arduino-cli/commands/cmderrors"
-	"github.com/arduino/arduino-cli/internal/integrationtest"
-	"github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/commands/cmderrors"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -39,7 +39,7 @@ import (
 )
 
 func TestArduinoCliDaemon(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/pull/1804
+	// See: https://github.com/arduino/ptsolns-cli/pull/1804
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()
@@ -116,7 +116,7 @@ func TestArduinoCliDaemon(t *testing.T) {
 }
 
 func TestDaemonAutoUpdateIndexOnFirstInit(t *testing.T) {
-	// https://github.com/arduino/arduino-cli/issues/1529
+	// https://github.com/arduino/ptsolns-cli/issues/1529
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()
@@ -133,8 +133,8 @@ func TestDaemonAutoUpdateIndexOnFirstInit(t *testing.T) {
 }
 
 func TestDaemonCompileOptions(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/issues/1614
-	// See: https://github.com/arduino/arduino-cli/pull/1820
+	// See: https://github.com/arduino/ptsolns-cli/issues/1614
+	// See: https://github.com/arduino/ptsolns-cli/pull/1820
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()
@@ -204,13 +204,13 @@ func TestDaemonCompileOptions(t *testing.T) {
 		}
 	}
 
-	// https://github.com/arduino/arduino-cli/issues/2016
-	// https://github.com/arduino/arduino-cli/issues/2711
+	// https://github.com/arduino/ptsolns-cli/issues/2016
+	// https://github.com/arduino/ptsolns-cli/issues/2711
 	analyzer.Check(t)
 }
 
 func TestDaemonCompileAfterFailedLibInstall(t *testing.T) {
-	// See: https://github.com/arduino/arduino-cli/issues/1812
+	// See: https://github.com/arduino/ptsolns-cli/issues/1812
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()
@@ -595,7 +595,7 @@ func TestDaemonUserAgent(t *testing.T) {
 		require.Contains(t, userAgent, "grpc-go")
 		// Depends on how we built the client we may have git-snapshot or 0.0.0-git in dev releases
 		require.True(t,
-			strings.Contains(userAgent, "arduino-cli/git-snapshot") || strings.Contains(userAgent, "arduino-cli/0.0.0-git"),
+			strings.Contains(userAgent, "ptsolns-cli/git-snapshot") || strings.Contains(userAgent, "ptsolns-cli/0.0.0-git"),
 			"invalid user-agent value: "+userAgent,
 		)
 
@@ -648,7 +648,7 @@ func TestDaemonUserAgent(t *testing.T) {
 }
 
 func TestDaemonCreateSketch(t *testing.T) {
-	// https://github.com/arduino/arduino-cli/issues/2861
+	// https://github.com/arduino/ptsolns-cli/issues/2861
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()

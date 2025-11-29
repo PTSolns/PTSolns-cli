@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -15,7 +15,7 @@
 
 // Package monitor provides a client for Pluggable Monitors.
 // Documentation is available here:
-// https://arduino.github.io/arduino-cli/latest/pluggable-monitor-specification/
+// https://arduino.github.io/ptsolns-cli/latest/pluggable-monitor-specification/
 package monitor
 
 import (
@@ -27,8 +27,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/arduino-cli/internal/i18n"
-	"github.com/arduino/arduino-cli/internal/version"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/version"
 	"github.com/arduino/go-paths-helper"
 	"github.com/sirupsen/logrus"
 )
@@ -226,7 +226,7 @@ func (mon *PluggableMonitor) Run() (err error) {
 		}
 	}()
 
-	if err = mon.sendCommand("HELLO 1 \"arduino-cli " + version.VersionInfo.VersionString + "\"\n"); err != nil {
+	if err = mon.sendCommand("HELLO 1 \"ptsolns-cli " + version.VersionInfo.VersionString + "\"\n"); err != nil {
 		return err
 	}
 	if msg, err := mon.waitMessage(time.Second*10, "hello"); err != nil {

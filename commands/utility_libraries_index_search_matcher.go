@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2023 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -18,8 +18,8 @@ package commands
 import (
 	"strings"
 
-	"github.com/arduino/arduino-cli/internal/arduino/libraries/librariesindex"
-	"github.com/arduino/arduino-cli/internal/arduino/utils"
+	"github.com/arduino/ptsolns-cli/internal/arduino/libraries/librariesindex"
+	"github.com/arduino/ptsolns-cli/internal/arduino/utils"
 )
 
 // matcherTokensFromQueryString parses the query string into tokens of interest

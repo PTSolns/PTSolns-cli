@@ -8,7 +8,7 @@ The Arduino CLI is available as a Homebrew formula since version `0.5.0`:
 
 ```sh
 brew update
-brew install arduino-cli
+brew install ptsolns-cli
 ```
 
 ### Command line completion
@@ -24,16 +24,16 @@ available, use the ["Download" installation option](#download).
 This script will install the latest version of Arduino CLI to `$PWD/bin`:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/arduino/ptsolns-cli/master/install.sh | sh
 ```
 
 If you want to target a different directory, for example `~/local/bin`, set the `BINDIR` environment variable like this:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/local/bin sh
+curl -fsSL https://raw.githubusercontent.com/arduino/ptsolns-cli/master/install.sh | BINDIR=~/local/bin sh
 ```
 
-If you would like to use the `arduino-cli` command from any location, install Arduino CLI to a directory already in your
+If you would like to use the `ptsolns-cli` command from any location, install Arduino CLI to a directory already in your
 [`PATH`](https://en.wikipedia.org/wiki/PATH%5F%28variable%29) or add the Arduino CLI installation path to your `PATH`
 environment variable.
 
@@ -41,7 +41,7 @@ If you want to download a specific Arduino CLI version, for example `0.9.0` or `
 as a parameter like this:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh -s 0.9.0
+curl -fsSL https://raw.githubusercontent.com/arduino/ptsolns-cli/master/install.sh | sh -s 0.9.0
 ```
 
 Arduino CLI checks for new releases every 24 hours. If you don't like this behaviour you can disable it by setting the
@@ -52,7 +52,7 @@ Arduino CLI checks for new releases every 24 hours. If you don't like this behav
 
 Pre-built binaries for all the supported platforms are available for download from the links below.
 
-If you would like to use the `arduino-cli` command from any location, extract the downloaded file to a directory already
+If you would like to use the `ptsolns-cli` command from any location, extract the downloaded file to a directory already
 in your [`PATH`](https://en.wikipedia.org/wiki/PATH%5F%28variable%29) or add the Arduino CLI installation path to your
 `PATH` environment variable.
 
@@ -68,20 +68,20 @@ in your [`PATH`](https://en.wikipedia.org/wiki/PATH%5F%28variable%29) or add the
 | macOS       |                      | [64 bit][macos64]      |
 | macOS ARM   |                      | [64 bit][macosarm64]   |
 
-[linux64]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz
-[linux32]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_32bit.tar.gz
-[linuxarm64]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARM64.tar.gz
-[linuxarm32]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARMv7.tar.gz
-[linuxarmv6]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARMv6.tar.gz
-[windows64]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Windows_64bit.zip
-[windows32]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Windows_32bit.zip
-[windowsmsi64]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Windows_64bit.msi
-[macos64]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_macOS_64bit.tar.gz
-[macosarm64]: https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_macOS_ARM64.tar.gz
+[linux64]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Linux_64bit.tar.gz
+[linux32]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Linux_32bit.tar.gz
+[linuxarm64]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Linux_ARM64.tar.gz
+[linuxarm32]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Linux_ARMv7.tar.gz
+[linuxarmv6]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Linux_ARMv6.tar.gz
+[windows64]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Windows_64bit.zip
+[windows32]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Windows_32bit.zip
+[windowsmsi64]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Windows_64bit.msi
+[macos64]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_macOS_64bit.tar.gz
+[macosarm64]: https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_macOS_ARM64.tar.gz
 
 ### Previous versions
 
-These are available from the "Assets" sections on the [releases page](https://github.com/arduino/arduino-cli/releases).
+These are available from the "Assets" sections on the [releases page](https://github.com/arduino/ptsolns-cli/releases).
 
 ### Nightly builds
 
@@ -98,22 +98,22 @@ to get the latest nightly build available for the supported platform, use the fo
 | macOS       |                              | [64 bit][macos64-nightly]      |
 | macOS ARM   |                              | [64 bit][macosarm64-nightly]   |
 
-[linux64-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_Linux_64bit.tar.gz
-[linux32-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_Linux_32bit.tar.gz
-[linuxarm64-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_Linux_ARM64.tar.gz
-[linuxarm32-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_Linux_ARMv7.tar.gz
-[linuxarmv6-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_Linux_ARMv6.tar.gz
-[windows64-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_Windows_64bit.zip
-[windows32-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_Windows_32bit.zip
-[windowsmsi64-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_Windows_64bit.msi
-[macos64-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_macOS_64bit.tar.gz
-[macosarm64-nightly]: https://downloads.arduino.cc/arduino-cli/nightly/arduino-cli_nightly-latest_macOS_ARM64.tar.gz
+[linux64-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_Linux_64bit.tar.gz
+[linux32-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_Linux_32bit.tar.gz
+[linuxarm64-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_Linux_ARM64.tar.gz
+[linuxarm32-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_Linux_ARMv7.tar.gz
+[linuxarmv6-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_Linux_ARMv6.tar.gz
+[windows64-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_Windows_64bit.zip
+[windows32-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_Windows_32bit.zip
+[windowsmsi64-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_Windows_64bit.msi
+[macos64-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_macOS_64bit.tar.gz
+[macosarm64-nightly]: https://downloads.arduino.cc/ptsolns-cli/nightly/ptsolns-cli_nightly-latest_macOS_ARM64.tar.gz
 
 > These links return a `302: Found` response, redirecting to latest generated builds by replacing `latest` with the
 > latest available build date, using the format YYYYMMDD (i.e for 2019-08-06 `latest` is replaced with `20190806` )
 
 Checksums for the nightly builds are available at
-`https://downloads.arduino.cc/arduino-cli/nightly/nightly-<DATE>-checksums.txt`
+`https://downloads.arduino.cc/ptsolns-cli/nightly/nightly-<DATE>-checksums.txt`
 
 ## Build from source
 

@@ -1,9 +1,9 @@
 /debug
-/arduino-cli*
+/ptsolns-cli*
 /main
 /.vscode/
 /cmd/formatter/debug.test
-/arduino-cli.yaml
+/ptsolns-cli.yaml
 /wiki
 .idea
 coverage_*.txt
@@ -28,8 +28,8 @@ __debug_bin*
 # Mkdocs
 /site/
 /public/
-/internal/docsgen/arduino-cli
-/internal/docsgen/arduino-cli.exe
+/internal/docsgen/ptsolns-cli
+/internal/docsgen/ptsolns-cli.exe
 /docs/rpc/*.md
 /docs/commands/*.md
 /docs/configuration.schema.json

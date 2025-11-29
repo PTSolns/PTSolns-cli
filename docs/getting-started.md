@@ -2,18 +2,18 @@ Arduino CLI provides all the features you can find in the Arduino IDE. Let's see
 
 ## Before you start
 
-`arduino-cli` is a container of commands and each command has its own dedicated help text that can be shown with the
+`ptsolns-cli` is a container of commands and each command has its own dedicated help text that can be shown with the
 `help` command like this:
 
 ```console
-$ arduino-cli help core
+$ ptsolns-cli help core
 Arduino core operations.
 
 Usage:
-  arduino-cli core [command]
+  ptsolns-cli core [command]
 
 Examples:
-  arduino-cli core update-index
+  ptsolns-cli core update-index
 
 Available Commands:
   download     Downloads one or more cores and corresponding tool dependencies.
@@ -37,7 +37,7 @@ Global Flags:
       --log-level string          Messages with this level and above will be logged. Valid levels are: trace, debug, info, warn, error, fatal, panic
       --no-color                  Disable colored output.
 
-Use "arduino-cli core [command] --help" for more information about a command.
+Use "ptsolns-cli core [command] --help" for more information about a command.
 ```
 
 ## Create a configuration file
@@ -47,11 +47,11 @@ possible functionality. However, having one can spare you a lot of typing when i
 create it with:
 
 ```sh
-$ arduino-cli config init
-Config file written: /home/luca/.arduino15/arduino-cli.yaml
+$ ptsolns-cli config init
+Config file written: /home/luca/.ptsolns15/ptsolns-cli.yaml
 ```
 
-If you inspect the contents of `arduino-cli.yaml`, you'll find the available options with their respective default
+If you inspect the contents of `ptsolns-cli.yaml`, you'll find the available options with their respective default
 values. For more information, see the [configuration documentation].
 
 ## Create a new sketch
@@ -59,7 +59,7 @@ values. For more information, see the [configuration documentation].
 To create a new sketch named `MyFirstSketch` in the current directory, run the following command:
 
 ```sh
-$ arduino-cli sketch new MyFirstSketch
+$ ptsolns-cli sketch new MyFirstSketch
 Sketch created in: /home/luca/MyFirstSketch
 ```
 
@@ -96,7 +96,7 @@ void loop() {
 The first thing to do upon a fresh install is to update the local cache of available platforms and libraries by running:
 
 ```sh
-$ arduino-cli core update-index
+$ ptsolns-cli core update-index
 Updating index: package_index.json downloaded
 ```
 
@@ -104,7 +104,7 @@ After connecting the board to your PC by using the USB cable, you should be able
 by running:
 
 ```sh
-$ arduino-cli board list
+$ ptsolns-cli board list
 Port         Type              Board Name              FQBN                 Core
 /dev/ttyACM1 Serial Port (USB) Arduino/Genuino MKR1000 arduino:samd:mkr1000 arduino:samd
 ```
@@ -117,7 +117,7 @@ correct FQBN string. When a board is not detected for whatever reason, you can l
 FQBN strings by running the following:
 
 ```sh
-$ arduino-cli board listall mkr
+$ ptsolns-cli board listall mkr
 Board Name              FQBN
 Arduino MKR FOX 1200    arduino:samd:mkrfox1200
 Arduino MKR GSM 1400    arduino:samd:mkrgsm1400
@@ -132,7 +132,7 @@ Arduino/Genuino MKR1000 arduino:samd:mkr1000
 To install the `arduino:samd` platform core, run the following:
 
 ```sh
-$ arduino-cli core install arduino:samd
+$ ptsolns-cli core install arduino:samd
 Downloading tools...
 arduino:arm-none-eabi-gcc@4.8.3-2014q1 downloaded
 arduino:bossac@1.7.0 downloaded
@@ -157,7 +157,7 @@ arduino:arduinoOTA@1.2.0 - Installed
 Now verify we have installed the core properly by running:
 
 ```sh
-$ arduino-cli core list
+$ ptsolns-cli core list
 ID              Installed       Latest  Name
 arduino:samd    1.6.19          1.6.19  Arduino SAMD Boards (32-bits ARM Cortex-M0+)
 ```
@@ -191,13 +191,13 @@ board_manager:
 From now on, commands supporting custom cores will automatically use the additional URL from the configuration file:
 
 ```sh
-$ arduino-cli core update-index
+$ ptsolns-cli core update-index
 Updating index: package_index.json downloaded
 Updating index: package_esp8266com_index.json downloaded
 Updating index: package_nrf52832_index.json
 Updating index: package_index.json downloaded
 
-$ arduino-cli core search esp8266
+$ ptsolns-cli core search esp8266
 ID              Version Name
 esp8266:esp8266 2.5.2   esp8266
 ```
@@ -206,10 +206,10 @@ Alternatively, you can pass a link to the additional package index file with the
 be specified every time and for every command that operates on a 3rd party platform core, for example:
 
 ```sh
-$ arduino-cli  core update-index --additional-urls https://arduino.esp8266.com/stable/package_esp8266com_index.json
+$ ptsolns-cli  core update-index --additional-urls https://arduino.esp8266.com/stable/package_esp8266com_index.json
 Updating index: package_esp8266com_index.json downloaded
 
-$ arduino-cli core search esp8266 --additional-urls https://arduino.esp8266.com/stable/package_esp8266com_index.json
+$ ptsolns-cli core search esp8266 --additional-urls https://arduino.esp8266.com/stable/package_esp8266com_index.json
 ID              Version Name
 esp8266:esp8266 2.5.2   esp8266
 ```
@@ -217,10 +217,10 @@ esp8266:esp8266 2.5.2   esp8266
 The same applies to the additional package index file provided by file paths:
 
 ```sh
-$ arduino-cli  core update-index --additional-urls file:///absolute/path/to/your/package_esp8266com_index.json
+$ ptsolns-cli  core update-index --additional-urls file:///absolute/path/to/your/package_esp8266com_index.json
 Updating index: package_esp8266com_index.json downloaded
 
-$ arduino-cli core search esp8266 --additional-urls file:///absolute/path/to/your/package_esp8266com_index.json
+$ ptsolns-cli core search esp8266 --additional-urls file:///absolute/path/to/your/package_esp8266com_index.json
 ID              Version Name
 esp8266:esp8266 2.5.2   esp8266
 ```
@@ -230,14 +230,14 @@ esp8266:esp8266 2.5.2   esp8266
 To compile the sketch you run the `compile` command, passing the proper FQBN string:
 
 ```sh
-$ arduino-cli compile --fqbn arduino:samd:mkr1000 MyFirstSketch
+$ ptsolns-cli compile --fqbn arduino:samd:mkr1000 MyFirstSketch
 Sketch uses 9600 bytes (3%) of program storage space. Maximum is 262144 bytes.
 ```
 
 To upload the sketch to your board, run the following command, using the serial port your board is connected to:
 
 ```sh
-$ arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:samd:mkr1000 MyFirstSketch
+$ ptsolns-cli upload -p /dev/ttyACM0 --fqbn arduino:samd:mkr1000 MyFirstSketch
 No new serial port detected.
 Atmel SMART device 0x10010005 found
 Device       : ATSAMD21G18A
@@ -277,7 +277,7 @@ ecosystem already provide what you need. For example, if you need a debouncing s
 you can try searching for the `debouncer` keyword:
 
 ```sh
-$ arduino-cli lib search debouncer
+$ ptsolns-cli lib search debouncer
 Name: "Debouncer"
     Author: hideakitai
     Maintainer: hideakitai
@@ -313,7 +313,7 @@ Name: "SoftTimer"
 Our favourite is `FTDebouncer`, let's install it by running:
 
 ```sh
-$ arduino-cli lib install FTDebouncer
+$ ptsolns-cli lib install FTDebouncer
 FTDebouncer depends on FTDebouncer@1.3.0
 Downloading FTDebouncer@1.3.0...
 FTDebouncer@1.3.0 downloaded
@@ -349,6 +349,6 @@ metrics:
 ```
 
 [configuration documentation]: configuration.md
-[client_example]: https://github.com/arduino/arduino-cli/blob/master/rpc/internal/client_example
+[client_example]: https://github.com/arduino/ptsolns-cli/blob/master/rpc/internal/client_example
 [grpc reference]: rpc/commands.md
 [prometheus]: https://prometheus.io/

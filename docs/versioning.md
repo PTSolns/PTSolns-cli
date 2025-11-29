@@ -1,6 +1,6 @@
-# Backward compatibility policy for arduino-cli.
+# Backward compatibility policy for ptsolns-cli.
 
-The arduino-cli project follows a strict semantic versioning policy. We are committing not to make breaking changes in
+The ptsolns-cli project follows a strict semantic versioning policy. We are committing not to make breaking changes in
 minor releases of Arduino CLI 1.x.x.
 
 The release rules are the following:
@@ -19,7 +19,7 @@ The release rules are the following:
 
 ## Backward compatibility guarantees and definition of "breaking change"
 
-There are three main user facing API in the arduino-cli project:
+There are three main user facing API in the ptsolns-cli project:
 
 - the standalone command-line API
 - the gRPC API
@@ -81,9 +81,9 @@ service `cc.arduino.cli.commands.v2`.
 
 ### Breaking changes in the golang API
 
-The public golang API from the import path `github.com/arduino/arduino-cli` is guaranteed to be stable. Breaking changes
+The public golang API from the import path `github.com/arduino/ptsolns-cli` is guaranteed to be stable. Breaking changes
 in the API will follow the go-lang guidelines and will be implemented by changing the import path by adding the `/v2`
-suffix: `github.com/arduino/arduino-cli/v2`.
+suffix: `github.com/arduino/ptsolns-cli/v2`.
 
 ## Development process for the next major releases.
 
@@ -114,7 +114,7 @@ API entirely but, depending on the balance between user demand and maintenance e
 support it.
 
 The go-lang API import path will be updated, following the go modules guidelines, by adding the `/v2` suffix:
-`github.com/arduino/arduino-cli/v2`.
+`github.com/arduino/ptsolns-cli/v2`.
 
 Unlike the gRPC counterpart, we will not guarantee a deprecation policy and a soft transition period for the go-lang API
 (but again depending on the balance between user demand and maintenance effort we may decide to deprecate some API).

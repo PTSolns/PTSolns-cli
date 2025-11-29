@@ -1,4 +1,4 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (https://www.arduino.cc/)
 //

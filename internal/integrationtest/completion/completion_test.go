@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2022 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -18,7 +18,7 @@ package completion_test
 import (
 	"testing"
 
-	"github.com/arduino/arduino-cli/internal/integrationtest"
+	"github.com/arduino/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 )
@@ -41,8 +41,8 @@ func TestCompletionBash(t *testing.T) {
 	stdout, stderr, err := cli.Run("completion", "bash")
 	require.NoError(t, err)
 	require.Empty(t, stderr)
-	require.Contains(t, string(stdout), "# bash completion V2 for arduino-cli")
-	require.Contains(t, string(stdout), "__start_arduino-cli()")
+	require.Contains(t, string(stdout), "# bash completion V2 for ptsolns-cli")
+	require.Contains(t, string(stdout), "__start_ptsolns-cli()")
 }
 
 func TestCompletionZsh(t *testing.T) {
@@ -52,8 +52,8 @@ func TestCompletionZsh(t *testing.T) {
 	stdout, stderr, err := cli.Run("completion", "zsh")
 	require.NoError(t, err)
 	require.Empty(t, stderr)
-	require.Contains(t, string(stdout), "#compdef arduino-cli")
-	require.Contains(t, string(stdout), "_arduino-cli()")
+	require.Contains(t, string(stdout), "#compdef ptsolns-cli")
+	require.Contains(t, string(stdout), "_ptsolns-cli()")
 }
 
 func TestCompletionFish(t *testing.T) {
@@ -63,7 +63,7 @@ func TestCompletionFish(t *testing.T) {
 	stdout, stderr, err := cli.Run("completion", "fish")
 	require.NoError(t, err)
 	require.Empty(t, stderr)
-	require.Contains(t, string(stdout), "# fish completion for arduino-cli")
+	require.Contains(t, string(stdout), "# fish completion for ptsolns-cli")
 	require.Contains(t, string(stdout), "function __arduino_cli_perform_completion")
 }
 
@@ -74,8 +74,8 @@ func TestCompletionPowershell(t *testing.T) {
 	stdout, stderr, err := cli.Run("completion", "powershell")
 	require.NoError(t, err)
 	require.Empty(t, stderr)
-	require.Contains(t, string(stdout), "# powershell completion for arduino-cli")
-	require.Contains(t, string(stdout), "Register-ArgumentCompleter -CommandName 'arduino-cli' -ScriptBlock")
+	require.Contains(t, string(stdout), "# powershell completion for ptsolns-cli")
+	require.Contains(t, string(stdout), "Register-ArgumentCompleter -CommandName 'ptsolns-cli' -ScriptBlock")
 }
 
 func TestCompletionBashNoDesc(t *testing.T) {
@@ -85,8 +85,8 @@ func TestCompletionBashNoDesc(t *testing.T) {
 	stdout, stderr, err := cli.Run("completion", "bash", "--no-descriptions")
 	require.NoError(t, err)
 	require.Empty(t, stderr)
-	require.Contains(t, string(stdout), "# bash completion V2 for arduino-cli")
-	require.Contains(t, string(stdout), "__start_arduino-cli()")
+	require.Contains(t, string(stdout), "# bash completion V2 for ptsolns-cli")
+	require.Contains(t, string(stdout), "__start_ptsolns-cli()")
 	require.Contains(t, string(stdout), "__completeNoDesc")
 }
 
@@ -97,8 +97,8 @@ func TestCompletionZshNoDesc(t *testing.T) {
 	stdout, stderr, err := cli.Run("completion", "zsh", "--no-descriptions")
 	require.NoError(t, err)
 	require.Empty(t, stderr)
-	require.Contains(t, string(stdout), "#compdef arduino-cli")
-	require.Contains(t, string(stdout), "_arduino-cli()")
+	require.Contains(t, string(stdout), "#compdef ptsolns-cli")
+	require.Contains(t, string(stdout), "_ptsolns-cli()")
 	require.Contains(t, string(stdout), "__completeNoDesc")
 }
 
@@ -109,7 +109,7 @@ func TestCompletionFishNoDesc(t *testing.T) {
 	stdout, stderr, err := cli.Run("completion", "fish", "--no-descriptions")
 	require.NoError(t, err)
 	require.Empty(t, stderr)
-	require.Contains(t, string(stdout), "# fish completion for arduino-cli")
+	require.Contains(t, string(stdout), "# fish completion for ptsolns-cli")
 	require.Contains(t, string(stdout), "function __arduino_cli_perform_completion")
 	require.Contains(t, string(stdout), "__completeNoDesc")
 }

@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -22,9 +22,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/arduino/arduino-cli/commands/cmderrors"
-	"github.com/arduino/arduino-cli/internal/arduino/cores"
-	"github.com/arduino/arduino-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/commands/cmderrors"
+	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	properties "github.com/arduino/go-properties-orderedmap"
 	semver "go.bug.st/relaxed-semver"
@@ -73,7 +73,7 @@ func (pm *Builder) LoadHardwareFromDirectory(path *paths.Path) []error {
 
 	// Load custom platform properties if available
 	// "Global" platform.txt used to overwrite all installed platforms.
-	// For more info: https://arduino.github.io/arduino-cli/latest/platform-specification/#global-platformtxt
+	// For more info: https://arduino.github.io/ptsolns-cli/latest/platform-specification/#global-platformtxt
 	if globalPlatformTxt := path.Join("platform.txt"); globalPlatformTxt.Exist() {
 		pm.log.Infof("Loading custom platform properties: %s", globalPlatformTxt)
 		if p, err := properties.LoadFromPath(globalPlatformTxt); err != nil {
@@ -93,7 +93,7 @@ func (pm *Builder) LoadHardwareFromDirectory(path *paths.Path) []error {
 		}
 
 		// Follow symlinks
-		err := packagerPath.FollowSymLink() // ex: .arduino15/packages/arduino/
+		err := packagerPath.FollowSymLink() // ex: .ptsolns15/packages/arduino/
 		if err != nil {
 			merr = append(merr, fmt.Errorf("%s: %w", i18n.Tr("following symlink %s", path), err))
 			continue
@@ -110,10 +110,10 @@ func (pm *Builder) LoadHardwareFromDirectory(path *paths.Path) []error {
 		//   PACKAGER/tools/...                                      (ex: arduino/tools/...)
 		// in the latter case we just move into "hardware" directory and continue
 		var architectureParentPath *paths.Path
-		hardwareSubdirPath := packagerPath.Join("hardware") // ex: .arduino15/packages/arduino/hardware
+		hardwareSubdirPath := packagerPath.Join("hardware") // ex: .ptsolns15/packages/arduino/hardware
 		if hardwareSubdirPath.IsDir() {
 			// we found the "hardware" directory move down into that
-			architectureParentPath = hardwareSubdirPath // ex: .arduino15/packages/arduino/
+			architectureParentPath = hardwareSubdirPath // ex: .ptsolns15/packages/arduino/
 		} else {
 			// we are already at the correct level
 			architectureParentPath = packagerPath
@@ -452,7 +452,7 @@ func (pm *Builder) loadBoards(platform *cores.PlatformRelease) error {
 		// be used in all configuration files for several reasons, like setting compilation
 		// flags depending on the board id.
 		// For more info:
-		// https://arduino.github.io/arduino-cli/dev/platform-specification/#global-predefined-properties
+		// https://arduino.github.io/ptsolns-cli/dev/platform-specification/#global-predefined-properties
 		boardProperties.Set("_id", boardID)
 		board = platform.GetOrCreateBoard(boardID)
 		board.Properties.Merge(boardProperties)
@@ -542,7 +542,7 @@ func convertUploadToolsToPluggableDiscovery(props *properties.Map) {
 		defaultAction := action + ".default"
 		if !props.ContainsKey(defaultAction) {
 			// Search for "menu.MENU-ID.MENU-ITEM.ACTION.tool" (some platforms sets ACTION.tool on
-			// submenu config entries). See https://github.com/arduino/arduino-cli/issues/1444
+			// submenu config entries). See https://github.com/arduino/ptsolns-cli/issues/1444
 			for key, value := range props.AsMap() {
 				if !strings.HasPrefix(key, "menu.") {
 					continue
@@ -688,7 +688,7 @@ func (pme *Explorer) loadDiscoveries(release *cores.PlatformRelease) []error {
 	delete(discoveryIDs, "required")
 	// Get the list of tools only if there are discoveries that use Direct discovery integration.
 	// See:
-	// https://arduino.github.io/arduino-cli/latest/platform-specification/#pluggable-discovery
+	// https://arduino.github.io/ptsolns-cli/latest/platform-specification/#pluggable-discovery
 	// We need the tools only in that case since we might need some tool's
 	// runtime properties to expand the discovery pattern to run it correctly.
 	var tools []*cores.ToolRelease

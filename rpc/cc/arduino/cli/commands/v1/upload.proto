@@ -1,4 +1,4 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (https://www.arduino.cc/)
 //
@@ -21,7 +21,7 @@ package cc.arduino.cli.commands.v1;
 import "cc/arduino/cli/commands/v1/common.proto";
 import "cc/arduino/cli/commands/v1/port.proto";
 
-option go_package = "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1;commands";
+option go_package = "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1;commands";
 
 message UploadRequest {
   // Arduino Core Service instance from the `Init` response.
@@ -58,7 +58,7 @@ message UploadRequest {
   // or in any case fields that can be customized by the user at upload time
   // and cannot be known previously.
   // For more info:
-  // https://arduino.github.io/arduino-cli/latest/platform-specification/#user-provided-fields
+  // https://arduino.github.io/ptsolns-cli/latest/platform-specification/#user-provided-fields
   map<string, string> user_fields = 11;
   // List of custom upload properties.
   repeated string upload_properties = 12;
@@ -116,7 +116,7 @@ message UploadUsingProgrammerRequest {
   // or in any case fields that can be customized by the user at upload time
   // and cannot be known previously.
   // For more info:
-  // https://arduino.github.io/arduino-cli/latest/platform-specification/#user-provided-fields
+  // https://arduino.github.io/ptsolns-cli/latest/platform-specification/#user-provided-fields
   map<string, string> user_fields = 11;
   // List of custom upload properties.
   repeated string upload_properties = 12;
@@ -152,7 +152,7 @@ message BurnBootloaderRequest {
   // or in any case fields that can be customized by the user at upload time
   // and cannot be known previously.
   // For more info:
-  // https://arduino.github.io/arduino-cli/latest/platform-specification/#user-provided-fields
+  // https://arduino.github.io/ptsolns-cli/latest/platform-specification/#user-provided-fields
   map<string, string> user_fields = 11;
   // List of custom upload properties.
   repeated string upload_properties = 12;

@@ -7,8 +7,8 @@ daemon:
   port: "50051"
 
 directories:
-  data: /home/massi/.arduino15
-  downloads: /home/massi/.arduino15/staging
+  data: /home/massi/.ptsolns15
+  downloads: /home/massi/.ptsolns15/staging
 
 logging:
   file: ""

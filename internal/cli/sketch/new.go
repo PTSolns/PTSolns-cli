@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -20,10 +20,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/arduino/arduino-cli/internal/arduino/globals"
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/internal/arduino/globals"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	paths "github.com/arduino/go-paths-helper"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -49,7 +49,7 @@ func initNewCommand(srv rpc.ArduinoCoreServiceServer) *cobra.Command {
 }
 
 func runNewCommand(ctx context.Context, srv rpc.ArduinoCoreServiceServer, args []string, overwrite bool) {
-	logrus.Info("Executing `arduino-cli sketch new`")
+	logrus.Info("Executing `ptsolns-cli sketch new`")
 	// Trim to avoid issues if user creates a sketch adding the .ino extesion to the name
 	inputSketchName := args[0]
 	trimmedSketchName := strings.TrimSuffix(inputSketchName, globals.MainFileValidExtension)

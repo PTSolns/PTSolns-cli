@@ -3,10 +3,10 @@
 
 site_name: Arduino CLI
 site_description: Arduino Command Line Interface
-site_url: https://arduino.github.io/arduino-cli/
+site_url: https://arduino.github.io/ptsolns-cli/
 
-repo_name: arduino/arduino-cli
-repo_url: https://github.com/arduino/arduino-cli
+repo_name: arduino/ptsolns-cli
+repo_url: https://github.com/arduino/ptsolns-cli
 edit_uri: blob/master/docs/
 
 copyright: Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
@@ -33,7 +33,7 @@ markdown_extensions:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
       emoji_index: !!python/name:pymdownx.emoji.twemoji
   - pymdownx.magiclink:
-      repo: arduino-cli
+      repo: ptsolns-cli
       repo_url_shorthand: true
       user: arduino
   - pymdownx.superfences
@@ -50,56 +50,56 @@ nav:
   - CONTRIBUTING.md
   - FAQ.md
   - Command reference:
-      - arduino-cli: commands/arduino-cli.md
-      - board: commands/arduino-cli_board.md
-      - board attach: commands/arduino-cli_board_attach.md
-      - board details: commands/arduino-cli_board_details.md
-      - board list: commands/arduino-cli_board_list.md
-      - board listall: commands/arduino-cli_board_listall.md
-      - board search: commands/arduino-cli_board_search.md
-      - burn-bootloader: commands/arduino-cli_burn-bootloader.md
-      - cache: commands/arduino-cli_cache.md
-      - cache clean: commands/arduino-cli_cache_clean.md
-      - compile: commands/arduino-cli_compile.md
-      - completion: commands/arduino-cli_completion.md
-      - config: commands/arduino-cli_config.md
-      - config dump: commands/arduino-cli_config_dump.md
-      - config init: commands/arduino-cli_config_init.md
-      - config add: commands/arduino-cli_config_add.md
-      - config delete: commands/arduino-cli_config_delete.md
-      - config get: commands/arduino-cli_config_get.md
-      - config remove: commands/arduino-cli_config_remove.md
-      - config set: commands/arduino-cli_config_set.md
-      - core: commands/arduino-cli_core.md
-      - core download: commands/arduino-cli_core_download.md
-      - core install: commands/arduino-cli_core_install.md
-      - core list: commands/arduino-cli_core_list.md
-      - core search: commands/arduino-cli_core_search.md
-      - core uninstall: commands/arduino-cli_core_uninstall.md
-      - core update-index: commands/arduino-cli_core_update-index.md
-      - core upgrade: commands/arduino-cli_core_upgrade.md
-      - daemon: commands/arduino-cli_daemon.md
-      - debug: commands/arduino-cli_debug.md
-      - debug check: commands/arduino-cli_debug_check.md
-      - lib: commands/arduino-cli_lib.md
-      - lib deps: commands/arduino-cli_lib_deps.md
-      - lib download: commands/arduino-cli_lib_download.md
-      - lib examples: commands/arduino-cli_lib_examples.md
-      - lib install: commands/arduino-cli_lib_install.md
-      - lib list: commands/arduino-cli_lib_list.md
-      - lib search: commands/arduino-cli_lib_search.md
-      - lib uninstall: commands/arduino-cli_lib_uninstall.md
-      - lib update-index: commands/arduino-cli_lib_update-index.md
-      - lib upgrade: commands/arduino-cli_lib_upgrade.md
-      - monitor: commands/arduino-cli_monitor.md
-      - outdated: commands/arduino-cli_outdated.md
-      - sketch: commands/arduino-cli_sketch.md
-      - sketch archive: commands/arduino-cli_sketch_archive.md
-      - sketch new: commands/arduino-cli_sketch_new.md
-      - update: commands/arduino-cli_update.md
-      - upgrade: commands/arduino-cli_upgrade.md
-      - upload: commands/arduino-cli_upload.md
-      - version: commands/arduino-cli_version.md
+      - ptsolns-cli: commands/ptsolns-cli.md
+      - board: commands/ptsolns-cli_board.md
+      - board attach: commands/ptsolns-cli_board_attach.md
+      - board details: commands/ptsolns-cli_board_details.md
+      - board list: commands/ptsolns-cli_board_list.md
+      - board listall: commands/ptsolns-cli_board_listall.md
+      - board search: commands/ptsolns-cli_board_search.md
+      - burn-bootloader: commands/ptsolns-cli_burn-bootloader.md
+      - cache: commands/ptsolns-cli_cache.md
+      - cache clean: commands/ptsolns-cli_cache_clean.md
+      - compile: commands/ptsolns-cli_compile.md
+      - completion: commands/ptsolns-cli_completion.md
+      - config: commands/ptsolns-cli_config.md
+      - config dump: commands/ptsolns-cli_config_dump.md
+      - config init: commands/ptsolns-cli_config_init.md
+      - config add: commands/ptsolns-cli_config_add.md
+      - config delete: commands/ptsolns-cli_config_delete.md
+      - config get: commands/ptsolns-cli_config_get.md
+      - config remove: commands/ptsolns-cli_config_remove.md
+      - config set: commands/ptsolns-cli_config_set.md
+      - core: commands/ptsolns-cli_core.md
+      - core download: commands/ptsolns-cli_core_download.md
+      - core install: commands/ptsolns-cli_core_install.md
+      - core list: commands/ptsolns-cli_core_list.md
+      - core search: commands/ptsolns-cli_core_search.md
+      - core uninstall: commands/ptsolns-cli_core_uninstall.md
+      - core update-index: commands/ptsolns-cli_core_update-index.md
+      - core upgrade: commands/ptsolns-cli_core_upgrade.md
+      - daemon: commands/ptsolns-cli_daemon.md
+      - debug: commands/ptsolns-cli_debug.md
+      - debug check: commands/ptsolns-cli_debug_check.md
+      - lib: commands/ptsolns-cli_lib.md
+      - lib deps: commands/ptsolns-cli_lib_deps.md
+      - lib download: commands/ptsolns-cli_lib_download.md
+      - lib examples: commands/ptsolns-cli_lib_examples.md
+      - lib install: commands/ptsolns-cli_lib_install.md
+      - lib list: commands/ptsolns-cli_lib_list.md
+      - lib search: commands/ptsolns-cli_lib_search.md
+      - lib uninstall: commands/ptsolns-cli_lib_uninstall.md
+      - lib update-index: commands/ptsolns-cli_lib_update-index.md
+      - lib upgrade: commands/ptsolns-cli_lib_upgrade.md
+      - monitor: commands/ptsolns-cli_monitor.md
+      - outdated: commands/ptsolns-cli_outdated.md
+      - sketch: commands/ptsolns-cli_sketch.md
+      - sketch archive: commands/ptsolns-cli_sketch_archive.md
+      - sketch new: commands/ptsolns-cli_sketch_new.md
+      - update: commands/ptsolns-cli_update.md
+      - upgrade: commands/ptsolns-cli_upgrade.md
+      - upload: commands/ptsolns-cli_upload.md
+      - version: commands/ptsolns-cli_version.md
   - gRPC reference:
       - commands: rpc/commands.md
   - configuration.md

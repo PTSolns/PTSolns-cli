@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "arduino-cli"
+name = "ptsolns-cli"
 version = "0.0.0"
 description = "Project used to run integration tests for the Arduino CLI"
 authors = []

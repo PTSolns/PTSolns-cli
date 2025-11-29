@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -27,18 +27,18 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/arduino-cli/internal/arduino/builder/internal/diagnostics"
-	"github.com/arduino/arduino-cli/internal/arduino/builder/internal/preprocessor"
-	"github.com/arduino/arduino-cli/internal/arduino/builder/internal/runner"
-	"github.com/arduino/arduino-cli/internal/arduino/builder/internal/utils"
-	"github.com/arduino/arduino-cli/internal/arduino/builder/logger"
-	"github.com/arduino/arduino-cli/internal/arduino/cores"
-	"github.com/arduino/arduino-cli/internal/arduino/globals"
-	"github.com/arduino/arduino-cli/internal/arduino/libraries"
-	"github.com/arduino/arduino-cli/internal/arduino/libraries/librariesmanager"
-	"github.com/arduino/arduino-cli/internal/arduino/libraries/librariesresolver"
-	"github.com/arduino/arduino-cli/internal/arduino/sketch"
-	"github.com/arduino/arduino-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/diagnostics"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/preprocessor"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/runner"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/utils"
+	"github.com/arduino/ptsolns-cli/internal/arduino/builder/logger"
+	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
+	"github.com/arduino/ptsolns-cli/internal/arduino/globals"
+	"github.com/arduino/ptsolns-cli/internal/arduino/libraries"
+	"github.com/arduino/ptsolns-cli/internal/arduino/libraries/librariesmanager"
+	"github.com/arduino/ptsolns-cli/internal/arduino/libraries/librariesresolver"
+	"github.com/arduino/ptsolns-cli/internal/arduino/sketch"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-properties-orderedmap"
 )
@@ -116,7 +116,7 @@ func (l *SketchLibrariesDetector) resolveLibrary(header, platformArch string) *l
 		// ./libraries1/Lib/lib1.h and ./libraries2/Lib/lib2.h
 		// Without this check the library resolution would be stuck in a loop.
 		// This behaviour has been reported in this issue:
-		// https://github.com/arduino/arduino-cli/issues/973
+		// https://github.com/arduino/ptsolns-cli/issues/973
 		if selected == alreadyImported {
 			selected = alreadyImported
 		}

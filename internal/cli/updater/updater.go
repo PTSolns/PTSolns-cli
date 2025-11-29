@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -18,9 +18,9 @@ package updater
 import (
 	"fmt"
 
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	"github.com/arduino/arduino-cli/internal/version"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/version"
 	"github.com/fatih/color"
 )
 
@@ -30,6 +30,6 @@ func NotifyNewVersionIsAvailable(latestVersion string) {
 		color.YellowString(i18n.Tr("A new release of Arduino CLI is available:")),
 		color.CyanString(version.VersionInfo.VersionString),
 		color.CyanString(latestVersion),
-		color.YellowString("https://arduino.github.io/arduino-cli/latest/installation/#latest-packages"))
+		color.YellowString("https://arduino.github.io/ptsolns-cli/latest/installation/#latest-packages"))
 	feedback.Warning(msg)
 }

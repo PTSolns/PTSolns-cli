@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -43,15 +43,15 @@ func TestInit(t *testing.T) {
 }
 
 func TestFindConfigFile(t *testing.T) {
-	defaultConfigFile := filepath.Join(getDefaultArduinoDataDir(), "arduino-cli.yaml")
+	defaultConfigFile := filepath.Join(getDefaultArduinoDataDir(), "ptsolns-cli.yaml")
 	configFile := FindConfigFlagsInArgsOrFallbackOnEnv([]string{"--config-file"})
 	require.Equal(t, defaultConfigFile, configFile)
 
 	configFile = FindConfigFlagsInArgsOrFallbackOnEnv([]string{"--config-file", "some/path/to/config"})
 	require.Equal(t, "some/path/to/config", configFile)
 
-	configFile = FindConfigFlagsInArgsOrFallbackOnEnv([]string{"--config-file", "some/path/to/config/arduino-cli.yaml"})
-	require.Equal(t, "some/path/to/config/arduino-cli.yaml", configFile)
+	configFile = FindConfigFlagsInArgsOrFallbackOnEnv([]string{"--config-file", "some/path/to/config/ptsolns-cli.yaml"})
+	require.Equal(t, "some/path/to/config/ptsolns-cli.yaml", configFile)
 
 	configFile = FindConfigFlagsInArgsOrFallbackOnEnv([]string{})
 	require.Equal(t, defaultConfigFile, configFile)
@@ -67,7 +67,7 @@ func TestFindConfigFile(t *testing.T) {
 
 func TestFindConfigDir(t *testing.T) {
 	// Check behaviour with --config-dir
-	expected, err := paths.New("anotherpath", "arduino-cli.yaml").Abs()
+	expected, err := paths.New("anotherpath", "ptsolns-cli.yaml").Abs()
 	require.NoError(t, err)
 	configFile := FindConfigFlagsInArgsOrFallbackOnEnv([]string{"--config-dir", "anotherpath"})
 	require.Equal(t, expected.String(), configFile)

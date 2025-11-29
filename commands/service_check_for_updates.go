@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2024 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -20,10 +20,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/inventory"
-	"github.com/arduino/arduino-cli/internal/version"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/inventory"
+	"github.com/arduino/ptsolns-cli/internal/version"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	semver "go.bug.st/relaxed-semver"
 )
 
@@ -90,7 +90,7 @@ func (s *arduinoCoreServerImpl) getLatestRelease(ctx context.Context) string {
 
 	// We just use this URL to check if there's a new release available and
 	// never show it to the user, so it's fine to use the Linux one for all OSs.
-	URL := "https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz"
+	URL := "https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_latest_Linux_64bit.tar.gz"
 	res, err := client.Head(URL)
 	if err != nil {
 		// Yes, we ignore it
@@ -101,7 +101,7 @@ func (s *arduinoCoreServerImpl) getLatestRelease(ctx context.Context) string {
 	location := res.Request.URL.String()
 
 	// The location header points to the latest release of the CLI, it's supposed to be formatted like this:
-	// https://downloads.arduino.cc/arduino-cli/arduino-cli_0.18.3_Linux_64bit.tar.gz
+	// https://downloads.arduino.cc/ptsolns-cli/ptsolns-cli_0.18.3_Linux_64bit.tar.gz
 	// so we split it to get the version, if there are not enough splits something must have gone wrong.
 	split := strings.Split(location, "_")
 	if len(split) < 2 {

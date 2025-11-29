@@ -5,7 +5,7 @@
 # MIT license. See https://github.com/Masterminds/glide/blob/master/LICENSE for more details and copyright notice.
 
 PROJECT_OWNER="arduino"
-PROJECT_NAME="arduino-cli"
+PROJECT_NAME="ptsolns-cli"
 
 # BINDIR represents the local bin location, defaults to ./bin.
 EFFECTIVE_BINDIR=""

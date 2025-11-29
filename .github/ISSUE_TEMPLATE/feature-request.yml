@@ -9,7 +9,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please see the [contributor guide](https://arduino.github.io/arduino-cli/dev/CONTRIBUTING/) for more information.
+        Please see the [contributor guide](https://arduino.github.io/ptsolns-cli/dev/CONTRIBUTING/) for more information.
   - type: textarea
     id: description
     attributes:
@@ -31,8 +31,8 @@ body:
       label: Arduino CLI version
       description: |
         Which version of Arduino CLI are you using?
-        (output of `arduino-cli version`)
-        _This should be the [nightly build](https://arduino.github.io/arduino-cli/dev/installation/#nightly-builds)._
+        (output of `ptsolns-cli version`)
+        _This should be the [nightly build](https://arduino.github.io/ptsolns-cli/dev/installation/#nightly-builds)._
     validations:
       required: true
   - type: dropdown
@@ -68,9 +68,9 @@ body:
       label: Issue checklist
       description: Please double-check that you have done each of the following things before submitting the issue.
       options:
-        - label: I searched for previous requests in [the issue tracker](https://github.com/arduino/arduino-cli/issues?q=)
+        - label: I searched for previous requests in [the issue tracker](https://github.com/arduino/ptsolns-cli/issues?q=)
           required: true
-        - label: I verified the feature was still missing when using the [nightly build](https://arduino.github.io/arduino-cli/dev/installation/#nightly-builds)
+        - label: I verified the feature was still missing when using the [nightly build](https://arduino.github.io/ptsolns-cli/dev/installation/#nightly-builds)
           required: true
         - label: My request contains all necessary details
           required: true

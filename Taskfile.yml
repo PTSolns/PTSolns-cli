@@ -13,12 +13,12 @@ tasks:
           gem install licensed
         fi
         licensed notices
-        mkdir -p debian/arduino-cli/usr/share/doc/arduino-cli/
-        cat > debian/arduino-cli/usr/share/doc/arduino-cli/copyright <<EOF
+        mkdir -p debian/ptsolns-cli/usr/share/doc/ptsolns-cli/
+        cat > debian/ptsolns-cli/usr/share/doc/ptsolns-cli/copyright <<EOF
         Copyright 2025 ARDUINO SA (http://www.arduino.cc/)
 
         This software is released under the GNU General Public License version 3,
-        which covers the main part of arduino-cli.
+        which covers the main part of ptsolns-cli.
         The terms of this license can be found at:
         https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -31,7 +31,7 @@ tasks:
         ---
 
         EOF
-        cat .licenses/NOTICE.arduino-cli  >> debian/arduino-cli/usr/share/doc/arduino-cli/copyright
+        cat .licenses/NOTICE.ptsolns-cli  >> debian/ptsolns-cli/usr/share/doc/ptsolns-cli/copyright
 
   docs:generate:
     desc: Create all generated documentation content
@@ -380,7 +380,7 @@ tasks:
       - echo {{.VERSION}}
 
 vars:
-  PROJECT_NAME: "arduino-cli"
+  PROJECT_NAME: "ptsolns-cli"
   DIST_DIR: "dist"
   # all modules of this project except for integration test
   DEFAULT_GO_PACKAGES:
@@ -399,7 +399,7 @@ vars:
   TAG:
     sh: echo "$(git tag --points-at=HEAD 2> /dev/null | head -n1 | sed 's/^v//')"
   VERSION: "{{if .NIGHTLY}}nightly-{{.TIMESTAMP_SHORT}}{{else if .TAG}}{{.TAG}}{{else}}{{.PACKAGE_NAME_PREFIX}}git-snapshot{{end}}"
-  CONFIGURATION_PACKAGE: "github.com/arduino/arduino-cli/internal/version"
+  CONFIGURATION_PACKAGE: "github.com/arduino/ptsolns-cli/internal/version"
   LDFLAGS: >-
     -ldflags
     '

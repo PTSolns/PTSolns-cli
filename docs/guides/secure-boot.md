@@ -57,11 +57,11 @@ The security keys can be added with:
   process.
 
 It's suggested to use the property names mentioned before, because they can be overridden respectively with
-`--keys-keychain`, `--sign-key` and `--encrypt-key` Arduino CLI [compile flags](../commands/arduino-cli_compile.md).
+`--keys-keychain`, `--sign-key` and `--encrypt-key` Arduino CLI [compile flags](../commands/ptsolns-cli_compile.md).
 
 For example, by using the following command, the sketch is compiled and the resulting binary is signed and encrypted
 with the specified keys located in `/home/user/Arduino/keys` directory:
 
 ```
-arduino-cli compile -b arduino:mbed_portenta:envie_m7:security=sien --keys-keychain /home/user/Arduino/keys --sign-key ecdsa-p256-signing-priv-key.pem --encrypt-key ecdsa-p256-encrypt-pub-key.pem /home/user/Arduino/MySketch
+ptsolns-cli compile -b arduino:mbed_portenta:envie_m7:security=sien --keys-keychain /home/user/Arduino/keys --sign-key ecdsa-p256-signing-priv-key.pem --encrypt-key ecdsa-p256-encrypt-pub-key.pem /home/user/Arduino/MySketch
 ```

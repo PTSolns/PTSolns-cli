@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -21,13 +21,13 @@ import (
 	"os"
 	"strings"
 
-	"github.com/arduino/arduino-cli/commands"
-	"github.com/arduino/arduino-cli/internal/cli/arguments"
-	"github.com/arduino/arduino-cli/internal/cli/feedback"
-	"github.com/arduino/arduino-cli/internal/cli/instance"
-	"github.com/arduino/arduino-cli/internal/i18n"
-	"github.com/arduino/arduino-cli/internal/version"
-	rpc "github.com/arduino/arduino-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/arduino/ptsolns-cli/commands"
+	"github.com/arduino/ptsolns-cli/internal/cli/arguments"
+	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
+	"github.com/arduino/ptsolns-cli/internal/cli/instance"
+	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/arduino/ptsolns-cli/internal/version"
+	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -69,15 +69,15 @@ func initInstallCommand(srv rpc.ArduinoCoreServiceServer, settings *rpc.Configur
 
 func runInstallCommand(ctx context.Context, srv rpc.ArduinoCoreServiceServer, args []string, noDeps bool, noOverwrite bool, gitURL bool, zipPath bool, useBuiltinLibrariesDir bool, enableUnsafeInstall bool) {
 	instance := instance.CreateAndInit(ctx, srv)
-	logrus.Info("Executing `arduino-cli lib install`")
+	logrus.Info("Executing `ptsolns-cli lib install`")
 
 	if zipPath || gitURL {
 		if !enableUnsafeInstall {
-			documentationURL := "https://arduino.github.io/arduino-cli/latest/configuration/#configuration-keys"
+			documentationURL := "https://arduino.github.io/ptsolns-cli/latest/configuration/#configuration-keys"
 			_, err := semver.Parse(version.VersionInfo.VersionString)
 			if err == nil {
 				split := strings.Split(version.VersionInfo.VersionString, ".")
-				documentationURL = fmt.Sprintf("https://arduino.github.io/arduino-cli/%s.%s/configuration/#configuration-keys", split[0], split[1])
+				documentationURL = fmt.Sprintf("https://arduino.github.io/ptsolns-cli/%s.%s/configuration/#configuration-keys", split[0], split[1])
 			}
 			feedback.Fatal(i18n.Tr("--git-url and --zip-path are disabled by default, for more information see: %v", documentationURL), feedback.ErrGeneric)
 		}

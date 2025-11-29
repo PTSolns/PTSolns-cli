@@ -1,9 +1,9 @@
-// This file is part of arduino-cli.
+// This file is part of ptsolns-cli.
 //
 // Copyright 2020 ARDUINO SA (http://www.arduino.cc/)
 //
 // This software is released under the GNU General Public License version 3,
-// which covers the main part of arduino-cli.
+// which covers the main part of ptsolns-cli.
 // The terms of this license can be found at:
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 //
@@ -25,10 +25,10 @@ import (
 // in order to have this test green launch your testing using the provided task (see /Taskfile.yml) or use:
 //
 //	go test -run TestBuildInjectedInfo -v ./... -ldflags '
-//	  -X github.com/arduino/arduino-cli/version.versionString=0.0.0-test.preview
-//	  -X github.com/arduino/arduino-cli/version.commit=deadbeef'
+//	  -X github.com/arduino/ptsolns-cli/version.versionString=0.0.0-test.preview
+//	  -X github.com/arduino/ptsolns-cli/version.commit=deadbeef'
 func TestBuildInjectedInfo(t *testing.T) {
-	goldenAppName := "arduino-cli"
+	goldenAppName := "ptsolns-cli"
 	goldenInfo := Info{
 		Application:   goldenAppName,
 		VersionString: "0.0.0-test.preview",
