@@ -114,6 +114,7 @@ jobs:
           name: ${{ env.ARTIFACT_NAME }}-${{ matrix.artifact.artifact-suffix }}
 
       - name: Import Code-Signing Certificates
+        if: false # Skip macOS signing
         env:
           KEYCHAIN: "sign.keychain"
           INSTALLER_CERT_MAC_PATH: "/tmp/ArduinoCerts2020.p12"
@@ -161,6 +162,7 @@ jobs:
           EOF
 
       - name: Sign and notarize binary
+        if: false # Skip macOS signing
         env:
           AC_USERNAME: ${{ secrets.AC_USERNAME }}
           AC_PASSWORD: ${{ secrets.AC_PASSWORD }}
@@ -190,7 +192,7 @@ jobs:
           path: ${{ env.DIST_DIR }}/${{ env.PACKAGE_FILENAME }}
 
   create-windows-installer:
-    runs-on: windows-sign-pc
+    runs-on: windows-latest
     needs: create-release-artifacts
 
     defaults:
@@ -226,9 +228,11 @@ jobs:
           MSBuild.exe ./installer/cli.wixproj -p:SourceDir="$SOURCE_DIR" -p:OutputPath="${GITHUB_WORKSPACE}/${{ env.DIST_DIR }}" -p:OutputName="$PACKAGE_FILENAME" -p:ProductVersion="$WIX_TAG"
 
       - name: Save Win signing certificate to file
+        if: false # Skip Windows signing
         run: echo "${{ secrets.INSTALLER_CERT_WINDOWS_CER }}" | base64 --decode > ${{ env.INSTALLER_CERT_WINDOWS_CER}}
 
       - name: Sign MSI
+        if: false # Skip Windows signing
         env:
           MSI_FILE: ${{ steps.buildmsi.outputs.msi }} # this comes from .installer/cli.wixproj
           CERT_PASSWORD: ${{ secrets.INSTALLER_CERT_WINDOWS_PASSWORD }}
@@ -252,7 +256,7 @@ jobs:
     needs:
       - create-release-artifacts
       - notarize-macos
-      - create-windows-installer
+      - create-windows-installer # Keep as a soft dependency to ensure MSI is built
     permissions:
       contents: write
       id-token: write # This is required for requesting the JWT
