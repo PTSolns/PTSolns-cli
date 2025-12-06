@@ -71,7 +71,7 @@ var (
 	DefaultIndexURL = "https://downloads.arduino.cc/packages/package_index.tar.bz2"
 
 	// LibrariesIndexURL is the URL where to get the libraries index.
-	LibrariesIndexURL, _ = url.Parse("https://downloads.arduino.cc/libraries/library_index.tar.bz2")
+	LibrariesIndexURL, _ = url.Parse("https://raw.githubusercontent.com/PTSolns/PTSolns-IDE-Library-Registry/gh-pages/index.tar.bz2")
 
 	// LibrariesIndexResource is the IndexResource to get the libraries index.
 	LibrariesIndexResource = resources.IndexResource{
