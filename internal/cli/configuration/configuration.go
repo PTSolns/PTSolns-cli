@@ -86,16 +86,16 @@ func getDefaultUserDir() string {
 
 	switch runtime.GOOS {
 	case "linux":
-		return filepath.Join(userHomeDir, "Arduino")
+		return filepath.Join(userHomeDir, "PTSolns")
 	case "darwin":
-		return filepath.Join(userHomeDir, "Documents", "Arduino")
+		return filepath.Join(userHomeDir, "Documents", "PTSolns")
 	case "windows":
 		documentsPath, err := win32.GetDocumentsFolder()
 		if err != nil {
 			feedback.Warning(i18n.Tr("Unable to get Documents Folder: %v", err))
 			return "."
 		}
-		return filepath.Join(documentsPath, "Arduino")
+		return filepath.Join(documentsPath, "PTSolns")
 	default:
 		return "."
 	}

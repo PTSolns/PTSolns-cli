@@ -97,7 +97,7 @@ func NewArduinoCliWithinEnvironment(env *Environment, config *ArduinoCLIConfig) 
 		path:          config.ArduinoCLIPath,
 		t:             require.New(env.T()),
 		dataDir:       env.RootDir().Join("A"),
-		sketchbookDir: env.RootDir().Join("Arduino"),
+		sketchbookDir: env.RootDir().Join("PTSolns"),
 		stagingDir:    env.RootDir().Join("ptsolns15/staging"),
 		workingDir:    env.RootDir(),
 	}
