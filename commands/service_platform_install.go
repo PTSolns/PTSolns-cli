@@ -104,7 +104,13 @@ func (s *arduinoCoreServerImpl) PlatformInstall(req *rpc.PlatformInstallRequest,
 		if s.settings.BoardManagerEnableUnsafeInstall() {
 			checks = resources.IntegrityCheckNone
 		}
-		if err := pme.DownloadAndInstallPlatformAndTools(ctx, platformRelease, tools, downloadCB, taskCB, req.GetSkipPostInstall(), req.GetSkipPreUninstall(), checks); err != nil {
+
+		finalSkipPostInstall := req.GetSkipPostInstall()
+		if req.GetReinstallDrivers() {
+			finalSkipPostInstall = false
+		}
+
+		if err := pme.DownloadAndInstallPlatformAndTools(ctx, platformRelease, tools, downloadCB, taskCB, finalSkipPostInstall, req.GetSkipPreUninstall(), checks); err != nil {
 			return err
 		}
 

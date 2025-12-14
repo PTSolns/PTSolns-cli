@@ -40,6 +40,9 @@ message PlatformInstallRequest {
   // Set to true to not run (eventual) pre uninstall scripts for trusted
   // platforms when performing platform upgrades.
   bool skip_pre_uninstall = 7;
+  // If true, forces the re-execution of the post-install script, useful for
+  // re-triggering driver installation.
+  bool reinstall_drivers = 8;
 }
 
 message PlatformInstallResponse {
