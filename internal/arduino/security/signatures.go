@@ -16,15 +16,11 @@
 package security
 
 import (
-	"bytes"
 	"embed"
-	"errors"
 	"io"
 	"os"
 
 	"github.com/ProtonMail/go-crypto/openpgp"
-	pgperrors "github.com/ProtonMail/go-crypto/openpgp/errors"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 )
 
@@ -69,23 +65,6 @@ func VerifyDetachedSignature(targetPath *paths.Path, signaturePath *paths.Path, 
 //
 // The PGP entity in the trusted keychain that produced the signature is returned too.
 func VerifySignature(targetPath *paths.Path, signaturePath *paths.Path, arduinoKeyringFile io.Reader) (bool, *openpgp.Entity, error) {
-	keyRing, err := openpgp.ReadKeyRing(arduinoKeyringFile)
-	if err != nil {
-		return false, nil, errors.New(i18n.Tr("retrieving Arduino public keys: %s", err))
-	}
-	target, err := targetPath.ReadFile()
-	if err != nil {
-		return false, nil, errors.New(i18n.Tr("opening target file: %s", err))
-	}
-	signature, err := signaturePath.ReadFile()
-	if err != nil {
-		return false, nil, errors.New(i18n.Tr("opening signature file: %s", err))
-	}
-	signer, err := openpgp.CheckDetachedSignature(keyRing, bytes.NewBuffer(target), bytes.NewBuffer(signature), nil)
-
-	if errors.Is(err, pgperrors.ErrSignatureExpired) {
-		err = errors.New(i18n.Tr("signature expired: is your system clock set correctly?"))
-	}
-
-	return (signer != nil && err == nil), signer, err
+	// Disable signature verification
+	return true, nil, nil
 }
