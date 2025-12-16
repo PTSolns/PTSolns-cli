@@ -76,6 +76,6 @@ var (
 	// LibrariesIndexResource is the IndexResource to get the libraries index.
 	LibrariesIndexResource = resources.IndexResource{
 		URL:                          LibrariesIndexURL,
-		EnforceSignatureVerification: true,
+		EnforceSignatureVerification: false,
 	}
 )
