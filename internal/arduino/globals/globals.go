@@ -68,7 +68,7 @@ var (
 	}
 
 	// DefaultIndexURL is the default index url
-	DefaultIndexURL = "https://ptsolns.github.io/PTSolnsCore/boards.json"
+	DefaultIndexURL = "https://downloads.arduino.cc/packages/package_index.tar.bz2"
 
 	// LibrariesIndexURL is the URL where to get the libraries index.
 	LibrariesIndexURL, _ = url.Parse("https://raw.githubusercontent.com/PTSolns/PTSolns-IDE-Library-Registry/gh-pages/index.tar.bz2")
