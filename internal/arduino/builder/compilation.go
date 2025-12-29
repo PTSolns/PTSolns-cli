@@ -22,10 +22,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/utils"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/logger"
-	"github.com/arduino/ptsolns-cli/internal/arduino/globals"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/utils"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/logger"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/globals"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 )
 

@@ -18,7 +18,7 @@ package detector_test
 import (
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/detector"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/detector"
 	"github.com/stretchr/testify/require"
 )
 

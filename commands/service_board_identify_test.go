@@ -22,8 +22,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores/packagemanager"
-	"github.com/arduino/ptsolns-cli/internal/cli/configuration"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores/packagemanager"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/configuration"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-properties-orderedmap"
 	"github.com/stretchr/testify/require"

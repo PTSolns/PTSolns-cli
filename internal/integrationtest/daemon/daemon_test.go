@@ -28,9 +28,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/commands/cmderrors"
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
-	"github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/commands/cmderrors"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -39,7 +39,7 @@ import (
 )
 
 func TestArduinoCliDaemon(t *testing.T) {
-	// See: https://github.com/arduino/ptsolns-cli/pull/1804
+	// See: https://github.com/PTSolns/ptsolns-cli/pull/1804
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()
@@ -116,7 +116,7 @@ func TestArduinoCliDaemon(t *testing.T) {
 }
 
 func TestDaemonAutoUpdateIndexOnFirstInit(t *testing.T) {
-	// https://github.com/arduino/ptsolns-cli/issues/1529
+	// https://github.com/PTSolns/ptsolns-cli/issues/1529
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()
@@ -133,8 +133,8 @@ func TestDaemonAutoUpdateIndexOnFirstInit(t *testing.T) {
 }
 
 func TestDaemonCompileOptions(t *testing.T) {
-	// See: https://github.com/arduino/ptsolns-cli/issues/1614
-	// See: https://github.com/arduino/ptsolns-cli/pull/1820
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/1614
+	// See: https://github.com/PTSolns/ptsolns-cli/pull/1820
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()
@@ -204,13 +204,13 @@ func TestDaemonCompileOptions(t *testing.T) {
 		}
 	}
 
-	// https://github.com/arduino/ptsolns-cli/issues/2016
-	// https://github.com/arduino/ptsolns-cli/issues/2711
+	// https://github.com/PTSolns/ptsolns-cli/issues/2016
+	// https://github.com/PTSolns/ptsolns-cli/issues/2711
 	analyzer.Check(t)
 }
 
 func TestDaemonCompileAfterFailedLibInstall(t *testing.T) {
-	// See: https://github.com/arduino/ptsolns-cli/issues/1812
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/1812
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()
@@ -648,7 +648,7 @@ func TestDaemonUserAgent(t *testing.T) {
 }
 
 func TestDaemonCreateSketch(t *testing.T) {
-	// https://github.com/arduino/ptsolns-cli/issues/2861
+	// https://github.com/PTSolns/ptsolns-cli/issues/2861
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()

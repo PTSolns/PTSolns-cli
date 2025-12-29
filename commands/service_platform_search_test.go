@@ -19,7 +19,7 @@ import (
 	"context"
 	"testing"
 
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 )

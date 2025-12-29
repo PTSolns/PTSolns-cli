@@ -20,7 +20,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 	"go.bug.st/testifyjson/requirejson"
@@ -946,7 +946,7 @@ func TestI18N(t *testing.T) {
 }
 
 func TestCoreUpdateWithInvalidIndexURL(t *testing.T) {
-	// https://github.com/arduino/ptsolns-cli/issues/2786
+	// https://github.com/PTSolns/ptsolns-cli/issues/2786
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	t.Cleanup(env.CleanUp)
 

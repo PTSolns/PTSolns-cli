@@ -25,9 +25,9 @@ import (
 	"strings"
 
 	"fortio.org/safecast"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/logger"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/logger"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	"github.com/marcinbor85/gohex"
 	"go.bug.st/f"

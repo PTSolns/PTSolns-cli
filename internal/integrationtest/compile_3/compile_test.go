@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-properties-orderedmap"
 	"github.com/stretchr/testify/require"
@@ -45,7 +45,7 @@ func TestRuntimeToolPropertiesGeneration(t *testing.T) {
 	sketch, err := paths.New("testdata", "bare_minimum").Abs()
 	require.NoError(t, err)
 
-	// As seen in https://github.com/arduino/ptsolns-cli/issues/73 the map randomess
+	// As seen in https://github.com/PTSolns/ptsolns-cli/issues/73 the map randomess
 	// may make the function fail half of the times. Repeating the test 3 times
 	// greatly increases the chances to trigger the bad case.
 	for i := 0; i < 3; i++ {
@@ -181,7 +181,7 @@ func TestCompilerErrOutput(t *testing.T) {
 
 	t.Run("LibraryDiscoverFalseErrors", func(t *testing.T) {
 		// Check that library discover do not generate false errors
-		// https://github.com/arduino/ptsolns-cli/issues/2263
+		// https://github.com/PTSolns/ptsolns-cli/issues/2263
 
 		// prepare sketch
 		sketch, err := paths.New("testdata", "using_Wire").Abs()

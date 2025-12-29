@@ -16,7 +16,7 @@
 package packagemanager
 
 import (
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
 	properties "github.com/arduino/go-properties-orderedmap"
 )
 

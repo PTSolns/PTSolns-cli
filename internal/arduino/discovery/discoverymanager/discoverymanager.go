@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	discovery "github.com/arduino/pluggable-discovery-protocol-handler/v2"
 	"github.com/sirupsen/logrus"
 )

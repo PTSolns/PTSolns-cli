@@ -24,16 +24,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/commands/cmderrors"
-	"github.com/arduino/ptsolns-cli/commands/internal/instances"
-	f "github.com/arduino/ptsolns-cli/internal/algorithms"
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores/packagemanager"
-	"github.com/arduino/ptsolns-cli/internal/arduino/globals"
-	"github.com/arduino/ptsolns-cli/internal/arduino/sketch"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	"github.com/arduino/ptsolns-cli/pkg/fqbn"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/commands/cmderrors"
+	"github.com/PTSolns/ptsolns-cli/commands/internal/instances"
+	f "github.com/PTSolns/ptsolns-cli/internal/algorithms"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores/packagemanager"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/globals"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/sketch"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/pkg/fqbn"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	paths "github.com/arduino/go-paths-helper"
 	properties "github.com/arduino/go-properties-orderedmap"
 	serialutils "github.com/arduino/go-serial-utils"
@@ -477,7 +477,7 @@ func (s *arduinoCoreServerImpl) runProgramAction(ctx context.Context, pme *packa
 
 	// Force port wait to make easier to unbrick boards like the Arduino Leonardo, or similar with native USB,
 	// when a sketch causes a crash and the native USB serial port is lost.
-	// See https://github.com/arduino/ptsolns-cli/issues/1943 for the details.
+	// See https://github.com/PTSolns/ptsolns-cli/issues/1943 for the details.
 	//
 	// In order to trigger the forced serial-port-wait the following conditions must be met:
 	// - No upload port specified (protocol == "default")

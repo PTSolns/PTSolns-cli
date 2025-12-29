@@ -20,10 +20,10 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/commands/cmderrors"
-	"github.com/arduino/ptsolns-cli/internal/cli/instance"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/commands/cmderrors"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/instance"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/sirupsen/logrus"
 )
 
@@ -59,7 +59,7 @@ func ParseReferences(ctx context.Context, srv rpc.ArduinoCoreServiceServer, args
 
 // ParseReference parses a string and returns a Reference object.
 // It tries to infer the platform the user is asking for.
-// To achieve that, it tries to use github.com/arduino/ptsolns-cli/commands/core.GetPlatform
+// To achieve that, it tries to use github.com/PTSolns/ptsolns-cli/commands/core.GetPlatform
 // Note that the Reference is returned rightaway if the arg inserted by the user matches perfectly one in the response of core.GetPlatform
 // A MultiplePlatformsError is returned if the platform searched by the user matches multiple platforms
 func ParseReference(ctx context.Context, srv rpc.ArduinoCoreServiceServer, arg string) (*Reference, error) {

@@ -20,7 +20,7 @@ import (
 	"errors"
 	"os"
 
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	paths "github.com/arduino/go-paths-helper"
 	"github.com/codeclysm/extract/v4"
 	"go.bug.st/cleanup"

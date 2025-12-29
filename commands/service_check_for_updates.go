@@ -20,10 +20,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
-	"github.com/arduino/ptsolns-cli/internal/inventory"
-	"github.com/arduino/ptsolns-cli/internal/version"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/feedback"
+	"github.com/PTSolns/ptsolns-cli/internal/inventory"
+	"github.com/PTSolns/ptsolns-cli/internal/version"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	semver "go.bug.st/relaxed-semver"
 )
 

@@ -21,9 +21,9 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
-	"github.com/arduino/ptsolns-cli/internal/go-configmap"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/feedback"
+	"github.com/PTSolns/ptsolns-cli/internal/go-configmap"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-win32-utils"
 )

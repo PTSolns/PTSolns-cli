@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries"
 	"github.com/arduino/go-paths-helper"
 	easyjson "github.com/mailru/easyjson"
 	"github.com/stretchr/testify/require"

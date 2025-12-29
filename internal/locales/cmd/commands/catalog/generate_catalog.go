@@ -19,7 +19,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/arduino/ptsolns-cli/internal/locales/cmd/ast"
+	"github.com/PTSolns/ptsolns-cli/internal/locales/cmd/ast"
 	"github.com/spf13/cobra"
 )
 

@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"strings"
 
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 )
 
 // CompilerOutputParserCB is a callback function that is called to feed a parser

@@ -18,8 +18,8 @@ package commands
 import (
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries/librariesindex"
-	"github.com/arduino/ptsolns-cli/internal/arduino/utils"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries/librariesindex"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/utils"
 )
 
 // matcherTokensFromQueryString parses the query string into tokens of interest

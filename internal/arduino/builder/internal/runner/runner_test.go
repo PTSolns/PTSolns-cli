@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/runner"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/runner"
 	"github.com/stretchr/testify/require"
 )
 

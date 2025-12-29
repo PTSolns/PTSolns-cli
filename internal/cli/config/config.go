@@ -20,9 +20,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/feedback"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/spf13/cobra"
 	"go.bug.st/f"

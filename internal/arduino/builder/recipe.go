@@ -19,8 +19,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/logger"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/logger"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	properties "github.com/arduino/go-properties-orderedmap"
 	"github.com/sirupsen/logrus"
 )

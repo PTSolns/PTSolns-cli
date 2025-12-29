@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/globals"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/globals"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	properties "github.com/arduino/go-properties-orderedmap"
 	semver "go.bug.st/relaxed-semver"

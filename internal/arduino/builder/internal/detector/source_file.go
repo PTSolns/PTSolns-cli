@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/utils"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/utils"
 	"github.com/arduino/go-paths-helper"
 )
 

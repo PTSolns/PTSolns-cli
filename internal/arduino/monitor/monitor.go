@@ -27,8 +27,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	"github.com/arduino/ptsolns-cli/internal/version"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/version"
 	"github.com/arduino/go-paths-helper"
 	"github.com/sirupsen/logrus"
 )

@@ -27,18 +27,18 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/diagnostics"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/preprocessor"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/runner"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/utils"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/logger"
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	"github.com/arduino/ptsolns-cli/internal/arduino/globals"
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries"
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries/librariesmanager"
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries/librariesresolver"
-	"github.com/arduino/ptsolns-cli/internal/arduino/sketch"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/diagnostics"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/preprocessor"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/runner"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/utils"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/logger"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/globals"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries/librariesmanager"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries/librariesresolver"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/sketch"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-properties-orderedmap"
 )
@@ -116,7 +116,7 @@ func (l *SketchLibrariesDetector) resolveLibrary(header, platformArch string) *l
 		// ./libraries1/Lib/lib1.h and ./libraries2/Lib/lib2.h
 		// Without this check the library resolution would be stuck in a loop.
 		// This behaviour has been reported in this issue:
-		// https://github.com/arduino/ptsolns-cli/issues/973
+		// https://github.com/PTSolns/ptsolns-cli/issues/973
 		if selected == alreadyImported {
 			selected = alreadyImported
 		}

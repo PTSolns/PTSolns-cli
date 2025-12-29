@@ -20,10 +20,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/commands/internal/instances"
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	"github.com/arduino/ptsolns-cli/internal/arduino/utils"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/commands/internal/instances"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/utils"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 )
 
 // BoardListAll list all the boards provided by installed platforms.

@@ -20,12 +20,12 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/arduino/ptsolns-cli/commands/cmderrors"
-	"github.com/arduino/ptsolns-cli/commands/internal/instances"
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores/packagemanager"
-	"github.com/arduino/ptsolns-cli/internal/arduino/resources"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/commands/cmderrors"
+	"github.com/PTSolns/ptsolns-cli/commands/internal/instances"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores/packagemanager"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/resources"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 )
 
 // UpdateIndexStreamResponseToCallbackFunction returns a gRPC stream to be used in PlatformInstall that sends

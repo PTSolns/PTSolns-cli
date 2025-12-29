@@ -24,7 +24,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/sirupsen/logrus"
 )
 

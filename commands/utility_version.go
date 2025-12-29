@@ -16,7 +16,7 @@
 package commands
 
 import (
-	"github.com/arduino/ptsolns-cli/commands/cmderrors"
+	"github.com/PTSolns/ptsolns-cli/commands/cmderrors"
 	semver "go.bug.st/relaxed-semver"
 )
 

@@ -19,8 +19,8 @@ import (
 	"context"
 	"io"
 
-	"github.com/arduino/ptsolns-cli/commands/internal/instances"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/commands/internal/instances"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/sirupsen/logrus"
 )
 

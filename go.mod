@@ -1,4 +1,4 @@
-module github.com/arduino/ptsolns-cli
+module github.com/PTSolns/ptsolns-cli
 
 go 1.24.4
 

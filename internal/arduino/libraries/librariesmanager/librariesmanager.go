@@ -23,9 +23,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	paths "github.com/arduino/go-paths-helper"
 	"github.com/sirupsen/logrus"
 	semver "go.bug.st/relaxed-semver"

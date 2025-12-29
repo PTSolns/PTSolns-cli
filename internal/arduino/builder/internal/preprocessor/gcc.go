@@ -18,8 +18,8 @@ package preprocessor
 import (
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/runner"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/runner"
 	"github.com/arduino/go-paths-helper"
 	"github.com/arduino/go-properties-orderedmap"
 	"go.bug.st/f"
@@ -63,6 +63,6 @@ func GCC(
 	args = f.Filter(args, f.NotEquals("-MMD"))
 
 	// Limit the stderr output to 100 KiB
-	// https://github.com/arduino/ptsolns-cli/pull/2883
+	// https://github.com/PTSolns/ptsolns-cli/pull/2883
 	return runner.NewTaskWithLimitedStderr(100*1024, args...)
 }

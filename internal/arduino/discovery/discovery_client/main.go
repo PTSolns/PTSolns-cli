@@ -22,7 +22,7 @@ import (
 	"os"
 	"sort"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/discovery/discoverymanager"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/discovery/discoverymanager"
 	"github.com/sirupsen/logrus"
 )
 

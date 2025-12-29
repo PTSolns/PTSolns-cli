@@ -18,8 +18,8 @@ package main
 import (
 	"os"
 
-	"github.com/arduino/ptsolns-cli/commands"
-	"github.com/arduino/ptsolns-cli/internal/cli"
+	"github.com/PTSolns/ptsolns-cli/commands"
+	"github.com/PTSolns/ptsolns-cli/internal/cli"
 	"github.com/spf13/cobra/doc"
 )
 

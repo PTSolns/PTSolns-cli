@@ -15,7 +15,7 @@
 
 package cli
 
-import "github.com/arduino/ptsolns-cli/internal/i18n"
+import "github.com/PTSolns/ptsolns-cli/internal/i18n"
 
 func getUsageTemplate() string {
 	// Force i18n to generate translation strings

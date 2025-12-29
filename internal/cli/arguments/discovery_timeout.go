@@ -18,7 +18,7 @@ package arguments
 import (
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/spf13/cobra"
 )
 

@@ -22,7 +22,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/cpp"
 	"github.com/arduino/go-paths-helper"
 	"github.com/sirupsen/logrus"
 	"go.bug.st/f"

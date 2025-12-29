@@ -22,9 +22,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/commands/cmderrors"
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/commands/cmderrors"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	properties "github.com/arduino/go-properties-orderedmap"
 	semver "go.bug.st/relaxed-semver"
@@ -542,7 +542,7 @@ func convertUploadToolsToPluggableDiscovery(props *properties.Map) {
 		defaultAction := action + ".default"
 		if !props.ContainsKey(defaultAction) {
 			// Search for "menu.MENU-ID.MENU-ITEM.ACTION.tool" (some platforms sets ACTION.tool on
-			// submenu config entries). See https://github.com/arduino/ptsolns-cli/issues/1444
+			// submenu config entries). See https://github.com/PTSolns/ptsolns-cli/issues/1444
 			for key, value := range props.AsMap() {
 				if !strings.HasPrefix(key, "menu.") {
 					continue

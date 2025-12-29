@@ -22,11 +22,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/utils"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/logger"
-	"github.com/arduino/ptsolns-cli/internal/buildcache"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/utils"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/logger"
+	"github.com/PTSolns/ptsolns-cli/internal/buildcache"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	"go.bug.st/f"
 )

@@ -18,8 +18,8 @@ package arguments
 import (
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/feedback"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/spf13/cobra"
 )
 

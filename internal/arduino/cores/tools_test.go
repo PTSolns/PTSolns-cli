@@ -18,7 +18,7 @@ package cores
 import (
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/resources"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/resources"
 	"github.com/stretchr/testify/require"
 )
 

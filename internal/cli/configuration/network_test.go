@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/cli/configuration"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/configuration"
 	"github.com/stretchr/testify/require"
 )
 

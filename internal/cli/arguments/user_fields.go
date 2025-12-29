@@ -16,8 +16,8 @@
 package arguments
 
 import (
-	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/feedback"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 )
 
 // AskForUserFields prompts the user to input the provided user fields.

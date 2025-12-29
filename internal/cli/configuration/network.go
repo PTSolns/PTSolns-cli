@@ -26,9 +26,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/commands/cmderrors"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	"github.com/arduino/ptsolns-cli/internal/version"
+	"github.com/PTSolns/ptsolns-cli/commands/cmderrors"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/version"
 	"go.bug.st/downloader/v2"
 	"google.golang.org/grpc/metadata"
 )

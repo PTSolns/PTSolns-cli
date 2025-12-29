@@ -20,7 +20,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 )

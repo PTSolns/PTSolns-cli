@@ -27,8 +27,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
@@ -772,7 +772,7 @@ func TestCompileWithoutPrecompiledLibraries(t *testing.T) {
 	require.NoError(t, err)
 	//	_, _, err = cli.Run("core", "install", "adafruit:samd@1.6.4", "--additional-urls="+url)
 	//	require.NoError(t, err)
-	//	// should work on adafruit too after https://github.com/arduino/ptsolns-cli/pull/1134
+	//	// should work on adafruit too after https://github.com/PTSolns/ptsolns-cli/pull/1134
 	//	_, _, err = cli.Run("compile", "-b", "adafruit:samd:adafruit_feather_m4", sketchPath.String())
 	//	require.NoError(t, err)
 
@@ -1171,7 +1171,7 @@ func compileWithFakeSecureBootCore(t *testing.T, env *integrationtest.Environmen
 }
 
 func preprocessFlagDoNotMessUpWithOutput(t *testing.T, env *integrationtest.Environment, cli *integrationtest.ArduinoCLI) {
-	// https://github.com/arduino/ptsolns-cli/issues/2150
+	// https://github.com/PTSolns/ptsolns-cli/issues/2150
 
 	// go test -v ./internal/integrationtest/compile_1 --run=TestCompile$/PreprocessFlagDoNotMessUpWithOutput
 
@@ -1263,7 +1263,7 @@ func buildWithCustomBuildPath(t *testing.T, env *integrationtest.Environment, cl
 
 		// Run again a couple of times with a different build path, to verify that old build
 		// path is not copied back in the sketch build recursively.
-		// https://github.com/arduino/ptsolns-cli/issues/2266
+		// https://github.com/PTSolns/ptsolns-cli/issues/2266
 		secondBuildPath := sketchPath.Join("build2")
 		_, _, err = cli.Run("compile", "-b", "arduino:avr:uno", "--build-path", secondBuildPath.String(), sketchPath.String())
 		require.NoError(t, err)

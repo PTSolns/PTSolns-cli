@@ -21,10 +21,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/utils"
-	"github.com/arduino/ptsolns-cli/internal/arduino/sketch"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	"github.com/arduino/ptsolns-cli/pkg/fqbn"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/utils"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/sketch"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/pkg/fqbn"
 	"github.com/arduino/go-paths-helper"
 	properties "github.com/arduino/go-properties-orderedmap"
 )

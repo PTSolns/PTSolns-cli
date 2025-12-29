@@ -21,10 +21,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries"
-	"github.com/arduino/ptsolns-cli/internal/arduino/utils"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/utils"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/schollz/closestmatch"
 	"github.com/sirupsen/logrus"
 )

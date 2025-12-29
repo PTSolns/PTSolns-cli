@@ -15,7 +15,7 @@
 
 package progress
 
-import rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+import rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 
 // Struct fixdoc
 type Struct struct {

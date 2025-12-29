@@ -25,7 +25,7 @@ import (
 	"net/url"
 	"testing"
 
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 	"go.bug.st/downloader/v2"
@@ -180,7 +180,7 @@ func TestIndexFileName(t *testing.T) {
 		{url: "package_index.json", expected: "package_index.json"},
 		{url: "package_index.json.gz", expected: "package_index.json"},
 		{url: "package_index.tar.bz2", expected: "package_index.json"},
-		// https://github.com/arduino/ptsolns-cli/issues/2345
+		// https://github.com/PTSolns/ptsolns-cli/issues/2345
 		{url: "package_arduino.cc_index.json", expected: "package_arduino.cc_index.json"},
 		{url: "package_arduino.cc_index.json.gz", expected: "package_arduino.cc_index.json"},
 		{url: "package_arduino.cc_index.tar.bz2", expected: "package_arduino.cc_index.json"},

@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/go-configmap"
+	"github.com/PTSolns/ptsolns-cli/internal/go-configmap"
 	"github.com/stretchr/testify/require"
 )
 

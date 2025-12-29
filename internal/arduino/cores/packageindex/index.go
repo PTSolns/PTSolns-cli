@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	"github.com/arduino/ptsolns-cli/internal/arduino/resources"
-	"github.com/arduino/ptsolns-cli/internal/arduino/security"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/resources"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/security"
 	"github.com/arduino/go-paths-helper"
 	easyjson "github.com/mailru/easyjson"
 	"github.com/sirupsen/logrus"

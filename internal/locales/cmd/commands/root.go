@@ -16,8 +16,8 @@
 package commands
 
 import (
-	"github.com/arduino/ptsolns-cli/internal/locales/cmd/commands/catalog"
-	"github.com/arduino/ptsolns-cli/internal/locales/cmd/commands/transifex"
+	"github.com/PTSolns/ptsolns-cli/internal/locales/cmd/commands/catalog"
+	"github.com/PTSolns/ptsolns-cli/internal/locales/cmd/commands/transifex"
 	"github.com/spf13/cobra"
 )
 

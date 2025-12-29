@@ -23,7 +23,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

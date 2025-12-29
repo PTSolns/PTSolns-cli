@@ -24,7 +24,7 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/arduino/ptsolns-cli/internal/locales/cmd/po"
+	"github.com/PTSolns/ptsolns-cli/internal/locales/cmd/po"
 )
 
 // GenerateCatalog generates the i18n message catalog for the go source files

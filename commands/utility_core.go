@@ -16,8 +16,8 @@
 package commands
 
 import (
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 )
 
 // platformToRPCPlatformMetadata converts our internal structure to the RPC structure.

@@ -18,7 +18,7 @@ package globals
 import (
 	"net/url"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/resources"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/resources"
 )
 
 var (

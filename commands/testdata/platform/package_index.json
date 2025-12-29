@@ -137,14 +137,14 @@
       "email": "test@example.com",
       "maintainer": "Arduino",
       "help": {
-        "online": "https://github.com/Arduino/ptsolns-cli"
+        "online": "https://github.com/PTSolns/ptsolns-cli"
       },
-      "websiteURL": "https://github.com/Arduino/ptsolns-cli",
+      "websiteURL": "https://github.com/PTSolns/ptsolns-cli",
       "platforms": [
         {
           "category": "Test",
           "help": {
-            "online": "https://github.com/Arduino/ptsolns-cli"
+            "online": "https://github.com/PTSolns/ptsolns-cli"
           },
           "url": "https://raw.githubusercontent.com/arduino/ptsolns-cli/master/test/testdata/core.zip",
           "checksum": "SHA-256:6a338cf4d6d501176a2d352c87a8d72ac7488b8c5b82cdf2a4e2cef630391092",

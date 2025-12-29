@@ -27,8 +27,8 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 	"go.bug.st/testifyjson/requirejson"

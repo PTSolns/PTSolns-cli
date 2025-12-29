@@ -23,10 +23,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/commands/cmderrors"
-	"github.com/arduino/ptsolns-cli/internal/arduino/globals"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/commands/cmderrors"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/globals"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"go.bug.st/f"
 )
@@ -191,7 +191,7 @@ func (s *Sketch) GetProfile(profileName string) (*Profile, error) {
 //	mysketch/MySketch.ino
 //
 // This is mostly necessary to avoid errors on Mac OS X.
-// For more info see: https://github.com/arduino/ptsolns-cli/issues/1174
+// For more info see: https://github.com/PTSolns/ptsolns-cli/issues/1174
 func (s *Sketch) checkSketchCasing() error {
 	files, err := s.FullPath.ReadDir()
 	if err != nil {

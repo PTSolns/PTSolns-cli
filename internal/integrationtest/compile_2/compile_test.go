@@ -21,7 +21,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
@@ -336,7 +336,7 @@ func TestGenerateCompileCommandsJsonResilience(t *testing.T) {
 	require.NoError(t, err)
 
 	// check it didn't fail with esp32@2.0.1 that has a prebuild hook that must run:
-	// https://github.com/arduino/ptsolns-cli/issues/1547
+	// https://github.com/PTSolns/ptsolns-cli/issues/1547
 	url := "https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json"
 	_, _, err = cli.Run("core", "update-index", "--additional-urls="+url)
 	require.NoError(t, err)

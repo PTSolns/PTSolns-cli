@@ -20,9 +20,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/commands/internal/instances"
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries/librariesindex"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/commands/internal/instances"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries/librariesindex"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	semver "go.bug.st/relaxed-semver"
 )
 

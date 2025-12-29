@@ -6,7 +6,7 @@ site_description: Arduino Command Line Interface
 site_url: https://arduino.github.io/ptsolns-cli/
 
 repo_name: arduino/ptsolns-cli
-repo_url: https://github.com/arduino/ptsolns-cli
+repo_url: https://github.com/PTSolns/ptsolns-cli
 edit_uri: blob/master/docs/
 
 copyright: Copyright 2020 ARDUINO SA (http://www.arduino.cc/)

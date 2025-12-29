@@ -17,7 +17,7 @@ package librariesmanager
 import (
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/libraries"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/libraries"
 	"github.com/stretchr/testify/require"
 )
 

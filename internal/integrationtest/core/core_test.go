@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
@@ -37,7 +37,7 @@ import (
 )
 
 func TestCorrectHandlingOfPlatformVersionProperty(t *testing.T) {
-	// See: https://github.com/arduino/ptsolns-cli/issues/1823
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/1823
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
@@ -285,7 +285,7 @@ func TestCoreInstallEsp32(t *testing.T) {
 	require.NoError(t, json.Unmarshal(out, &builderOutput))
 	buildDir := paths.New(builderOutput.BuilderResult.BuildPath)
 
-	// prevent regressions for https://github.com/arduino/ptsolns-cli/issues/163
+	// prevent regressions for https://github.com/PTSolns/ptsolns-cli/issues/163
 	require.FileExists(t, buildDir.Join(sketchName+".ino.partitions.bin").String())
 }
 
@@ -1350,13 +1350,13 @@ func TestReferencedCoreBuildAndRuntimeProperties(t *testing.T) {
 		out.ArrayMustContain(jsonEncode("build.board.platform.path=" + boardPlatformPath))
 		out.ArrayMustContain(jsonEncode("build.core.platform.path=" + corePlatformPath))
 		out.ArrayMustContain(jsonEncode("build.core.path=" + corePath))
-		// https://github.com/arduino/ptsolns-cli/issues/2616
+		// https://github.com/PTSolns/ptsolns-cli/issues/2616
 		out.ArrayMustContain(jsonEncode("runtime.platform.path=" + corePlatformPath))
 	}
 }
 
 func TestCoreInstallWithWrongArchiveSize(t *testing.T) {
-	// See: https://github.com/arduino/ptsolns-cli/issues/2332
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/2332
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
@@ -1368,7 +1368,7 @@ func TestCoreInstallWithWrongArchiveSize(t *testing.T) {
 }
 
 func TestCoreInstallWithMissingOrInvalidChecksumAndUnsafeInstallEnabled(t *testing.T) {
-	// See: https://github.com/arduino/ptsolns-cli/issues/1468
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/1468
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 

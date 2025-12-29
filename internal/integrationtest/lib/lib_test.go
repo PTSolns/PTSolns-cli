@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
@@ -100,7 +100,7 @@ func TestLibInstallMultipleSameLibrary(t *testing.T) {
 	cliEnv["ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL"] = "true"
 
 	// Check that 'lib install' didn't create a double install
-	// https://github.com/arduino/ptsolns-cli/issues/1870
+	// https://github.com/PTSolns/ptsolns-cli/issues/1870
 	_, _, err := cli.RunWithCustomEnv(cliEnv, "lib", "install", "--git-url", "https://github.com/arduino-libraries/SigFox#1.0.3")
 	require.NoError(t, err)
 	_, _, err = cli.Run("lib", "install", "Arduino SigFox for MKRFox1200")
@@ -113,7 +113,7 @@ func TestLibInstallMultipleSameLibrary(t *testing.T) {
 		LengthMustEqualTo(1, "Found multiple installations of Arduino SigFox for MKRFox1200'")
 
 	// Check that 'lib upgrade' didn't create a double install
-	// https://github.com/arduino/ptsolns-cli/issues/1870
+	// https://github.com/PTSolns/ptsolns-cli/issues/1870
 	_, _, err = cli.Run("lib", "uninstall", "Arduino SigFox for MKRFox1200")
 	require.NoError(t, err)
 	_, _, err = cli.RunWithCustomEnv(cliEnv, "lib", "install", "--git-url", "https://github.com/arduino-libraries/SigFox#1.0.3")
@@ -539,13 +539,13 @@ func TestInstall(t *testing.T) {
 	require.NoError(t, err)
 
 	// Test failing-install of library with wrong dependency
-	// (https://github.com/arduino/ptsolns-cli/issues/534)
+	// (https://github.com/PTSolns/ptsolns-cli/issues/534)
 	_, stderr, err := cli.Run("lib", "install", "MD_Parola@3.2.0")
 	require.Error(t, err)
 	require.Contains(t, string(stderr), "No valid dependencies solution found: dependency 'MD_MAX72xx' is not available")
 
 	// Test installing a library with a "relaxed" version
-	// https://github.com/arduino/ptsolns-cli/issues/1727
+	// https://github.com/PTSolns/ptsolns-cli/issues/1727
 	_, _, err = cli.Run("lib", "install", "ILI9341_t3@1.0")
 	require.NoError(t, err)
 	stdout, _, err := cli.Run("lib", "list", "--json")
@@ -1617,7 +1617,7 @@ func TestLibBundlesWhenLibWithTheSameNameIsInstalledGlobally(t *testing.T) {
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
-	// See: https://github.com/arduino/ptsolns-cli/issues/1566
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/1566
 	_, _, err := cli.Run("core", "install", "arduino:samd@1.8.13")
 	require.NoError(t, err)
 	{
@@ -1638,7 +1638,7 @@ func TestLibBundlesWhenLibWithTheSameNameIsInstalledGlobally(t *testing.T) {
 		j.Query(`.installed_libraries.[0].library.compatible_with."arduino:samd:mkrzero"`).MustEqual(`true`)
 	}
 
-	// See: https://github.com/arduino/ptsolns-cli/issues/1656
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/1656
 	{
 		_, _, err = cli.Run("core", "update-index", "--additional-urls", "https://arduino.esp8266.com/stable/package_esp8266com_index.json")
 		require.NoError(t, err)
@@ -1691,7 +1691,7 @@ func TestLibListDoesNotIncludeEmptyLibraries(t *testing.T) {
 }
 
 func TestDependencyResolver(t *testing.T) {
-	// See: https://github.com/arduino/ptsolns-cli/issues/2135
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/2135
 
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
@@ -1711,7 +1711,7 @@ func TestDependencyResolver(t *testing.T) {
 }
 
 func TestDependencyResolverNoOverwrite(t *testing.T) {
-	// https://github.com/arduino/ptsolns-cli/issues/1799
+	// https://github.com/PTSolns/ptsolns-cli/issues/1799
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 

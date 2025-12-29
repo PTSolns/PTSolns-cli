@@ -18,8 +18,8 @@ package librariesindex
 import (
 	"errors"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/resources"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/resources"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 	"github.com/arduino/go-paths-helper"
 	easyjson "github.com/mailru/easyjson"
 	semver "go.bug.st/relaxed-semver"

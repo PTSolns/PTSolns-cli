@@ -20,7 +20,7 @@ import (
 	"errors"
 	"io"
 
-	"github.com/arduino/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
 )
 
 // DirectStreams returns the underlying io.Writer to directly stream to

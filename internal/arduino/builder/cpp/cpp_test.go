@@ -18,7 +18,7 @@ package cpp_test
 import (
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/cpp"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/cpp"
 	"github.com/stretchr/testify/require"
 )
 

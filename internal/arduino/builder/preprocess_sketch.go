@@ -16,8 +16,8 @@
 package builder
 
 import (
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/internal/preprocessor"
-	"github.com/arduino/ptsolns-cli/internal/arduino/builder/logger"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/internal/preprocessor"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/builder/logger"
 	"github.com/arduino/go-paths-helper"
 )
 

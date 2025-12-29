@@ -18,7 +18,7 @@ package orderedmap_test
 import (
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/orderedmap"
+	"github.com/PTSolns/ptsolns-cli/internal/orderedmap"
 	"github.com/stretchr/testify/require"
 )
 

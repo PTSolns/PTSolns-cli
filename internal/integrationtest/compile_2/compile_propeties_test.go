@@ -18,7 +18,7 @@ package compile_test
 import (
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 )
@@ -27,7 +27,7 @@ func TestCompileAndUploadRuntimeProperties(t *testing.T) {
 	env, cli := integrationtest.CreateArduinoCLIWithEnvironment(t)
 	defer env.CleanUp()
 
-	// https://github.com/arduino/ptsolns-cli/issues/1971
+	// https://github.com/PTSolns/ptsolns-cli/issues/1971
 	sketchbookHardwareDir := cli.SketchbookDir().Join("hardware")
 	require.NoError(t, sketchbookHardwareDir.MkdirAll())
 

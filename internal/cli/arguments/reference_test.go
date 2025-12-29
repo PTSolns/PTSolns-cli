@@ -19,8 +19,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/commands"
-	"github.com/arduino/ptsolns-cli/internal/cli/arguments"
+	"github.com/PTSolns/ptsolns-cli/commands"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/arguments"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/arduino/ptsolns-cli/internal/locales/cmd/commands"
+	"github.com/PTSolns/ptsolns-cli/internal/locales/cmd/commands"
 )
 
 func main() {

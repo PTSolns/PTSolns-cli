@@ -19,7 +19,7 @@ import (
 	"regexp"
 	"runtime"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/resources"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/resources"
 	"github.com/arduino/go-paths-helper"
 	properties "github.com/arduino/go-properties-orderedmap"
 	semver "go.bug.st/relaxed-semver"

@@ -20,8 +20,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	"github.com/arduino/ptsolns-cli/pkg/fqbn"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/pkg/fqbn"
 	"github.com/arduino/go-properties-orderedmap"
 )
 

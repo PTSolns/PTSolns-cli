@@ -24,9 +24,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/utils"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	rpc "github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/utils"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	rpc "github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 	"go.bug.st/f"
 	semver "go.bug.st/relaxed-semver"

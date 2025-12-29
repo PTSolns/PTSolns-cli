@@ -23,15 +23,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
-	"github.com/arduino/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/rpc/cc/arduino/cli/commands/v1"
 	"github.com/arduino/go-paths-helper"
 
 	"github.com/stretchr/testify/require"
 )
 
 func TestDetectionOfChangesInCoreBeforeCompile(t *testing.T) {
-	// See: https://github.com/arduino/ptsolns-cli/issues/2523
+	// See: https://github.com/PTSolns/ptsolns-cli/issues/2523
 
 	env, cli := integrationtest.CreateEnvForDaemon(t)
 	defer env.CleanUp()

@@ -18,9 +18,9 @@ package updater
 import (
 	"fmt"
 
-	"github.com/arduino/ptsolns-cli/internal/cli/feedback"
-	"github.com/arduino/ptsolns-cli/internal/i18n"
-	"github.com/arduino/ptsolns-cli/internal/version"
+	"github.com/PTSolns/ptsolns-cli/internal/cli/feedback"
+	"github.com/PTSolns/ptsolns-cli/internal/i18n"
+	"github.com/PTSolns/ptsolns-cli/internal/version"
 	"github.com/fatih/color"
 )
 

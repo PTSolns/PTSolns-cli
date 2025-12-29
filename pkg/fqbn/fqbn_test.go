@@ -18,7 +18,7 @@ package fqbn_test
 import (
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/pkg/fqbn"
+	"github.com/PTSolns/ptsolns-cli/pkg/fqbn"
 	"github.com/stretchr/testify/require"
 )
 

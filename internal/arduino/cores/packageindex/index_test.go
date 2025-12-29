@@ -18,8 +18,8 @@ package packageindex
 import (
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/arduino/cores"
-	"github.com/arduino/ptsolns-cli/internal/arduino/resources"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/cores"
+	"github.com/PTSolns/ptsolns-cli/internal/arduino/resources"
 	"github.com/arduino/go-paths-helper"
 	"github.com/stretchr/testify/require"
 	semver "go.bug.st/relaxed-semver"

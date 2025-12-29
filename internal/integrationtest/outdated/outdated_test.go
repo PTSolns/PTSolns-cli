@@ -19,7 +19,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/arduino/ptsolns-cli/internal/integrationtest"
+	"github.com/PTSolns/ptsolns-cli/internal/integrationtest"
 	"github.com/stretchr/testify/require"
 )
 

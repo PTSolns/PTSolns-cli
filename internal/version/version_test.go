@@ -25,8 +25,8 @@ import (
 // in order to have this test green launch your testing using the provided task (see /Taskfile.yml) or use:
 //
 //	go test -run TestBuildInjectedInfo -v ./... -ldflags '
-//	  -X github.com/arduino/ptsolns-cli/version.versionString=0.0.0-test.preview
-//	  -X github.com/arduino/ptsolns-cli/version.commit=deadbeef'
+//	  -X github.com/PTSolns/ptsolns-cli/version.versionString=0.0.0-test.preview
+//	  -X github.com/PTSolns/ptsolns-cli/version.commit=deadbeef'
 func TestBuildInjectedInfo(t *testing.T) {
 	goldenAppName := "ptsolns-cli"
 	goldenInfo := Info{
