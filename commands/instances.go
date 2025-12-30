@@ -286,6 +286,13 @@ func (s *arduinoCoreServerImpl) Init(req *rpc.InitRequest, stream rpc.ArduinoCor
 			}
 		}
 
+		// Skip installation of builtin tools.
+		// This prevents automatic installation of tools like those required by arduino:avr.
+		// The `arduino:avr` itself is not a builtin tool, but its toolchains
+		// are installed through this mechanism.
+		// NOTE: This permanently disables automatic installation of all builtin tools.
+		return nil
+
 		// Install builtin tools if necessary
 		if len(builtinToolsToInstall) > 0 {
 			for _, toolRelease := range builtinToolsToInstall {
