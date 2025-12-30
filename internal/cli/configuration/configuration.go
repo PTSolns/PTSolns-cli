@@ -110,7 +110,7 @@ func getDefaultBuildCacheDir() string {
 		// fallback to /tmp
 		cacheDir = paths.TempDir()
 	}
-	return cacheDir.Join("arduino").String()
+	return cacheDir.Join("ptsolns").String()
 }
 
 // FindConfigFlagsInArgsOrFallbackOnEnv returns the config file path using the
